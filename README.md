@@ -15,3 +15,5 @@ https://trello.com/b/DLswKS2n/projekt-po
 
 ### Windows
 `gradlew.bat run`
+
+ 
