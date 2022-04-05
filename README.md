@@ -2,7 +2,7 @@
 
 ### Członkowie
 * Adrian Matkowski (*lider*)
-* Maksymilian Strózik
+* Maksymilian Strózik (*Main programmer*)
 * Hubert Wiśniewski
 
 ## Tablica tasków
