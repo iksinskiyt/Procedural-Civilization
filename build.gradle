@@ -10,6 +10,9 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.knowm.xchart:xchart:3.8.1'
+    implementation 'org.knowm.xchart:xchart-demo:3.8.1'
+    implementation 'org.knowm.xchart:xchart-parent:3.8.1'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }
