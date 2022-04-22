@@ -8,13 +8,39 @@ version '1.0-SNAPSHOT'
 repositories {
     mavenCentral()
 }
-
+def lwjglVersion = "3.3.1"
 dependencies {
     implementation 'org.knowm.xchart:xchart:3.8.1'
     implementation 'org.knowm.xchart:xchart-demo:3.8.1'
     implementation 'org.knowm.xchart:xchart-parent:3.8.1'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    //LWGL3
+    implementation platform("org.lwjgl:lwjgl-bom:3.3.1")
+
+    implementation "org.lwjgl:lwjgl"
+    implementation "org.lwjgl:lwjgl-assimp"
+    implementation "org.lwjgl:lwjgl-bgfx"
+    implementation "org.lwjgl:lwjgl-glfw"
+    implementation "org.lwjgl:lwjgl-nanovg"
+    implementation "org.lwjgl:lwjgl-nuklear"
+    implementation "org.lwjgl:lwjgl-openal"
+    implementation "org.lwjgl:lwjgl-opengl"
+    implementation "org.lwjgl:lwjgl-par"
+    implementation "org.lwjgl:lwjgl-stb"
+    implementation "org.lwjgl:lwjgl-vulkan"
+    runtimeOnly "org.lwjgl:lwjgl:3.3.1"
+    runtimeOnly "org.lwjgl:lwjgl-assimp:3.3.1"
+    runtimeOnly "org.lwjgl:lwjgl-bgfx:3.3.1"
+    runtimeOnly "org.lwjgl:lwjgl-glfw:3.3.1"
+    runtimeOnly "org.lwjgl:lwjgl-nanovg:3.3.1"
+    runtimeOnly "org.lwjgl:lwjgl-nuklear:3.3.1"
+    runtimeOnly "org.lwjgl:lwjgl-openal:3.3.1"
+    runtimeOnly "org.lwjgl:lwjgl-opengl:3.3.1"
+    runtimeOnly "org.lwjgl:lwjgl-par:3.3.1"
+    runtimeOnly "org.lwjgl:lwjgl-stb:3.3.1"
+    runtimeOnly "org.lwjgl:lwjgl-vulkan:3.3.1"
+
 }
 
 application {
