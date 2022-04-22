@@ -15,9 +15,9 @@ public class Window extends JFrame {
     public void paint(Graphics g){
         for(int i =0;i<Main.noiseSize;i++){
             for(int j = 0; j<Main.noiseSizeY;j++){
-                if(generated2DNoise[i][j] < 0.35){
+                if(generated2DNoise[i][j] < perlin.average){
                     g.setColor(new Color(0,0,(int)(generated2DNoise[i][j]*255),255));
-                } else if(generated2DNoise[i][j] >= 0.35 && generated2DNoise[i][j] < 0.45){
+                } else if(generated2DNoise[i][j] >= perlin.average && generated2DNoise[i][j] < perlin.average * 1.10){
                     g.setColor(new Color(0,(int)(generated2DNoise[i][j]*255),0,255));
                 } else {
                     g.setColor(new Color((int)(generated2DNoise[i][j]*255),(int)(generated2DNoise[i][j]*255),(int)(generated2DNoise[i][j]*255),255));

@@ -1,45 +1,18 @@
+import java.security.SecureRandom;
 import java.util.Random;
 
 public class Perlin {
     Random rand = new Random();
-    double[] seed = new double[Main.noiseSize*Main.noiseSizeY];
-    double[][] seed2D = new double[Main.noiseSize][Main.noiseSizeY];
+    SecureRandom random = new SecureRandom();
+    public double average = 0;
 
-    double[] generatePerlinNoise(){
-        double[] interpolatedNoise = new double[Main.noiseSize];
-        for(int i =0; i < Main.noiseSize ;i++) {
-            seed[i] = rand.nextDouble();
-        }
-        for(int i = 0;i<Main.noiseSize;i++){
-            for(int j = 0; j<Main.noiseSizeY;j++){
-                seed2D[i][j] = rand.nextDouble();
-            }
-        }
-        for(int i = 0; i < Main.noiseSize; i++){
-            double scale = 1.0;
-            double scaleAcc = 0;
-            for(int j = 0; j< Main.octaves; j++){
-                int pitch = Main.noiseSize >> j;
-                int sample1 = (i / pitch) * pitch;
-                int sample2 = (sample1 + pitch) % Main.noiseSize;
-                double blend = (double)(i - sample1) / (double)pitch;
-                double sample = (1.0 - blend) * seed[sample1] + blend * seed[sample2];
-                scaleAcc+=scale;
-                scale = scale/2;
-                interpolatedNoise[i] += (sample*scale)/scaleAcc;
-            }
-        }
-        return interpolatedNoise;
-    }
+    double[] seed = new double[Main.noiseSize*Main.noiseSizeY];
+
     double[][] generatePerlinNoise2D(){
         double[][] interpolatedNoise = new double[Main.noiseSize][Main.noiseSizeY];
         for(int i =0; i < Main.noiseSize*Main.noiseSizeY ;i++) {
             seed[i] = rand.nextDouble();
-        }
-        for(int i = 0;i<Main.noiseSize;i++){
-            for(int j = 0; j<Main.noiseSizeY;j++){
-                seed2D[i][j] = rand.nextDouble();
-            }
+       //     System.out.println(seed[i]);     
         }
         for(int i = 0; i < Main.noiseSize; i++){
             for(int k = 0; k < Main.noiseSizeY; k++){
@@ -69,6 +42,40 @@ public class Perlin {
                 interpolatedNoise[i][k] = noise/scaleAcc;
             }
         }
+
+        double maxValue = 0; 
+        double minValue = 0;
+        for(int i = 0; i<Main.noiseSize;i++){
+            for(int j = 0; j<Main.noiseSizeY;j++){
+                if(maxValue<interpolatedNoise[i][j]){
+                    maxValue = interpolatedNoise[i][j];
+                }
+                if(minValue>interpolatedNoise[i][j]){
+                    minValue = interpolatedNoise[i][j];
+                }
+            }
+        }  
+
+        for(int i = 0; i<Main.noiseSize;i++){
+            for(int j = 0; j<Main.noiseSizeY;j++){
+                interpolatedNoise[i][j] = ((interpolatedNoise[i][j] - minValue)/(maxValue-minValue));
+                //System.out.println(interpolatedNoise[i][j]);
+            }
+        }
+
+        double avgTemp = 0;
+        
+        for(int i = 0; i<Main.noiseSize;i++){
+            for(int j = 0; j<Main.noiseSizeY;j++){
+                 avgTemp += interpolatedNoise[i][j];
+                //System.out.println(interpolatedNoise[i][j]);
+            }
+        }
+
+        average = avgTemp/(Main.noiseSize*Main.noiseSizeY);
+
+        System.out.println(average);
+
         return interpolatedNoise;
     }
 }
