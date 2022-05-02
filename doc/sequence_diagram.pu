@@ -1,0 +1,43 @@
+@startuml
+' actor  User
+' User -> GUI: inputVariables
+' User <-- GUI: showSimulation
+Main -> GUI: GUI()
+GUI --> Main: gui : GUI
+Main -> GUI: getOptionsFromUser()
+Main -> GUI: startSimulation()
+GUI -> Map: Map(double[] perlinOptions, <enum, int>[] creatures)
+Map -> HeightMap: HeightMap()
+HeightMap --> Map: heightMap : HeightMap
+loop for each creature in creatures
+    loop for i from 0 to creature.second-1
+        Map -> Creature: Creature(creature.first)
+        Creature -> Inventory: Inventory()
+        Inventory --> Creature: inventory : Inventory
+        Creature --> Map: creatureObject : Creature
+    end
+end
+Map --> GUI: map : Map
+loop while gui.isSimulationComplete() is false
+    Main -> GUI: simulationTick()
+    GUI -> Map: simulationTick()
+    loop for each village in villages
+        Map -> Village: simulationTick()
+        loop for each building in buildings
+            Village -> Building: simulationTick()
+        end
+    end
+    loop for each creature in creatures
+        alt creature.getType() == HUMAN
+            ' TODO: Add actions for human
+            Map -> Human: placeholder()
+        else
+            Map -> Creature: move()
+        end
+    end
+    Main -> GUI: showSimulation()
+    GUI -> Map: getHeightMap()
+    Map --> GUI: heightMap : HeightMap
+end
+
+@enduml
