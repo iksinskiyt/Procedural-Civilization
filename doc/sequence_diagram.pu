@@ -4,35 +4,133 @@
 ' User <-- GUI: showSimulation
 Main -> GUI: GUI()
 GUI --> Main: gui : GUI
-Main -> GUI: getOptionsFromUser()
-Main -> GUI: startSimulation()
-GUI -> Map: Map(double[] perlinOptions, <enum, int>[] creatures)
+Main -> GUI: gui.getOptionsFromUser()
+Main -> GUI: gui.startSimulation()
+GUI -> Map: Map(double[] perlinOptions, <enum, int, int>[] creatures, int nVillages)
 Map -> HeightMap: HeightMap()
 HeightMap --> Map: heightMap : HeightMap
+' Create villages
+loop for i from 0 to nVillages-1
+    note over Map
+        Generate an acceptable `randomPosition` for a village
+    end note
+    Map -> Village: Village(randomPosition, i, this)
+    Village --> Map: villageObject : Village
+    note over Map
+        Add `villageObject` to the `villages` list
+    end note
+end
+' For each creature
 loop for each creature in creatures
+    ' For each team
     loop for i from 0 to creature.second-1
-        Map -> Creature: Creature(creature.first)
-        Creature -> Inventory: Inventory()
-        Inventory --> Creature: inventory : Inventory
-        Creature --> Map: creatureObject : Creature
+        ' Create the requested number of creatures
+        loop for j from 0 to creature.third-1
+            note over Map
+                Generate an acceptable `randomPosition` for a creature
+            end note
+            alt creature.first == HUMAN
+                Map -> Human: Human(i, this, villages[i], randomPosition)
+                Human -> Inventory: Inventory()
+                Inventory --> Human: inventory : Inventory
+                Human --> Map: humanObject : Human
+                Map -> Village: villages[i].addVillager(humanObject)
+                note over Village
+                    Add `villager` to the `villagers` list
+                end note
+            else
+                Map -> Creature: Creature(creature.first, this, randomPosition)
+                Creature -> Inventory: Inventory()
+                Inventory --> Creature: inventory : Inventory
+                Creature --> Map: creatureObject : Creature
+                note over Map
+                    Add `creatureObject` to the `creatures` list
+                end note
+            end
+        end
     end
 end
 Map --> GUI: map : Map
 loop while gui.isSimulationComplete() is false
-    Main -> GUI: simulationTick()
-    GUI -> Map: simulationTick()
+    Main -> GUI: gui.simulationTick()
+    GUI -> Map: map.simulationTick()
     loop for each village in villages
-        Map -> Village: simulationTick()
+        Map -> Village: village.getTeamID()
+        Village --> Map: teamID : int
+    end
+    note over Map
+        If all returned team IDs are the same,
+        set isSimulationComplete to true and return
+    end note
+    loop for each creature in creatures
+        Map -> Creature: creature.move()
+    end
+    loop for each village in villages
+        Map -> Village: village.simulationTick()
+        opt humans is empty
+            note over Village
+                Set teamID to ID of the team with the greatest kill count
+            end note
+        end
+        loop for each human in humans
+            Village -> Human: human.move()
+            alt onExpedition
+                note over Human
+                    Make a random move
+                end note
+            else
+                alt position == parentVillage.getPosition()
+                    Human -> Village: parentVillage.storeItems(inventory)
+                    note over Human
+                        Go to expedition (set `onExpedition` to true)
+                    end note
+                else
+                    note over Human
+                        Make a move towards the parent village
+                    end note
+                end
+            end
+            Human -> Map: parentMap.getNearestReachableCreature(position)
+            Map --> Human: metCreature : Creature
+            opt metCreature is not null
+                opt (metCreature.getType() != HUMAN) || (metCreature.getType() == HUMAN && ((Human)metCreature).getTeamID() != teamID) 
+                    Human -> Creature: metCreature.attack()
+                    opt metCreature.getHealth() <= 0
+                        Human -> Creature: metCreature.takeInventory()
+                        Creature --> Human: killeeInventory : Inventory
+                        note over Human
+                            Add contents of `killeeInventory` to own inventory
+                        end note
+                        alt metCreature.getType() != HUMAN
+                            Human -> Map: parentMap.killCreature(metCreature)
+                        else
+                            note over Human
+                                Cast `metCreature` to Human as `metHuman`
+                            end note
+                            Human -> Human: metHuman.getParentVillage()
+                            Human --> Human: mhParentVillage : Village
+                            Human -> Village: parentVillage.killVillager(metHuman)
+                        end
+                    end
+                end
+            end
+            note over Human
+                Sum amounts of all items in the inventory
+            end note
+            alt The calculated sum exceeds the inventory capacity
+                note over Human
+                    Abort expedition (set onExpedition to false)
+                end note
+            else
+                Human -> Map: parentMap.collectResources(position)
+                Map --> Human: collectedResource : Item
+                note over Human
+                    Add `collectedResource` to own inventory
+                end note
+            end
+        end
         loop for each building in buildings
             Village -> Building: simulationTick()
-        end
-    end
-    loop for each creature in creatures
-        alt creature.getType() == HUMAN
-            ' TODO: Add actions for human
-            Map -> Human: placeholder()
-        else
-            Map -> Creature: move()
         end
     end
     Main -> GUI: showSimulation()
