@@ -9,6 +9,11 @@ Main -> GUI: gui.startSimulation()
 GUI -> Map: Map(double[] perlinOptions, <enum, int, int>[] creatures, int nVillages)
 Map -> HeightMap: HeightMap()
 HeightMap --> Map: heightMap : HeightMap
+note over Map
+    Generate the world height map using
+    Perlin noise with `perlinOptions` parameters
+    and save it and its details to `heightMap`
+end note
 ' Create villages
 loop for i from 0 to nVillages-1
     note over Map
@@ -60,16 +65,19 @@ loop while gui.isSimulationComplete() is false
     end
     note over Map
         If all returned team IDs are the same,
-        set isSimulationComplete to true and return
+        set `isSimulationComplete` to true and return
     end note
     loop for each creature in creatures
         Map -> Creature: creature.move()
+        note over Creature
+            Make a random move
+        end note
     end
     loop for each village in villages
         Map -> Village: village.simulationTick()
         opt humans is empty
             note over Village
-                Set teamID to ID of the team with the greatest kill count
+                Set `teamID` to ID of the team with the greatest kill count
             end note
         end
         loop for each human in humans
@@ -103,13 +111,20 @@ loop while gui.isSimulationComplete() is false
                         end note
                         alt metCreature.getType() != HUMAN
                             Human -> Map: parentMap.killCreature(metCreature)
+                            note over Map
+                                Remove `creature` from the creature list
+                            end note
                         else
                             note over Human
-                                Cast `metCreature` to Human as `metHuman`
+                                Cast `metCreature` to `metHuman` as Human
                             end note
                             Human -> Human: metHuman.getParentVillage()
                             Human --> Human: mhParentVillage : Village
-                            Human -> Village: parentVillage.killVillager(metHuman)
+                            Human -> Village: mhParentVillage.killVillager(metHuman, teamID)
+                            note over Village
+                                Remove `villager` from the villagers list
+                                and increase the kill counter for `teamID`
+                            end note
                         end
                     end
                 end
@@ -119,7 +134,7 @@ loop while gui.isSimulationComplete() is false
             end note
             alt The calculated sum exceeds the inventory capacity
                 note over Human
-                    Abort expedition (set onExpedition to false)
+                    Abort expedition (set `onExpedition` to false)
                 end note
             else
                 Human -> Map: parentMap.collectResources(position)
@@ -136,6 +151,14 @@ loop while gui.isSimulationComplete() is false
     Main -> GUI: showSimulation()
     GUI -> Map: getHeightMap()
     Map --> GUI: heightMap : HeightMap
+    GUI -> Map: getCreatureList()
+    Map --> GUI: creatures : Creature[]
+    GUI -> Map: getVillageList()
+    Map --> GUI: villages : Village[]
+    note over GUI
+        Display the current simulation state using the information
+        from the height map and creature and village lists
+    end note
 end
 
 @enduml
