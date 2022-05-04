@@ -1,0 +1,35 @@
+@startuml
+hide empty description
+state "General simulation state" as genss {
+    state nexttick <<choice>>
+    [*] --> Idle: GUI::startSimulation() called
+    Idle --> Running: Map and all\ncreatures created
+    Running -> nexttick: Next simulation\ntick requested
+    nexttick --> Running: No team owns\nall villages
+    nexttick --> Complete: All villages\nbelong to one team
+    Complete --> [*]: Map object destroyed
+}
+
+state Creature {
+    state attacked <<choice>>
+    Idle --> Alive: Creature object created
+    Alive --> attacked: Attacked by\nanother creature
+    attacked --> Alive: Positive health
+    attacked --> Dead: Zero or negative health
+    Dead --> [*]: Creature object deleted from\nthe list and destroyed
+}
+
+state "Human : Creature" as Human {
+    state "On expedition" as onexp
+    state "Not on expedition" as nonexp
+    state contexp <<choice>>
+    Idle --> nonexp: Human object created
+    nonexp --> nonexp: Did not return to village
+    nonexp --> onexp: Returned to village and\ndeposited his inventory
+    onexp --> contexp: Continues expedition
+    contexp --> onexp: Space available in inventory
+    contexp --> nonexp: No space in inventory
+    onexp --> [*]: Dies (see Creture\nstate diagram for life cycle)
+    nonexp --> [*]: Dies (see Creture\nstate diagram for life cycle)
+}
+@enduml
