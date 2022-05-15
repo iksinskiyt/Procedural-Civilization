@@ -1,12 +1,9 @@
-# Programowanie obiektowe - projekt
+# Procedural Civilization - project
 
-### Członkowie
+### Creators
 * Adrian Matkowski (*leader*)
 * Maksymilian Strózik (*Main programmer*)
 * Hubert Wiśniewski
-
-## Tablica tasków
-https://trello.com/b/DLswKS2n/projekt-po
 
 ## Kompilacja i uruchomienie projektu
 
@@ -15,5 +12,3 @@ https://trello.com/b/DLswKS2n/projekt-po
 
 ### Windows
 `gradlew.bat run`
-
- 
