@@ -3,23 +3,23 @@ import java.util.Random;
 
 public class Perlin {
     double scale = 1;
-    int size;
-    int octaves;
+    double size;
+    double octaves;
 
     public Perlin (double[] perlinOptions){
         size = perlinOptions[0];
         scale = perlinOptions[1];
-        octaves = perlinOptions[2]
+        octaves = perlinOptions[2];
     }
 
     Random rand = new Random();
     SecureRandom random = new SecureRandom();
     public double average = 0;
 
-    double[] seed = new double[size*size];
+    double[] seed = new double[(int)(size*size)];
 
     double[][] generatePerlinNoise2D(){
-        double[][] interpolatedNoise = new double[size][size];
+        double[][] interpolatedNoise = new double[(int)size][(int)size];
         for(int i =0; i < size*size ;i++) {
             seed[i] = rand.nextDouble();
         }
@@ -28,19 +28,19 @@ public class Perlin {
                 double scaleAcc = 0;
                 double noise = 0;
                 for(int j = 0; j< octaves; j++){
-                    int pitch = size >> j;
+                    int pitch = (int)size >> j;
 
                     int sampleX1 = (i / pitch) * pitch;
                     int sampleY1 = (k / pitch) * pitch;
 
-                    int sampleX2 = (sampleX1 + pitch) % Main.noiseSize;
-                    int sampleY2 = (sampleY1 + pitch) % Main.noiseSize;
+                    int sampleX2 = (sampleX1 + pitch) % (int)size;
+                    int sampleY2 = (sampleY1 + pitch) % (int)size;
 
                     double blendX = (double)(i - sampleX1) / (double)pitch;
                     double blendY = (double)(k - sampleY1) / (double)pitch;
 
-                    double sampleX = (1.0 - blendX) * seed[sampleY1 * Main.noiseSize + sampleX1] + blendX * seed[sampleY1 * Main.noiseSize + sampleX2];
-                    double sampleY = (1.0 - blendX) * seed[sampleY2 * Main.noiseSize + sampleX1] + blendX * seed[sampleY2 * Main.noiseSize + sampleX2];
+                    double sampleX = (1.0 - blendX) * seed[sampleY1 * (int)size + sampleX1] + blendX * seed[sampleY1 * (int)size + sampleX2];
+                    double sampleY = (1.0 - blendX) * seed[sampleY2 * (int)size + sampleX1] + blendX * seed[sampleY2 * (int)size + sampleX2];
 
                     scaleAcc+=scale;
                     noise += (((blendY * (sampleY - sampleX) + sampleX)*scale));
@@ -77,7 +77,7 @@ public class Perlin {
             }
         }
 
-        average = avgTemp/(Main.noiseSize*Main.noiseSizeY);
+        average = avgTemp/((int)size*(int)size);
 
        // System.out.println(average);
 
