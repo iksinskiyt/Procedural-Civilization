@@ -1,7 +1,8 @@
 import org.javatuples.Pair;
+import java.util.List;
 
 public class Village {
-    private Human[] villagers;
+    private List<Human> villagers;
     private Building[] buildings;
     private Inventory inventory;
     private Pair<Integer, Integer> position; // NOTE: change to tuple in documentation
@@ -15,10 +16,12 @@ public class Village {
 
     public void simulationTick(){}
     public void storeItems(Inventory storedInventory){}
-    public int getTeamID(){}
+    public int getTeamID(){return teamID;}
     public void killVillager(Human villager, int killerTeamID){}
-    public Map getParentMap(){}
-    public Pair<Integer, Integer> getPosition(){} // NOTE: change to tuple in documentation
-    public void addVillager(Human villager){}
+    public Map getParentMap(){return parentMap;}
+    public Pair<Integer, Integer> getPosition(){return position;} // NOTE: change to tuple in documentation
+    public void addVillager(Human villager){
+        this.villagers.add(villager);
+    }
 
 }

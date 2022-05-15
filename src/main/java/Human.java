@@ -7,6 +7,9 @@ public class Human extends Creature {
 
     public Human(int teamID, Map parentMap, Village parentVillage, Pair<Integer, Integer> position) {
         super(CreatureType.HUMAN, parentMap, position);
+
+        this.teamID = teamID;
+        this.parentVillage = parentVillage;
     }
     public boolean isOnExpedition() {return onExpedition;}
     public void goToExpedition() {}
