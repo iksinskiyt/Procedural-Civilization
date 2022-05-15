@@ -1,7 +1,7 @@
 # Programowanie obiektowe - projekt
 
 ### Członkowie
-* Adrian Matkowski (*lider*)
+* Adrian Matkowski (*leader*)
 * Maksymilian Strózik (*Main programmer*)
 * Hubert Wiśniewski
 
