@@ -41,6 +41,8 @@ dependencies {
     runtimeOnly "org.lwjgl:lwjgl-stb:3.3.1"
     runtimeOnly "org.lwjgl:lwjgl-vulkan:3.3.1"
 
+    // https://mvnrepository.com/artifact/org.javatuples/javatuples
+    implementation group: 'org.javatuples', name: 'javatuples', version: '1.2'
 }
 
 application {
