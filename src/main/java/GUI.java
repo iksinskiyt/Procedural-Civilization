@@ -1,4 +1,5 @@
 import org.javatuples.Triplet;
+
 import java.util.List;
 
 public class GUI {
@@ -8,14 +9,28 @@ public class GUI {
     private List<Triplet<Creature.CreatureType, Integer, Integer>> creatures;
     private int nVillages;
 
-    public GUI() {}
+    public GUI() {
+    }
+
     public void startSimulation() {
-        this.map = new Map(perlinOptions, creatures, nVillages);
+        map = new Map(perlinOptions, creatures, nVillages);
     }
-    public void getOptionsFromUser() {}
-    public void showSimulation() {}
+
+    public void getOptionsFromUser() {
+    }
+
+    public void showSimulation() {
+        HeightMap heightMap = map.getHeightMap();
+        List<Creature> creatures = map.getCreatureList();
+        List<Village> villages = map.getVillageList();
+        // TODO: Display simulation state using the above parameters
+    }
+
     public void simulationTick() {
-        this.map.simulationTick();
+        map.simulationTick();
     }
-    public boolean isSimulationComplete() {return false;}
+
+    public boolean isSimulationComplete() {
+        return false;
+    }
 }

@@ -3,8 +3,7 @@ public class Main {
         GUI gui = new GUI();
         gui.getOptionsFromUser();
         gui.startSimulation();
-        while(!gui.isSimulationComplete())
-        {
+        while (!gui.isSimulationComplete()) {
             gui.simulationTick();
             gui.showSimulation();
         }

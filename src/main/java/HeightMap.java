@@ -4,24 +4,27 @@ public class HeightMap {
     public double estimatedMountainLevel;
 
 
-        void estimateSeaLevel(double scaleFactor){
-            double sum = 0;
-            for(int i = 0;i < height.length/2;i++){
-                for(int j = 0; i < height.length/2;i++){
-                    sum += height[i][j];
-                }
+    void estimateSeaLevel(double scaleFactor) {
+        double sum = 0;
+        for (int i = 0; i < height.length / 2; i++) {
+            for (int j = 0; i < height.length / 2; i++) {
+                sum += height[i][j];
             }
-            estimatedSeaLevel = (sum / height.length) * scaleFactor;
         }
-        void estimateMountainLevel(double scaleFactor){
-            double sum = 0;
-            for(int i = 0;i < height.length/2;i++){
-                for(int j = 0; i < height.length/2;i++){
-                    sum += height[i][j];
-                }
+        estimatedSeaLevel = (sum / height.length) * scaleFactor;
+    }
+
+    void estimateMountainLevel(double scaleFactor) {
+        double sum = 0;
+        for (int i = 0; i < height.length / 2; i++) {
+            for (int j = 0; i < height.length / 2; i++) {
+                sum += height[i][j];
             }
-            estimatedMountainLevel = (sum / height.length) * scaleFactor;
         }
-    public HeightMap(){}
+        estimatedMountainLevel = (sum / height.length) * scaleFactor;
+    }
+
+    public HeightMap() {
+    }
 
 }

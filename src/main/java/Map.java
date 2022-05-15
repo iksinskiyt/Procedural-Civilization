@@ -9,19 +9,22 @@ public class Map {
     private List<Creature> creatures;
     private boolean simulationComplete;
 
-    public Map(double[] perlinOptions, List<Triplet<Creature.CreatureType, Integer, Integer>> creatures, int nVillages) {
-        Perlin perlin = new Perlin();
-        this.heightMap = new HeightMap();
+    public Map(double[] perlinOptions,
+               List<Triplet<Creature.CreatureType, Integer, Integer>> creatures,
+               int nVillages) {
+        Perlin perlin = new Perlin(perlinOptions);
+        heightMap = new HeightMap();
         // TODO: Perlin generation
 
-        this.villages = new ArrayList<>();
+        villages = new ArrayList<>();
 
         for (int i = 0; i < nVillages; i++) {
             // TODO: Replace with real random position generation
-            Pair<Integer, Integer> randomPosition = new Pair<Integer, Integer>(0, 0);
+            Pair<Integer, Integer> randomPosition =
+                    new Pair<Integer, Integer>(0, 0);
 
             Village village = new Village(randomPosition, i, this);
-            this.villages.add(village);
+            villages.add(village);
         }
 
         this.creatures = new ArrayList<>();
@@ -30,13 +33,18 @@ public class Map {
             for (int i = 0; i < creature.getValue1(); i++) {
                 for (int j = 0; j < creature.getValue2(); j++) {
                     // TODO: Replace with real random position generation
-                    Pair<Integer, Integer> randomPosition = new Pair<Integer, Integer>(0, 0);
+                    Pair<Integer, Integer> randomPosition =
+                            new Pair<Integer, Integer>(0, 0);
 
                     if (creature.getValue0() == Creature.CreatureType.HUMAN) {
-                        Human humanObject = new Human(i, this, this.villages.get(i), randomPosition);
-                        this.villages.get(i).addVillager(humanObject);
+                        Human humanObject =
+                                new Human(i, this, villages.get(i),
+                                        randomPosition);
+                        villages.get(i).addVillager(humanObject);
                     } else {
-                        Creature creatureObject = new Creature(creature.getValue0(), this, randomPosition);
+                        Creature creatureObject =
+                                new Creature(creature.getValue0(), this,
+                                        randomPosition);
                         this.creatures.add(creatureObject);
                     }
                 }
@@ -46,21 +54,23 @@ public class Map {
 
     public void simulationTick() {
         int lastTeamID = -1;
-        this.simulationComplete = true;
-        for(Village village: this.villages)
-        {
+        simulationComplete = true;
+        for (Village village : villages) {
             int teamID = village.getTeamID();
-            if(lastTeamID != -1 && teamID != lastTeamID) {
-                this.simulationComplete = false;
+            if (lastTeamID != -1 && teamID != lastTeamID) {
+                simulationComplete = false;
                 break;
             }
             lastTeamID = teamID;
         }
-        if(this.simulationComplete)
+        if (simulationComplete)
             return;
 
-        for(Creature creature : this.creatures)
+        for (Creature creature : creatures)
             creature.move();
+
+        for (Village village : villages)
+            village.simulationTick();
     }
 
     public HeightMap getHeightMap() {
@@ -80,13 +90,14 @@ public class Map {
     }
 
     public void killCreature(Creature creature) {
+        creatures.remove(creature);
     }
 
-    Creature getNearestReachableCreature(int[] position) {
+    Creature getNearestReachableCreature(Pair<Integer, Integer> position) {
         return null;
     }
 
-    Item collectResource(int[] position) {
+    Item collectResource(Pair<Integer, Integer> position) {
         return null;
     }
 }

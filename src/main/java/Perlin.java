@@ -6,7 +6,7 @@ public class Perlin {
     double size;
     double octaves;
 
-    public Perlin (double[] perlinOptions){
+    public Perlin(double[] perlinOptions) {
         size = perlinOptions[0];
         scale = perlinOptions[1];
         octaves = perlinOptions[2];
@@ -16,70 +16,77 @@ public class Perlin {
     SecureRandom random = new SecureRandom();
     public double average = 0;
 
-    double[] seed = new double[(int)(size*size)];
+    double[] seed = new double[(int) (size * size)];
 
-    double[][] generatePerlinNoise2D(){
-        double[][] interpolatedNoise = new double[(int)size][(int)size];
-        for(int i =0; i < size*size ;i++) {
+    double[][] generatePerlinNoise2D() {
+        double[][] interpolatedNoise = new double[(int) size][(int) size];
+        for (int i = 0; i < size * size; i++) {
             seed[i] = rand.nextDouble();
         }
-        for(int i = 0; i < size; i++){
-            for(int k = 0; k < size; k++){
+        for (int i = 0; i < size; i++) {
+            for (int k = 0; k < size; k++) {
                 double scaleAcc = 0;
                 double noise = 0;
-                for(int j = 0; j< octaves; j++){
-                    int pitch = (int)size >> j;
+                for (int j = 0; j < octaves; j++) {
+                    int pitch = (int) size >> j;
 
                     int sampleX1 = (i / pitch) * pitch;
                     int sampleY1 = (k / pitch) * pitch;
 
-                    int sampleX2 = (sampleX1 + pitch) % (int)size;
-                    int sampleY2 = (sampleY1 + pitch) % (int)size;
+                    int sampleX2 = (sampleX1 + pitch) % (int) size;
+                    int sampleY2 = (sampleY1 + pitch) % (int) size;
 
-                    double blendX = (double)(i - sampleX1) / (double)pitch;
-                    double blendY = (double)(k - sampleY1) / (double)pitch;
+                    double blendX = (double) (i - sampleX1) / (double) pitch;
+                    double blendY = (double) (k - sampleY1) / (double) pitch;
 
-                    double sampleX = (1.0 - blendX) * seed[sampleY1 * (int)size + sampleX1] + blendX * seed[sampleY1 * (int)size + sampleX2];
-                    double sampleY = (1.0 - blendX) * seed[sampleY2 * (int)size + sampleX1] + blendX * seed[sampleY2 * (int)size + sampleX2];
+                    double sampleX = (1.0 - blendX) *
+                            seed[sampleY1 * (int) size + sampleX1] +
+                            blendX * seed[sampleY1 * (int) size + sampleX2];
+                    double sampleY = (1.0 - blendX) *
+                            seed[sampleY2 * (int) size + sampleX1] +
+                            blendX * seed[sampleY2 * (int) size + sampleX2];
 
-                    scaleAcc+=scale;
-                    noise += (((blendY * (sampleY - sampleX) + sampleX)*scale));
-                    scale = scale/2;
+                    scaleAcc += scale;
+                    noise += (((blendY * (sampleY - sampleX) + sampleX) *
+                            scale));
+                    scale = scale / 2;
                 }
-                interpolatedNoise[i][k] = noise/scaleAcc;
+                interpolatedNoise[i][k] = noise / scaleAcc;
             }
         }
 
-        double maxValue = 0; 
+        double maxValue = 0;
         double minValue = 0;
-        for(int i = 0; i<size;i++){
-            for(int j = 0; j<size;j++){
-                if(maxValue<interpolatedNoise[i][j]){
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (maxValue < interpolatedNoise[i][j]) {
                     maxValue = interpolatedNoise[i][j];
                 }
-                if(minValue>interpolatedNoise[i][j]){
+                if (minValue > interpolatedNoise[i][j]) {
                     minValue = interpolatedNoise[i][j];
                 }
             }
-        }  
+        }
 
-        for(int i = 0; i<size;i++){
-            for(int j = 0; j<size;j++){
-                interpolatedNoise[i][j] = ((interpolatedNoise[i][j] - minValue)/(maxValue-minValue));
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                interpolatedNoise[i][j] =
+                        ((interpolatedNoise[i][j] - minValue) /
+                                (maxValue - minValue));
             }
         }
 
         double avgTemp = 0;
-        
-        for(int i = 0; i<size;i++){
-            for(int j = 0; j<size;j++){
-                 avgTemp += interpolatedNoise[i][j];
+
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                avgTemp += interpolatedNoise[i][j];
             }
         }
 
-        average = avgTemp/((int)size*(int)size);
+        average = avgTemp / ((int) size * (int) size);
 
-       // System.out.println(average);
+        // System.out.println(average);
 
         return interpolatedNoise;
     }

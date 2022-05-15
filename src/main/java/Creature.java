@@ -12,7 +12,8 @@ public class Creature {
     protected int attackStrength;
     protected Map parentMap;
 
-    public Creature(CreatureType creatureType, Map parentMap, Pair<Integer, Integer> position) {
+    public Creature(CreatureType creatureType, Map parentMap,
+                    Pair<Integer, Integer> position) {
         int inventoryCapacity;
         switch (creatureType) {
             case HUMAN -> inventoryCapacity = 16;
@@ -20,7 +21,7 @@ public class Creature {
             case HAMSTER -> inventoryCapacity = 2;
             default -> inventoryCapacity = 0;
         }
-        this.inventory = new Inventory(inventoryCapacity);
+        inventory = new Inventory(inventoryCapacity);
     }
 
     public int getHealth() {
@@ -36,7 +37,8 @@ public class Creature {
         int deltaX = 0;
         int deltaY = 0;
 
-        this.position = new Pair<>(this.position.getValue0() + deltaX, this.position.getValue1() + deltaY);
+        position = new Pair<>(position.getValue0() + deltaX,
+                position.getValue1() + deltaY);
     }
 
     public CreatureType getType() {
