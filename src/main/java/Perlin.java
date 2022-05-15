@@ -12,7 +12,6 @@ public class Perlin {
         double[][] interpolatedNoise = new double[Main.noiseSize][Main.noiseSizeY];
         for(int i =0; i < Main.noiseSize*Main.noiseSizeY ;i++) {
             seed[i] = rand.nextDouble();
-       //     System.out.println(seed[i]);     
         }
         for(int i = 0; i < Main.noiseSize; i++){
             for(int k = 0; k < Main.noiseSizeY; k++){
@@ -59,7 +58,6 @@ public class Perlin {
         for(int i = 0; i<Main.noiseSize;i++){
             for(int j = 0; j<Main.noiseSizeY;j++){
                 interpolatedNoise[i][j] = ((interpolatedNoise[i][j] - minValue)/(maxValue-minValue));
-                //System.out.println(interpolatedNoise[i][j]);
             }
         }
 
@@ -68,7 +66,6 @@ public class Perlin {
         for(int i = 0; i<Main.noiseSize;i++){
             for(int j = 0; j<Main.noiseSizeY;j++){
                  avgTemp += interpolatedNoise[i][j];
-                //System.out.println(interpolatedNoise[i][j]);
             }
         }
 

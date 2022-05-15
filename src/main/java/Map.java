@@ -10,6 +10,7 @@ public class Map {
     private boolean simulationComplete;
 
     public Map(double[] perlinOptions, List<Triplet<Creature.CreatureType, Integer, Integer>> creatures, int nVillages) {
+        Perlin perlin = new Perlin();
         this.heightMap = new HeightMap();
         // TODO: Perlin generation
 
