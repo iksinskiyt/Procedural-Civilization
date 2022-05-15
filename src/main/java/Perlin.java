@@ -2,25 +2,33 @@ import java.security.SecureRandom;
 import java.util.Random;
 
 public class Perlin {
+    double scale = 1;
+    int size;
+    int octaves;
+
+    public Perlin (double[] perlinOptions){
+        size = perlinOptions[0];
+        scale = perlinOptions[1];
+        octaves = perlinOptions[2]
+    }
+
     Random rand = new Random();
     SecureRandom random = new SecureRandom();
     public double average = 0;
 
-    double[] seed = new double[Main.noiseSize*Main.noiseSizeY];
+    double[] seed = new double[size*size];
 
     double[][] generatePerlinNoise2D(){
-        double[][] interpolatedNoise = new double[Main.noiseSize][Main.noiseSizeY];
-        for(int i =0; i < Main.noiseSize*Main.noiseSizeY ;i++) {
+        double[][] interpolatedNoise = new double[size][size];
+        for(int i =0; i < size*size ;i++) {
             seed[i] = rand.nextDouble();
         }
-        for(int i = 0; i < Main.noiseSize; i++){
-            for(int k = 0; k < Main.noiseSizeY; k++){
-                double scale = 1;
+        for(int i = 0; i < size; i++){
+            for(int k = 0; k < size; k++){
                 double scaleAcc = 0;
                 double noise = 0;
-
-                for(int j = 0; j< Main.octaves; j++){
-                    int pitch = Main.noiseSize >> j;
+                for(int j = 0; j< octaves; j++){
+                    int pitch = size >> j;
 
                     int sampleX1 = (i / pitch) * pitch;
                     int sampleY1 = (k / pitch) * pitch;
@@ -44,8 +52,8 @@ public class Perlin {
 
         double maxValue = 0; 
         double minValue = 0;
-        for(int i = 0; i<Main.noiseSize;i++){
-            for(int j = 0; j<Main.noiseSizeY;j++){
+        for(int i = 0; i<size;i++){
+            for(int j = 0; j<size;j++){
                 if(maxValue<interpolatedNoise[i][j]){
                     maxValue = interpolatedNoise[i][j];
                 }
@@ -55,23 +63,23 @@ public class Perlin {
             }
         }  
 
-        for(int i = 0; i<Main.noiseSize;i++){
-            for(int j = 0; j<Main.noiseSizeY;j++){
+        for(int i = 0; i<size;i++){
+            for(int j = 0; j<size;j++){
                 interpolatedNoise[i][j] = ((interpolatedNoise[i][j] - minValue)/(maxValue-minValue));
             }
         }
 
         double avgTemp = 0;
         
-        for(int i = 0; i<Main.noiseSize;i++){
-            for(int j = 0; j<Main.noiseSizeY;j++){
+        for(int i = 0; i<size;i++){
+            for(int j = 0; j<size;j++){
                  avgTemp += interpolatedNoise[i][j];
             }
         }
 
         average = avgTemp/(Main.noiseSize*Main.noiseSizeY);
 
-        System.out.println(average);
+       // System.out.println(average);
 
         return interpolatedNoise;
     }

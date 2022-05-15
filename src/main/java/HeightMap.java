@@ -3,7 +3,7 @@ public class HeightMap {
     public double estimatedSeaLevel;
     public double estimatedMountainLevel;
 
-    public HeightMap(){
+
         void estimateSeaLevel(double scaleFactor){
             double sum = 0;
             for(int i = 0;i < height.length/2;i++){
@@ -22,6 +22,6 @@ public class HeightMap {
             }
             estimatedMountainLevel = (sum / height.length) * scaleFactor;
         }
-    }
+    public HeightMap(){}
 
 }
