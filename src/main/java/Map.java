@@ -9,7 +9,7 @@ public class Map {
     private List<Creature> creatures;
     private boolean simulationComplete;
 
-    public Map(double[] perlinOptions,
+    public Map(PerlinOptions perlinOptions,
                List<Triplet<Creature.CreatureType, Integer, Integer>> creatures,
                int nVillages) {
         Perlin perlin = new Perlin(perlinOptions);
