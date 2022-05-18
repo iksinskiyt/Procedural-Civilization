@@ -1,8 +1,8 @@
-# Procedural Civilization - project
+# Procedural Civilization - school project
 
 ### Creators
 * Adrian Matkowski (*leader*)
-* Maksymilian Strózik (*Main programmer*)
+* Maksymilian Strózik
 * Hubert Wiśniewski
 
 ## Kompilacja i uruchomienie projektu
