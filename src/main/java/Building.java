@@ -8,4 +8,12 @@ public class Building {
 
     public void simulationTick() {
     }
+
+    public void createStorage(){ // NOTE: add to docs
+
+    }
+
+    public void createBuilding(buildingType building, Inventory neededItems){ // NOTE: add to docs
+        
+    }
 }

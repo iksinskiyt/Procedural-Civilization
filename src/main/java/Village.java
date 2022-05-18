@@ -17,13 +17,12 @@ public class Village {
     private List<Building> buildings;
     private Inventory inventory;
     private Pair<Integer, Integer> position;
-    // NOTE: change to tuple in documentation
     private int teamID;
     private List<Pair<Integer, Integer>> killCounts;
     private Map parentMap;
 
     Village(Pair<Integer, Integer> position, int teamID,
-            Map parentMap) { // NOTE: change to tuple in documentation
+            Map parentMap) { 
 
     }
 
@@ -43,6 +42,9 @@ public class Village {
     public void storeItems(Inventory storedInventory) {
     }
 
+    public void getItems(Inventory neededItems){// NOTE: add to docs
+    }
+
     public int getTeamID() {
         return teamID;
     }
@@ -56,7 +58,7 @@ public class Village {
 
     public Pair<Integer, Integer> getPosition() {
         return position;
-    } // NOTE: change to tuple in documentation
+    }
 
     public void addVillager(Human villager) {
         villagers.add(villager);
