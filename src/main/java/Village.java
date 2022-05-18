@@ -37,6 +37,11 @@ public class Village {
 
         for (Building building : buildings)
             building.simulationTick();
+
+        /* 
+        TODO: co ticki sprawdza, czy wszyscy villagerzy maja armor i weapon, jesli nie, to tworzy je i wsadza do inventory wioski...
+        TODO: ...villager jest w wiosce i od razu sobie zaklada armor / weapon, podnosi to jego zycie i atak
+        */
     }
 
     public void storeItems(Inventory storedInventory) {
