@@ -1,13 +1,11 @@
-import org.javatuples.Pair;
-
 public class Human extends Creature {
-    private int teamID;
+    private final int teamID;
     private boolean onExpedition;
-    private Village parentVillage;
+    private final Village parentVillage;
 
     public Human(int teamID, Map parentMap, Village parentVillage,
-                 Pair<Integer, Integer> position) {
-        super(CreatureType.HUMAN, parentMap, position);
+                 Position position) {
+        super(parentMap, position, 100, 10, 8, 16);
 
         this.teamID = teamID;
         this.parentVillage = parentVillage;
@@ -41,31 +39,28 @@ public class Human extends Creature {
             }
         }
 
-        Creature metCreature = parentMap.getNearestReachableCreature(position);
+        Creature metCreature = parentMap.getNearestAttackableCreature(this);
 
-        if ((metCreature != null) &&
-                (metCreature.getType() != CreatureType.HUMAN ||
-                        (metCreature.getType() == CreatureType.HUMAN &&
-                                ((Human) metCreature).getTeamID() == teamID))) {
+        if (metCreature != null) {
             metCreature.attack(attackStrength);
-            if (metCreature.getHealth() <= 0) {
+            if (!metCreature.isAlive()) {
                 Inventory killeeInventory = metCreature.takeInventory();
                 inventory.append(killeeInventory);
-                if (metCreature.getType() != CreatureType.HUMAN) {
-                    parentMap.killCreature(metCreature);
-                } else {
-                    Human metHuman = (Human) metCreature;
-                    Village mhParentVillage = metHuman.getParentVillage();
-                    mhParentVillage.killVillager(metHuman, teamID);
-                }
-            }
-
-            if (inventory.getItemAmountSum() > inventory.getCapacity()) {
-                onExpedition = false;
-            } else {
-                Item collectedResource = parentMap.collectResource(position);
-                inventory.addItem(collectedResource);
             }
         }
+
+        if (inventory.isOverflowed()) {
+            onExpedition = false;
+        } else {
+            Item collectedResource = parentMap.collectResource(this);
+            inventory.addItem(collectedResource);
+        }
+    }
+
+    @Override
+    public void attack(int damage) {
+        health -= damage;
+        if (health <= 0)
+            parentVillage.killVillager(this, teamID);
     }
 }
