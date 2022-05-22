@@ -2,24 +2,58 @@ import org.javatuples.Pair;
 
 public class Creature {
     public enum CreatureType {
-        HUMAN,
-        COW,
-        HAMSTER
+        HUMAN, COW, HAMSTER
     }
 
-    private Inventory inventory;
-    private CreatureType creatureType;
-    private Pair<Integer, Integer> position;
-    private int health;
-    private int attackStrength;
-    private Map parentMap;
+    protected Inventory inventory;
+    protected CreatureType creatureType;
+    protected Pair<Integer, Integer> position;
+    protected int health;
+    protected int attackStrength;
+    protected Map parentMap;
 
-    public Creature(CreatureType creatureType, Map parentMap, Pair<Integer, Integer> position) {}
-    public int getHealth() {return health;}
-    public int attack(int damage) {return 0;}
-    public void move() {}
-    public CreatureType getType() {return creatureType;}
-    public Map getParentMap() {return parentMap;}
-    public Inventory takeInventory() {return inventory;}
-    public Pair<Integer, Integer> getPosition() {return position;}
+    public Creature(CreatureType creatureType, Map parentMap,
+                    Pair<Integer, Integer> position) {
+        int inventoryCapacity;
+        switch (creatureType) {
+            case HUMAN -> inventoryCapacity = 16;
+            case COW -> inventoryCapacity = 4;
+            case HAMSTER -> inventoryCapacity = 2;
+            default -> inventoryCapacity = 0;
+        }
+        inventory = new Inventory(inventoryCapacity);
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public int attack(int damage) {
+        return 0;
+    }
+
+    public void move() {
+        // TODO: Generate acceptable random values
+        int deltaX = 0;
+        int deltaY = 0;
+
+        position = new Pair<>(position.getValue0() + deltaX,
+                position.getValue1() + deltaY);
+    }
+
+    public CreatureType getType() {
+        return creatureType;
+    }
+
+    public Map getParentMap() {
+        return parentMap;
+    }
+
+    public Inventory takeInventory() {
+        return inventory;
+    }
+
+    public Pair<Integer, Integer> getPosition() {
+        return position;
+    }
 }
