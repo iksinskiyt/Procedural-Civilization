@@ -8,6 +8,11 @@ version '1.0-SNAPSHOT'
 repositories {
     mavenCentral()
 }
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+}
+
 def lwjglVersion = "3.3.1"
 dependencies {
     implementation 'org.knowm.xchart:xchart:3.8.1'
