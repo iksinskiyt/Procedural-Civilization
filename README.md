@@ -5,7 +5,7 @@
 * Maksymilian Strózik
 * Hubert Wiśniewski
 
-## Kompilacja i uruchomienie projektu
+## Compiling and running the project
 
 ### Linux/MacOS
 `./gradlew run`
