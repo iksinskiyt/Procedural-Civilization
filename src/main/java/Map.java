@@ -1,54 +1,56 @@
-import org.javatuples.Pair;
-import org.javatuples.Triplet;
-
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Map {
-    private List<Village> villages;
-    private HeightMap heightMap;
-    private List<Creature> creatures;
+    public enum Biome {
+        OCEAN,
+        PLAINS,
+        FOREST,
+        MOUNTAINS
+    }
+
+    private final List<Village> villages;
+    private final HeightMap heightMap;
+    private final List<Creature> creatures;
     private boolean simulationComplete;
 
+    private Position getRandomPosition(
+            List<Biome> allowedBiomes) {
+        // TODO: Replace with real random position generation
+        return new Position(0, 0);
+    }
+
     public Map(PerlinOptions perlinOptions,
-               List<Triplet<Creature.CreatureType, Integer, Integer>> creatures,
-               int nVillages) {
+               SimulationOptions simulationOptions) {
         Perlin perlin = new Perlin(perlinOptions);
         heightMap = new HeightMap();
         // TODO: Perlin generation
 
         villages = new ArrayList<>();
 
-        for (int i = 0; i < nVillages; i++) {
-            // TODO: Replace with real random position generation
-            Pair<Integer, Integer> randomPosition =
-                    new Pair<Integer, Integer>(0, 0);
-
-            Village village = new Village(randomPosition, i, this);
+        for (int i = 0; i < simulationOptions.nTeams; i++) {
+            Village village =
+                    new Village(getRandomPosition(List.of(Biome.PLAINS)), i,
+                            this);
             villages.add(village);
+
+            for (int j = 0; j < simulationOptions.teamPopulation; j++) {
+                village.addVillager(new Human(i, this, village,
+                        getRandomPosition(
+                                List.of(Biome.PLAINS, Biome.FOREST))));
+            }
         }
 
         this.creatures = new ArrayList<>();
 
-        for (Triplet<Creature.CreatureType, Integer, Integer> creature : creatures) {
-            for (int i = 0; i < creature.getValue1(); i++) {
-                for (int j = 0; j < creature.getValue2(); j++) {
-                    // TODO: Replace with real random position generation
-                    Pair<Integer, Integer> randomPosition =
-                            new Pair<Integer, Integer>(0, 0);
+        for (int i = 0; i < simulationOptions.nCows; i++) {
+            creatures.add(
+                    new Cow(this, getRandomPosition(List.of(Biome.PLAINS))));
+        }
 
-                    if (creature.getValue0() == Creature.CreatureType.HUMAN) {
-                        Human humanObject =
-                                new Human(i, this, villages.get(i),
-                                        randomPosition);
-                        villages.get(i).addVillager(humanObject);
-                    } else {
-                        Creature creatureObject =
-                                new Creature(creature.getValue0(), this,
-                                        randomPosition);
-                        this.creatures.add(creatureObject);
-                    }
-                }
-            }
+        for (int i = 0; i < simulationOptions.nHamsters; i++) {
+            creatures.add(new Hamster(this,
+                    getRandomPosition(List.of(Biome.MOUNTAINS))));
         }
     }
 
@@ -93,11 +95,13 @@ public class Map {
         creatures.remove(creature);
     }
 
-    Creature getNearestReachableCreature(Pair<Integer, Integer> position) {
+    Creature getNearestAttackableCreature(Human requester) {
+        // TODO: implementation
         return null;
     }
 
-    Item collectResource(Pair<Integer, Integer> position) {
+    Item collectResource(Human requester) {
+        // TODO: implementation
         return null;
     }
 }
