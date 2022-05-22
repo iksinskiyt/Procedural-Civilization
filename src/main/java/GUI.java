@@ -1,5 +1,3 @@
-import org.javatuples.Triplet;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;
@@ -8,9 +6,9 @@ import java.util.List;
 
 public class GUI {
     class UserInputDialog extends JDialog {
-        private JTextField tfMapSize;
-        private JTextField tfNoiseScale;
-        private JTextField tfNoiseOctaves;
+        private final JTextField tfMapSize;
+        private final JTextField tfNoiseScale;
+        private final JTextField tfNoiseOctaves;
 
         public UserInputDialog() {
             super();
@@ -84,8 +82,7 @@ public class GUI {
     private Map map;
     private int[] seed;
     private PerlinOptions perlinOptions;
-    // Triplet: creature type, team ID, population
-    private List<Triplet<Creature.CreatureType, Integer, Integer>> creatures;
+    private SimulationOptions simulationOptions;
     private int nVillages;
 
     public GUI() {
@@ -101,7 +98,7 @@ public class GUI {
         System.out.println(perlinOptions.size);
         System.out.println(perlinOptions.noiseScale);
         System.out.println(perlinOptions.noiseOctaves);
-        map = new Map(perlinOptions, creatures, nVillages);
+        map = new Map(perlinOptions, simulationOptions);
     }
 
     public void getOptionsFromUser() {
