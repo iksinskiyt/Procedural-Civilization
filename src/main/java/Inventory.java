@@ -1,12 +1,8 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Inventory {
-    private List<Item> items;
+    private int equipment[];
     private final int capacity;
 
     public Inventory(int capacity) {
-        items = new ArrayList<>();
         this.capacity = capacity;
     }
 
@@ -18,11 +14,12 @@ public class Inventory {
 
     public boolean isOverflowed() {
         int sum = 0;
-        for (Item item : items)
-            sum += item.amount;
+        for (int amount : equipment)
+            sum += amount;
         return sum > capacity;
     }
 
     public void addItem(Item item) {
+        equipment[item.itemType.ordinal()] =+ item.amount;
     }
 }

@@ -22,21 +22,11 @@ public class Village {
     private List<Human> villagers;
     private List<Building> buildings;
     private Inventory inventory;
-<<<<<<< HEAD
-    private Pair<Integer, Integer> position;
-    private int teamID;
-    private List<Pair<Integer, Integer>> killCounts;
-    private Map parentMap;
-
-    Village(Pair<Integer, Integer> position, int teamID,
-            Map parentMap) { 
-=======
     private final Position position;
     // NOTE: change to tuple in documentation
     private int teamID;
     private List<KillCount> killCounts;
     private final Map parentMap;
->>>>>>> Make_it_work
 
     Village(Position position, int teamID,
             Map parentMap) {
@@ -58,8 +48,11 @@ public class Village {
             building.simulationTick();
 
         /* 
-        TODO: co ticki sprawdza, czy wszyscy villagerzy maja armor i weapon, jesli nie, to tworzy je i wsadza do inventory wioski...
-        TODO: ...villager jest w wiosce i od razu sobie zaklada armor / weapon, podnosi to jego zycie i atak
+        TODO: co ticki sprawdza, czy wszyscy villagerzy maja armor i weapon, jesli nie, to tworzy je i wsadza do inventory wioski
+        villager jest w wiosce i od razu sobie zaklada armor / weapon, podnosi to jego zycie i atak
+
+        Sprawdza co tick, czy ilosc domow jest wystarczajaca dla villagerow.
+        1 Dom = 12 villagerow
         */
     }
 

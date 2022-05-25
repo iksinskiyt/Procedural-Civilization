@@ -1,8 +1,8 @@
 public class Item {
     public enum ItemType {
         STONE,
-        BRICK,
         WHEAT,
+        WOOD,
         LEATHER
     }
 
