@@ -1,15 +1,13 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Inventory {
-    private Item[] items;
+    private List<Item> items;
     private final int capacity;
 
     public Inventory(int capacity) {
+        items = new ArrayList<>();
         this.capacity = capacity;
-    }
-
-    public void manage(Item item, int amount) {
-    }
-
-    public void check(Item item) {
     }
 
     public void clear() {
@@ -18,15 +16,11 @@ public class Inventory {
     public void append(Inventory inventory) {
     }
 
-    public int getItemAmountSum() {
+    public boolean isOverflowed() {
         int sum = 0;
         for (Item item : items)
             sum += item.amount;
-        return sum;
-    }
-
-    public int getCapacity() {
-        return capacity;
+        return sum > capacity;
     }
 
     public void addItem(Item item) {

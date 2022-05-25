@@ -1,35 +1,26 @@
-import org.javatuples.Pair;
-
-public class Creature {
-    public enum CreatureType {
-        HUMAN, COW, HAMSTER
-    }
-
+public abstract class Creature {
     protected Inventory inventory;
-    protected CreatureType creatureType;
-    protected Pair<Integer, Integer> position;
+    protected Position position;
     protected int health;
-    protected int attackStrength;
+    protected final int attackStrength;
+    protected final int speed;
     protected Map parentMap;
 
-    public Creature(CreatureType creatureType, Map parentMap,
-                    Pair<Integer, Integer> position) {
-        int inventoryCapacity;
-        switch (creatureType) {
-            case HUMAN -> inventoryCapacity = 16;
-            case COW -> inventoryCapacity = 4;
-            case HAMSTER -> inventoryCapacity = 2;
-            default -> inventoryCapacity = 0;
-        }
+    public Creature(Map parentMap, Position position, int health,
+                    int attackStrength, int speed, int inventoryCapacity) {
+        this.parentMap = parentMap;
+        this.position = position;
         inventory = new Inventory(inventoryCapacity);
+
+        this.health = health;
+        this.attackStrength = attackStrength;
+        this.speed = speed;
     }
 
-    public int getHealth() {
-        return health;
-    }
-
-    public int attack(int damage) {
-        return 0;
+    public void attack(int damage) {
+        health -= damage;
+        if (health <= 0)
+            parentMap.killCreature(this);
     }
 
     public void move() {
@@ -37,12 +28,8 @@ public class Creature {
         int deltaX = 0;
         int deltaY = 0;
 
-        position = new Pair<>(position.getValue0() + deltaX,
-                position.getValue1() + deltaY);
-    }
-
-    public CreatureType getType() {
-        return creatureType;
+        position.x += deltaX;
+        position.y += deltaY;
     }
 
     public Map getParentMap() {
@@ -53,7 +40,11 @@ public class Creature {
         return inventory;
     }
 
-    public Pair<Integer, Integer> getPosition() {
+    public Position getPosition() {
         return position;
+    }
+
+    public boolean isAlive() {
+        return health > 0;
     }
 }

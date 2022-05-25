@@ -1,21 +1,28 @@
-import org.javatuples.Pair;
-
 import java.util.Comparator;
 import java.util.List;
 
 public class Village {
-    private class KillCountComparator
-            implements Comparator<Pair<Integer, Integer>> {
+    private class KillCount {
+        public final int teamID;
+        public int count;
+
+        public KillCount(int teamID, int count) {
+            this.teamID = teamID;
+            this.count = count;
+        }
+    }
+
+    private class KillCountComparator implements Comparator<KillCount> {
         @Override
-        public int compare(Pair<Integer, Integer> objects,
-                           Pair<Integer, Integer> t1) {
-            return objects.getValue1() - t1.getValue1();
+        public int compare(KillCount killCount, KillCount t1) {
+            return killCount.count - t1.count;
         }
     }
 
     private List<Human> villagers;
     private List<Building> buildings;
     private Inventory inventory;
+<<<<<<< HEAD
     private Pair<Integer, Integer> position;
     private int teamID;
     private List<Pair<Integer, Integer>> killCounts;
@@ -23,13 +30,25 @@ public class Village {
 
     Village(Pair<Integer, Integer> position, int teamID,
             Map parentMap) { 
+=======
+    private final Position position;
+    // NOTE: change to tuple in documentation
+    private int teamID;
+    private List<KillCount> killCounts;
+    private final Map parentMap;
+>>>>>>> Make_it_work
 
+    Village(Position position, int teamID,
+            Map parentMap) {
+        this.position = position;
+        this.teamID = teamID;
+        this.parentMap = parentMap;
     }
 
     public void simulationTick() {
         if (villagers.isEmpty()) {
             killCounts.sort(new KillCountComparator());
-            teamID = killCounts.get(killCounts.size() - 1).getValue0();
+            teamID = killCounts.get(killCounts.size() - 1).teamID;
         }
 
         for (Human human : villagers)
@@ -61,7 +80,7 @@ public class Village {
         return parentMap;
     }
 
-    public Pair<Integer, Integer> getPosition() {
+    public Position getPosition() {
         return position;
     }
 
