@@ -8,18 +8,19 @@ public class BiomeConverter {
         MOUNTAINS
     }
 
-    public static EnumMap<Biome, Color> BiomeColors = new EnumMap<Biome, Color>(Biome.class);
+    public static EnumMap<Biome, int[]> BiomeColors =
+            new EnumMap<>(Biome.class);
+
     static {
-        BiomeColors.put(Biome.OCEAN, Color.BLUE);
-        BiomeColors.put(Biome.PLAINS, Color.GREEN);
-        BiomeColors.put(Biome.MOUNTAINS, Color.GRAY);
+        BiomeColors.put(Biome.OCEAN, new int[]{0x00, 0x00, 0xff});
+        BiomeColors.put(Biome.PLAINS, new int[]{0x00, 0xff, 0x00});
+        BiomeColors.put(Biome.MOUNTAINS, new int[]{0x80, 0x80, 0x80});
     }
 
-    public static Biome getBiome(double height)
-    {
-        if(height < 1.0/3)
+    public static Biome getBiome(double height) {
+        if (height < 1.0 / 3)
             return Biome.OCEAN;
-        else if(height < 2.0/3)
+        else if (height < 2.0 / 3)
             return Biome.PLAINS;
         else
             return Biome.MOUNTAINS;
