@@ -136,12 +136,14 @@ public class GUI {
     private PerlinOptions perlinOptions;
     private SimulationOptions simulationOptions;
     private int nVillages;
+    private MainWindow mainWindow;
 
     public GUI() {
     }
 
     public void startSimulation() {
         map = new Map(perlinOptions, simulationOptions);
+        mainWindow = new MainWindow(perlinOptions.size, map.getHeightMap());
     }
 
     public void getOptionsFromUser() {
@@ -160,10 +162,11 @@ public class GUI {
     }
 
     public void showSimulation() {
-        HeightMap heightMap = map.getHeightMap();
-        List<Creature> creatures = map.getCreatureList();
-        List<Village> villages = map.getVillageList();
+//        HeightMap heightMap = map.getHeightMap();
+//        List<Creature> creatures = map.getCreatureList();
+//        List<Village> villages = map.getVillageList();
         // TODO: Display simulation state using the above parameters
+        mainWindow.repaint();
     }
 
     public void simulationTick() {
