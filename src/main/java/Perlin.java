@@ -2,21 +2,22 @@ import java.security.SecureRandom;
 import java.util.Random;
 
 public class Perlin {
-    double scale = 1;
+    double scale_base;
     int size;
     int octaves;
 
     public Perlin(PerlinOptions perlinOptions) {
         size = perlinOptions.size;
-        scale = perlinOptions.noiseScale;
+        scale_base = perlinOptions.noiseScale;
         octaves = perlinOptions.noiseOctaves;
+        seed = new double[size * size];
     }
 
     Random rand = new Random();
     SecureRandom random = new SecureRandom();
     public double average = 0;
 
-    double[] seed = new double[size * size];
+    double[] seed;
 
     double[][] generatePerlinNoise2D() {
         double[][] interpolatedNoise = new double[size][size];
@@ -25,6 +26,7 @@ public class Perlin {
         }
         for (int i = 0; i < size; i++) {
             for (int k = 0; k < size; k++) {
+                double scale = scale_base;
                 double scaleAcc = 0;
                 double noise = 0;
                 for (int j = 0; j < octaves; j++) {
@@ -56,7 +58,7 @@ public class Perlin {
         }
 
         double maxValue = 0;
-        double minValue = 0;
+        double minValue = 1;
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if (maxValue < interpolatedNoise[i][j]) {
