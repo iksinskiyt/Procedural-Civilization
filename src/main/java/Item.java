@@ -3,7 +3,8 @@ public class Item {
         STONE,
         BRICK,
         WHEAT,
-        LEATHER
+        LEATHER,
+        FOOD
     }
 
     public final ItemType itemType;
