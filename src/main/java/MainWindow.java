@@ -25,10 +25,10 @@ public class MainWindow extends JFrame {
     public void paint(Graphics g) {
         for (int i = 0; i < windowSize; i++) {
             for (int j = 0; j < windowSize; j++) {
-                writableRaster.setPixel(i, j, BiomeConverter.BiomeColors.get(
-                        BiomeConverter.getBiome(heightMap.height[i][j])));
+                writableRaster.setPixel(i, j,
+                        BiomeConverter.getBiomeColor(heightMap.height[i][j]));
             }
         }
-        g.drawImage(bufferedImage, 0,0, null);
+        g.drawImage(bufferedImage, 0, 0, null);
     }
 }
