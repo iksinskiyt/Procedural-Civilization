@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -19,8 +20,8 @@ public class Village {
         }
     }
 
-    private List<Human> villagers;
-    private List<Building> buildings;
+    private final List<Human> villagers;
+    private final List<Building> buildings;
     private Inventory inventory;
     private final Position position;
     // NOTE: change to tuple in documentation
@@ -33,6 +34,8 @@ public class Village {
         this.position = position;
         this.teamID = teamID;
         this.parentMap = parentMap;
+        buildings = new ArrayList<>();
+        villagers = new ArrayList<>();
     }
 
     public void simulationTick() {
