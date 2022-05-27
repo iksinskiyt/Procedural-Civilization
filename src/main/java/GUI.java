@@ -104,7 +104,7 @@ public class GUI {
                 simulationOptions.nCows = Integer.parseInt(tfNCows.getText());
                 simulationOptions.nHamsters =
                         Integer.parseInt(tfNHamsters.getText());
-                simulationOptions.noiseScale = Integer.parseInt(tfNoiseScale.getText());
+                simulationOptions.noiseScale = Double.parseDouble(tfNoiseScale.getText());
                 simulationOptions.noiseOctaves = Integer.parseInt(tfNoiseOctaves.getText());
             } catch (NumberFormatException e) {
                 new ErrorDialog(e.getMessage());
