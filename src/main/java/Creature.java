@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public abstract class Creature {
     protected Inventory inventory;
     protected Position position;
@@ -5,6 +7,7 @@ public abstract class Creature {
     protected final int attackStrength;
     protected final int speed;
     protected Map parentMap;
+    protected Random random;
 
     public Creature(Map parentMap, Position position, int health,
                     int attackStrength, int speed, int inventoryCapacity) {
@@ -15,6 +18,7 @@ public abstract class Creature {
         this.health = health;
         this.attackStrength = attackStrength;
         this.speed = speed;
+        random = new Random();
     }
 
     public void attack(int damage) {
@@ -24,12 +28,12 @@ public abstract class Creature {
     }
 
     public void move() {
-        // TODO: Generate acceptable random values
-        int deltaX = 0;
-        int deltaY = 0;
-
-        position.x += deltaX;
-        position.y += deltaY;
+        position.x = Math.min(Math.max(0, position.x +
+                        random.nextInt(speed) * (random.nextBoolean() ? 1 : -1)),
+                parentMap.getMapSize());
+        position.y = Math.min(Math.max(0, position.y +
+                        random.nextInt(speed) * (random.nextBoolean() ? 1 : -1)),
+                parentMap.getMapSize());
     }
 
     public Map getParentMap() {
