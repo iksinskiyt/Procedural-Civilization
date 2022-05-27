@@ -1,19 +1,37 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Map {
     private final List<Village> villages;
     private final HeightMap heightMap;
     private final List<Creature> creatures;
     private boolean simulationComplete;
+    private final SimulationOptions simulationOptions;
+    private final Random random;
 
-    private Position getRandomPosition(
-            List<BiomeConverter.Biome> allowedBiomes) {
-        // TODO: Replace with real random position generation
-        return new Position(0, 0);
+    private BiomeConverter.Biome getBiomeAt(Position position)
+    {
+        return BiomeConverter.getBiome(heightMap.height[position.x][position.y]);
+    }
+
+    private Position getRandomPosition(List<BiomeConverter.Biome> allowedBiomes) {
+        Position position;
+        while(true) {
+            position = new Position(random.nextInt(simulationOptions.mapSize),
+                    random.nextInt(simulationOptions.mapSize));
+            BiomeConverter.Biome posBiome = getBiomeAt(position);
+            for(BiomeConverter.Biome allowedBiome : allowedBiomes)
+            {
+                if(posBiome == allowedBiome)
+                    return position;
+            }
+        }
     }
 
     public Map(SimulationOptions simulationOptions) {
+        this.simulationOptions = simulationOptions;
+        random = new Random();
         Perlin perlin = new Perlin(simulationOptions);
         heightMap = new HeightMap();
         heightMap.height = perlin.generatePerlinNoise2D();
@@ -97,5 +115,10 @@ public class Map {
     Item collectResource(Human requester) {
         // TODO: implementation
         return null;
+    }
+
+    public int getMapSize()
+    {
+        return simulationOptions.mapSize;
     }
 }
