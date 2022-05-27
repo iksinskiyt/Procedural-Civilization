@@ -6,10 +6,10 @@ public class Perlin {
     int size;
     int octaves;
 
-    public Perlin(PerlinOptions perlinOptions) {
-        size = perlinOptions.size;
-        scale_base = perlinOptions.noiseScale;
-        octaves = perlinOptions.noiseOctaves;
+    public Perlin(SimulationOptions simulationOptions) {
+        size = simulationOptions.mapSize;
+        scale_base = simulationOptions.noiseScale;
+        octaves = simulationOptions.noiseOctaves;
         seed = new double[size * size];
     }
 

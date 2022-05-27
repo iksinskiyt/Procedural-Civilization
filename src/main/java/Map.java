@@ -13,9 +13,8 @@ public class Map {
         return new Position(0, 0);
     }
 
-    public Map(PerlinOptions perlinOptions,
-               SimulationOptions simulationOptions) {
-        Perlin perlin = new Perlin(perlinOptions);
+    public Map(SimulationOptions simulationOptions) {
+        Perlin perlin = new Perlin(simulationOptions);
         heightMap = new HeightMap();
         heightMap.height = perlin.generatePerlinNoise2D();
 
