@@ -7,10 +7,10 @@ public class Item {
     }
 
     public final ItemType itemType;
-    public int amount;
+    // public int amount;
 
-    public Item(ItemType itemType, int amount) {
+    public Item(ItemType itemType) {
         this.itemType = itemType;
-        this.amount = amount;
+        // this.amount = amount;
     }
 }

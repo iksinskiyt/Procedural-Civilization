@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import Item.ItemType;
+
+import java.util.Collections;
+
 public class Inventory {
     private List<Item> items;
     private final int capacity;
@@ -14,6 +18,10 @@ public class Inventory {
     }
 
     public void append(Inventory inventory) {
+    }
+
+    public void listInventory(Inventory inventory, ItemType item){
+        Collections.frequency(inventory, new Item(item))
     }
 
     public boolean isOverflowed() {
