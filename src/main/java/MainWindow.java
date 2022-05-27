@@ -12,6 +12,18 @@ public class MainWindow extends JFrame {
     private final List<Village> villages;
     private final BufferedImage mapImage;
 
+    public class MapPanel extends JPanel {
+        @Override
+        public void paint(Graphics g) {
+            g.drawImage(mapImage, 0, 0, null);
+            g.setColor(Color.RED);
+            for (Creature creature : creatures) {
+                Position position = creature.getPosition();
+                g.fillRect(position.x - 1, position.y - 1, 3, 3);
+            }
+        }
+    }
+
     public MainWindow(int windowSize, Map map) {
         this.windowSize = windowSize;
         this.map = map;
@@ -32,14 +44,12 @@ public class MainWindow extends JFrame {
             }
         }
 
+        MapPanel mapPanel = new MapPanel();
+        mapPanel.setPreferredSize(new Dimension(windowSize, windowSize));
+        add(mapPanel);
+        pack();
         setTitle("Procedural Civilization");
-        setSize(windowSize, windowSize);
         setResizable(false);
         setVisible(true);
-    }
-
-    @Override
-    public void paint(Graphics g) {
-        g.drawImage(mapImage, 0, 0, null);
     }
 }
