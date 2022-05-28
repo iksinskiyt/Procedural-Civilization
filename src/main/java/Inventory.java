@@ -41,10 +41,22 @@ public class Inventory {
         return sum > maxCapacity;
     }
 
+    public boolean isEnough(Item item, int amount){
+        return items.get(item) >= amount;
+    }
+
     public void addItem(Item item, int amount) {
             if(freeCapacity()>amount){
             int value = items.get(item) + amount;
             items.put(item,value);
         }
     }
+
+    public void useItem(Item item, int amount){
+        if (isEnough(item, amount)){
+            int value = items.get(item) - amount;
+            items.put(item,value);
+        }
+    }
+
 }
