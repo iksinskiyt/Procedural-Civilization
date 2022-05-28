@@ -1,16 +1,13 @@
 public class Item {
     public enum ItemType {
         STONE,
-        WHEAT,
         WOOD,
+        WHEAT,
         LEATHER
     }
-
     public final ItemType itemType;
-    public int amount;
 
-    public Item(ItemType itemType, int amount) {
+    public Item(ItemType itemType) {
         this.itemType = itemType;
-        this.amount = amount;
     }
 }
