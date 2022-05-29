@@ -52,11 +52,13 @@ public class Inventory {
         }
     }
 
-    public void useItem(Item item, int amount){
+    public boolean useItem(Item item, int amount){
         if (isEnough(item, amount)){
             int value = items.get(item) - amount;
             items.put(item,value);
+            return true;
         }
+        else return false;       
     }
 
 }
