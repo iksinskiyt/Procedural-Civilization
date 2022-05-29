@@ -32,6 +32,7 @@ public class Village {
     private int houseKillCounter = 15; // changable tick rate untill villager dies from homelessness
     private int tempHouseKillCounter = houseKillCounter;
     private int houseSize = 12; // changable house capacity
+    private int forgeCapacity = 25; // changable forge workspace capacity
 
     Village(Position position, int teamID,
             Map parentMap) {
@@ -63,6 +64,10 @@ public class Village {
                 tempHouseKillCounter = houseKillCounter;
             }
         }
+        if(buildings.get(new Forge(new Item(Item.ItemType.WOOD), Forge.forgeWoodCost)) * forgeCapacity < villagers.size()){
+            addForge(this.inventory); // think of some punishment
+        }
+
         /* 
         TODO: co ticki sprawdza, czy wszyscy villagerzy maja armor i weapon, jesli nie, to tworzy je i wsadza do inventory wioski
         villager jest w wiosce i od razu sobie zaklada armor / weapon, podnosi to jego zycie i atak
@@ -91,6 +96,14 @@ public class Village {
             return true;
         }
         else return false;
+    }
+
+    public void addForge(Inventory inventory){
+        Building forge = Forge.createForge(inventory);
+        if (forge != null){
+            int forgeAmount = buildings.get(forge) + 1;
+            buildings.put(forge, forgeAmount);
+        }
     }
 
     public int getTeamID() {
