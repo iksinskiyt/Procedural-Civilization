@@ -32,7 +32,8 @@ public class Village {
     private int houseKillCounter = 15; // changable tick rate untill villager dies from homelessness
     private int tempHouseKillCounter = houseKillCounter;
     private int houseSize = 12; // changable house capacity
-    private int forgeCapacity = 25; // changable forge workspace capacity
+    private int forgeCapacity = 50; // changable forge workspace capacity
+    private int bakeryCapacity = 25;
 
     Village(Position position, int teamID,
             Map parentMap) {
@@ -67,6 +68,10 @@ public class Village {
         if(buildings.get(new Forge(new Item(Item.ItemType.WOOD), Forge.forgeWoodCost)) * forgeCapacity < villagers.size()){
             addForge(this.inventory); // think of some punishment
         }
+        if(buildings.get(new Bakery(new Item(Item.ItemType.STONE), Bakery.bakeryStoneCost)) * bakeryCapacity < villagers.size()){
+            addBakery(this.inventory); // more bakeries will produce food more efficiently, will need to set a cap of some sort on producing food from found wheat
+        }
+
 
         /* 
         TODO: co ticki sprawdza, czy wszyscy villagerzy maja armor i weapon, jesli nie, to tworzy je i wsadza do inventory wioski
@@ -103,6 +108,14 @@ public class Village {
         if (forge != null){
             int forgeAmount = buildings.get(forge) + 1;
             buildings.put(forge, forgeAmount);
+        }
+    }
+
+    public void addBakery(Inventory inventory){
+        Building bakery = Forge.createForge(inventory);
+        if (bakery != null){
+            int bakeryAmount = buildings.get(bakery) + 1;
+            buildings.put(bakery, bakeryAmount);
         }
     }
 
