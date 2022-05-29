@@ -25,10 +25,13 @@ public class Village {
     private HashMap<Building, Integer> buildings;
     private Inventory inventory;
     private final Position position;
-    // NOTE: change to tuple in documentation
     private int teamID;
     private List<KillCount> killCounts;
     private final Map parentMap;
+
+    private int houseKillCounter = 15; // changable tick rate untill villager dies from homelessness
+    private int tempHouseKillCounter = houseKillCounter;
+    private int houseSize = 12; // changable house capacity
 
     Village(Position position, int teamID,
             Map parentMap) {
@@ -49,10 +52,17 @@ public class Village {
         for (Building building : buildings.keySet())
             building.simulationTick();
 
-        if(buildings.get(new House(new Item(Item.ItemType.WOOD), 25)) * 10 < villagers.size()){
-            addHouse(this.inventory);
+        if(buildings.get(new House(new Item(Item.ItemType.WOOD), House.houseCost)) * houseSize < villagers.size()){
+            if (!addHouse(this.inventory)){
+                if(tempHouseKillCounter-- == 0){
+                    villagers.remove(villagers.size()-1); // kills last human from list
+                    //TODO: add to deathcount? maybe new statistic
+                }
+            }
+            else{
+                tempHouseKillCounter = houseKillCounter;
+            }
         }
-
         /* 
         TODO: co ticki sprawdza, czy wszyscy villagerzy maja armor i weapon, jesli nie, to tworzy je i wsadza do inventory wioski
         villager jest w wiosce i od razu sobie zaklada armor / weapon, podnosi to jego zycie i atak
@@ -73,12 +83,14 @@ public class Village {
     public void getItems(Inventory neededItems){// NOTE: add to docs
     }
 
-    public void addHouse(Inventory inventory){
+    public boolean addHouse(Inventory inventory){
         Building house = House.createHouse(inventory);
         if (house != null){
             int houseAmount = buildings.get(house) + 1;
             buildings.put(house, houseAmount);
+            return true;
         }
+        else return false;
     }
 
     public int getTeamID() {
