@@ -15,8 +15,10 @@ public class Inventory {
         items.clear();
     }
 
-    public void append(Inventory inventoryOne, Inventory inventoryTwo) {
-        // tba
+    public void append(Inventory inventory) {
+        for (Item key : items.keySet()) {
+            this.items.put(key, this.items.get(key) + inventory.items.get(key));
+        }
     }
 
     public int itemAmount(Inventory inventory, Item item){
