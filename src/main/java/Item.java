@@ -4,6 +4,7 @@ public class Item {
         WOOD,
         WHEAT,
         LEATHER,
+        MEAT,
         FOOD
     }
     public final ItemType itemType;

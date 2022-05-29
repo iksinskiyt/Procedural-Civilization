@@ -1,9 +1,19 @@
 public class Building {
 
-    public void simulationTick() {
+    private int bakeryCounter = 15; // how many ticks will it take to produce food from meat
+    private int tempBakeryCounter = bakeryCounter;
+
+    public void simulationTick(Inventory inventory) {
+        if(tempBakeryCounter-- == 0){
+            tempBakeryCounter = bakeryCounter;
+            Bakery.produceFood(inventory);
+        }
+
+
         /*
         bedzie wywolywalo tick na bakery zeby jedzienie robic
         */ 
+
     }
 
     public int buildCost;

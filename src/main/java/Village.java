@@ -52,7 +52,7 @@ public class Village {
             human.move();
 
         for (Building building : buildings.keySet())
-            building.simulationTick();
+            building.simulationTick(inventory);
 
         if(buildings.get(new House(new Item(Item.ItemType.WOOD), House.houseCost)) * houseSize < villagers.size()){
             if (!addHouse(this.inventory)){
