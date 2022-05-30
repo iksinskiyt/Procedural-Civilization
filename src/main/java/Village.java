@@ -29,7 +29,7 @@ public class Village {
     private List<KillCount> killCounts;
     private final Map parentMap;
 
-    private int houseKillCounter = 15; // changable tick rate untill villager dies from homelessness
+    private int houseKillCounter = 150; // changable tick rate untill villager dies from homelessness
     private int tempHouseKillCounter = houseKillCounter;
     private int houseSize = 12; // changable house capacity
     private int forgeCapacity = 50; // changable forge workspace capacity
@@ -59,7 +59,7 @@ public class Village {
         for (Building building : buildings)
             building.simulationTick();
 
-        int houseCount = 0;
+        int houseCount = 1;
         int forgeCount = 0;
         int bakeryCount = 0;
         for (Building building : buildings){
@@ -78,10 +78,8 @@ public class Village {
                 if(tempHouseKillCounter-- == 0){
                     villagers.remove(villagers.size()-1); // kills last human from list
                     //TODO: add to deathcount? maybe new statistic
+                    tempHouseKillCounter = houseKillCounter;
                 }
-            }
-            else{
-                tempHouseKillCounter = houseKillCounter;
             }
         }
         if(forgeCount * forgeCapacity < villagers.size()){ 

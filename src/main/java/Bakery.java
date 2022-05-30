@@ -15,6 +15,7 @@ public class Bakery extends Building {
         if(tempBakeryCounter-- == 0){
             // tempBakeryCounter = bakeryCunter;
             produceFood(parentVillage.getInventory());
+            tempBakeryCounter = bakeryCounter;
         }
     }
 
