@@ -13,13 +13,54 @@ public class MainWindow extends JFrame {
     private final BufferedImage mapImage;
 
     public class MapPanel extends JPanel {
+        private void drawCreatureIcon(Graphics g, int x, int y, Color color) {
+            g.setColor(color);
+            g.fillOval(x - 3, y - 3, 7, 7);
+            g.setColor(Color.BLACK);
+            g.drawOval(x - 3, y - 3, 7, 7);
+        }
+
+        private void drawHumanIcon(Graphics g, int x, int y, Color color) {
+            g.setColor(color);
+            g.fillRect(x - 3, y - 3, 7, 7);
+            g.setColor(Color.BLACK);
+            g.drawRect(x - 3, y - 3, 7, 7);
+        }
+
+        private void drawVillageIcon(Graphics g, int x, int y, Color color) {
+            g.setColor(color);
+            g.fillPolygon(new int[]{x, x + 8, x, x - 8},
+                    new int[]{y + 8, y, y - 8, y}, 4);
+            g.setColor(Color.BLACK);
+            g.drawPolygon(new int[]{x, x + 8, x, x - 8},
+                    new int[]{y + 8, y, y - 8, y}, 4);
+        }
+
+        private Color getTeamColor(int teamID) {
+            return new Color((teamID & 4) > 0 ? 255 : 0,
+                    (teamID & 2) > 0 ? 255 : 0, (teamID & 1) > 0 ? 255 : 0);
+        }
+
         @Override
         public void paint(Graphics g) {
             g.drawImage(mapImage, 0, 0, null);
-            g.setColor(Color.RED);
             for (Creature creature : creatures) {
+                Color color = null;
+                if (creature instanceof Cow)
+                    color = new Color(0xffff00);
+                else if (creature instanceof Hamster)
+                    color = new Color(0x00ffff);
                 Position position = creature.getPosition();
-                g.fillRect(position.x - 1, position.y - 1, 3, 3);
+                drawCreatureIcon(g, position.x, position.y, color);
+            }
+            for (Village village : villages) {
+                Position villagePosition = village.getPosition();
+                drawVillageIcon(g, villagePosition.x, villagePosition.y, getTeamColor(village.getTeamID()));
+                for (Human human : village.getVillagers()) {
+                    Position position = human.getPosition();
+                    drawHumanIcon(g, position.x, position.y,
+                            getTeamColor(human.getTeamID()));
+                }
             }
         }
     }
