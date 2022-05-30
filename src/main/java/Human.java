@@ -16,6 +16,7 @@ public class Human extends Creature {
     }
 
     public void goToExpedition() {
+        onExpedition = true;
     }
 
     public Village getParentVillage() {
@@ -28,14 +29,23 @@ public class Human extends Creature {
 
     @Override
     public void move() {
-        if (!onExpedition) super.move();
+        if (onExpedition) super.move();
         else {
             if (position == parentVillage.getPosition()) {
                 parentVillage.storeItems(inventory);
                 inventory.clear();
                 onExpedition = true;
             } else {
-                //TODO: Make a move towards the village
+                Position newRandomPosition = getNewRandomPosition();
+                // If the new position is not in OCEAN biome and is closer to
+                // the parent village than the current position
+                if (parentMap.getBiomeAt(newRandomPosition) !=
+                        BiomeConverter.Biome.OCEAN &&
+                        (Position.squaredDistanceBetween(newRandomPosition,
+                                parentVillage.getPosition()) <
+                                Position.squaredDistanceBetween(position,
+                                        parentVillage.getPosition())))
+                    position = newRandomPosition;
             }
         }
 
@@ -60,7 +70,6 @@ public class Human extends Creature {
     @Override
     public void attack(int damage) {
         health -= damage;
-        if (health <= 0)
-            parentVillage.killVillager(this, teamID);
+        if (health <= 0) parentVillage.killVillager(this, teamID);
     }
 }
