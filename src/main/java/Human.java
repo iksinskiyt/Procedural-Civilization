@@ -48,6 +48,16 @@ public class Human extends Creature {
                 parentVillage.storeItems(inventory);
                 inventory.clear();
                 onExpedition = true;
+                if(!(hasArmor > 0)){
+                    if(parentVillage.getInventory().useItem(new Item(Item.ItemType.ARMOR), 1)){
+                        equipArmor();
+                    }
+                }
+                if(!(hasSword > 0)){
+                    if(parentVillage.getInventory().useItem(new Item(Item.ItemType.SWORD), 1)){
+                        equipSword();
+                    }
+                }
             } else {
                 Position newRandomPosition = getNewRandomPosition();
                 // If the new position is not in OCEAN biome and is closer to
