@@ -2,6 +2,10 @@ public class Human extends Creature {
     private final int teamID;
     private boolean onExpedition;
     private final Village parentVillage;
+    private int hasArmor = 0;
+    private int hasSword = 0;
+    private int armorBonus = 2;
+    private int swordBonus = 5;
 
     public Human(int teamID, Map parentMap, Village parentVillage,
                  Position position) {
@@ -9,6 +13,15 @@ public class Human extends Creature {
 
         this.teamID = teamID;
         this.parentVillage = parentVillage;
+    }
+
+    public void equipArmor(){
+        this.hasArmor = 8;
+        this.health += armorBonus;
+    }
+
+    public void equipSword(){
+        this.hasSword = 8;
     }
 
     public boolean isOnExpedition() {
@@ -52,7 +65,13 @@ public class Human extends Creature {
         Creature metCreature = parentMap.getNearestAttackableCreature(this);
 
         if (metCreature != null) {
-            metCreature.attack(attackStrength);
+            if(hasSword<0){
+                metCreature.attack(attackStrength, teamID);
+            }
+            if(hasSword>0){
+                metCreature.attack(attackStrength + swordBonus, teamID);
+                hasSword--;
+            } 
             if (!metCreature.isAlive()) {
                 Inventory killeeInventory = metCreature.takeInventory();
                 inventory.append(killeeInventory);
@@ -69,8 +88,15 @@ public class Human extends Creature {
     }
 
     @Override
-    public void attack(int damage) {
-        health -= damage;
-        if (health <= 0) parentVillage.killVillager(this, teamID);
+    public void attack(int damage, int teamID) {
+        if(hasArmor < 0){
+            this.health -= damage;
+            if (health <= 0) parentVillage.killVillager(this, teamID);
+        }
+        if(hasArmor > 0){
+            this.health -= damage;
+            this.hasArmor--;
+            if (health <= 0) parentVillage.killVillager(this, teamID);
+        }
     }
 }

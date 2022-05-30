@@ -1,9 +1,9 @@
 public class Bakery extends Building {
     // Yes, the bakery bakes bread and meat... don't ask
-    public static int bakeryStoneCost = 20;
-    public static int meatCost = 5;
-    public static int breadCost = 10 ;
-    private int bakeryCounter = 15; // how many ticks will it take to produce food from meat
+    private static int bakeryStoneCost = 20;
+    private static int meatCost = 5;
+    private static int breadCost = 10 ;
+    private static int bakeryCounter = 15; // how many ticks will it take to produce food from meat
     private int tempBakeryCounter = bakeryCounter;
 
     public Bakery(Village parentVillage){
@@ -13,7 +13,7 @@ public class Bakery extends Building {
     @Override
     public void simulationTick() {
         if(tempBakeryCounter-- == 0){
-            tempBakeryCounter = bakeryCounter;
+            // tempBakeryCounter = bakeryCunter;
             produceFood(parentVillage.getInventory());
         }
     }
@@ -27,7 +27,7 @@ public class Bakery extends Building {
         else return false;
     }
 
-    public void produceFood(Inventory inventory){
+    private void produceFood(Inventory inventory){
         Item meat = new Item(Item.ItemType.MEAT);
         Item bread = new Item(Item.ItemType.WHEAT);
         if(inventory.useItem(meat, meatCost)){ // why does it use 5 meat to make 1 food? don't ask me, i have no idea, its 01:30AM and it's gotta be optimized somehow... maybe the meat from ladybugstore has a fuckton of water inside

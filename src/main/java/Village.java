@@ -34,6 +34,8 @@ public class Village {
     private int houseSize = 12; // changable house capacity
     private int forgeCapacity = 50; // changable forge workspace capacity
     private int bakeryCapacity = 25;
+    private int armorCounter = 0;
+    private int swordCounter = 0;
 
     Village(Position position, int teamID,
             Map parentMap) {
@@ -149,5 +151,20 @@ public class Village {
     public List<Human> getVillagers()
     {
         return villagers;
+    }
+
+    public void increaseArmorCount(){
+        armorCounter++;
+    }
+    public void increaseSwordCount(){
+        swordCounter++;
+    }
+
+    public int getArmorCount(){
+        return armorCounter;
+    }
+
+    public int getSwordCount(){
+        return swordCounter;
     }
 }

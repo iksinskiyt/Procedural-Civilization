@@ -1,6 +1,6 @@
 public class House extends Building {
     
-    public static int houseCost = 25; // changable house cost variable
+    private static int houseCost = 25; // changable house cost variable
 
     public House(Village parentVillage){
         super(parentVillage);
