@@ -1,36 +1,23 @@
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.Semaphore;
+import javax.swing.Timer;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Main {
-    private final static Semaphore simulationSemaphore = new Semaphore(0);
-
-    static class SimulationTimerTask extends TimerTask {
-        @Override
-        public void run() {
-            simulationSemaphore.release();
-        }
-    }
+    private static GUI gui;
+    private static Map map;
 
     public static void main(String[] args) {
-        GUI gui = new GUI();
+        gui = new GUI();
         SimulationOptions simulationOptions = gui.getOptionsFromUser();
-        Map map = new Map(simulationOptions);
+        map = new Map(simulationOptions);
         gui.openMainWindow(simulationOptions.mapSize, map);
-        Timer simulationTimer = new Timer();
-        simulationTimer.schedule(new SimulationTimerTask(), 0, 100);
-        int c = 0;
-        while (!map.isSimulationComplete()) {
-            map.simulationTick();
-            gui.showSimulation();
-            System.out.println(c++);
-            try {
-                simulationSemaphore.acquire();
-            } catch (InterruptedException e) {
-                System.out.println(
-                        "Failed to acquire the semaphore: " + e.getMessage());
-                System.exit(1);
+        Timer simulationTimer = new Timer(100, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                map.simulationTick();
+                gui.showSimulation();
             }
-        }
+        });
+        simulationTimer.start();
     }
 }
