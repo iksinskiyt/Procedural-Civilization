@@ -10,7 +10,7 @@ public class Map {
     private final SimulationOptions simulationOptions;
     private final Random random;
 
-    private BiomeConverter.Biome getBiomeAt(Position position)
+    public BiomeConverter.Biome getBiomeAt(Position position)
     {
         return BiomeConverter.getBiome(heightMap.height[position.x][position.y]);
     }
