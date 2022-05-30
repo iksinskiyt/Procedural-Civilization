@@ -1,6 +1,3 @@
-import java.awt.*;
-import java.util.EnumMap;
-
 public class BiomeConverter {
     public enum Biome {
         OCEAN,
