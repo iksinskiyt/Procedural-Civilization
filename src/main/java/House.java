@@ -1,6 +1,8 @@
 public class House extends Building {
     
     private static int houseCost = 25; // changable house cost variable
+    private int sexCounter = 420;
+    private int tempSexCounter = sexCounter;
 
     public House(Village parentVillage){
         super(parentVillage);
@@ -8,7 +10,11 @@ public class House extends Building {
 
     @Override
     public void simulationTick(){
-        
+        if(tempSexCounter-- == 0){
+            tempSexCounter = sexCounter;
+            Human human = new Human(parentVillage.getTeamID(), parentVillage.getParentMap(), parentVillage, parentVillage.getPosition());
+            parentVillage.addVillager(human);
+        }
     }
 
     public boolean createHouse(Inventory inventory){

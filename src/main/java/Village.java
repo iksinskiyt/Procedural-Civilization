@@ -45,6 +45,7 @@ public class Village {
         buildings = new ArrayList<>();
         villagers = new ArrayList<>();
         inventory = new Inventory(128);
+        buildings.add(new House(this));
     }
 
     public void simulationTick() {
