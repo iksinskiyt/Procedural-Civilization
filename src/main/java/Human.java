@@ -63,7 +63,8 @@ public class Human extends Creature {
             onExpedition = false;
         } else {
             Item collectedResource = parentMap.collectResource(this);
-            inventory.addItem(collectedResource);
+            if(collectedResource != null)
+                inventory.addItem(collectedResource, 1);
         }
     }
 

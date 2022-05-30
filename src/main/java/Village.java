@@ -42,6 +42,7 @@ public class Village {
         this.parentMap = parentMap;
         buildings = new ArrayList<>();
         villagers = new ArrayList<>();
+        inventory = new Inventory(128);
     }
 
     public void simulationTick() {
@@ -100,8 +101,8 @@ public class Village {
     }
 
     public boolean addHouse(Inventory inventory){
-        Building house = new House(this);
-        if(((House)house).createHouse(inventory)){
+        House house = new House(this);
+        if(house.createHouse(inventory)){
             buildings.add(house);
             return true;
         }
