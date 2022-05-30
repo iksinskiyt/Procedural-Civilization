@@ -97,8 +97,8 @@ public class Village {
     }
 
     public boolean addHouse(Inventory inventory){
-        Building house = new House(this);
-        if(((House)house).createHouse(inventory)){
+        House house = new House(this);
+        if(house.createHouse(inventory)){
             buildings.add(house);
             return true;
         }
@@ -106,15 +106,15 @@ public class Village {
     }
 
     public void addForge(Inventory inventory){
-        Building forge =  new Forge(this);
-        if (((Forge)forge).createForge(inventory)){
+        Forge forge =  new Forge(this);
+        if (forge.createForge(inventory)){
             buildings.add(forge);
         }
     }
 
     public void addBakery(Inventory inventory){
-        Building bakery = new Bakery(this);
-        if (((Bakery)bakery).createBakery(inventory)){
+        Bakery bakery = new Bakery(this);
+        if (bakery.createBakery(inventory)){
             buildings.add(bakery);
         }
     }
