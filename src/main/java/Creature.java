@@ -27,18 +27,22 @@ public abstract class Creature {
             parentMap.killCreature(this);
     }
 
-    protected Position getNewRandomPosition()
-    {
+    protected Position getNewRandomPosition() {
+        int currentSpeed = speed /
+                (parentMap.getBiomeAt(position) == BiomeConverter.Biome.PLAINS ?
+                        1 : 2);
         return new Position(Math.min(Math.max(0, position.x +
-                        random.nextInt(speed) * (random.nextBoolean() ? 1 : -1)),
-                parentMap.getMapSize()-1), Math.min(Math.max(0, position.y +
-                        random.nextInt(speed) * (random.nextBoolean() ? 1 : -1)),
-                parentMap.getMapSize()-1));
+                        random.nextInt(currentSpeed + 1) *
+                                (random.nextBoolean() ? 1 : -1)),
+                parentMap.getMapSize() - 1), Math.min(Math.max(0, position.y +
+                        random.nextInt(currentSpeed + 1) *
+                                (random.nextBoolean() ? 1 : -1)),
+                parentMap.getMapSize() - 1));
     }
 
     public void move() {
         Position newRandomPosition = getNewRandomPosition();
-        if(parentMap.getBiomeAt(newRandomPosition) !=
+        if (parentMap.getBiomeAt(newRandomPosition) !=
                 BiomeConverter.Biome.OCEAN)
             position = newRandomPosition;
     }
