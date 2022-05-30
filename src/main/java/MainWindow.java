@@ -62,6 +62,7 @@ public class MainWindow extends JFrame {
                             getTeamColor(human.getTeamID()));
                 }
             }
+            Toolkit.getDefaultToolkit().sync();
         }
     }
 
