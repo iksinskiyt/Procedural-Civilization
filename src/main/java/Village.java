@@ -1,6 +1,5 @@
 import java.util.Comparator;
 import java.util.List;
-import java.util.HashMap;
 
 
 public class Village {
@@ -22,7 +21,7 @@ public class Village {
     }
 
     private List<Human> villagers;
-    private HashMap<Building, Integer> buildings;
+    private List<Building> buildings;
     private Inventory inventory;
     private final Position position;
     private int teamID;
@@ -51,10 +50,24 @@ public class Village {
         for (Human human : villagers)
             human.move();
 
-        for (Building building : buildings.keySet())
-            building.simulationTick(inventory);
+        for (Building building : buildings)
+            building.simulationTick();
 
-        if(buildings.get(new House(new Item(Item.ItemType.WOOD), House.houseCost)) * houseSize < villagers.size()){
+        int houseCount = 0;
+        int forgeCount = 0;
+        int bakeryCount = 0;
+        for (Building building : buildings){
+            if(building instanceof House){
+                houseCount++;
+            }
+            if(building instanceof Forge){
+                forgeCount++;
+            }
+            if(building instanceof Bakery){
+                bakeryCount++;
+            }
+        }
+        if(houseCount * houseSize < villagers.size()){
             if (!addHouse(this.inventory)){
                 if(tempHouseKillCounter-- == 0){
                     villagers.remove(villagers.size()-1); // kills last human from list
@@ -65,25 +78,15 @@ public class Village {
                 tempHouseKillCounter = houseKillCounter;
             }
         }
-        if(buildings.get(new Forge(new Item(Item.ItemType.WOOD), Forge.forgeWoodCost)) * forgeCapacity < villagers.size()){
+        if(forgeCount * forgeCapacity < villagers.size()){ 
             addForge(this.inventory); // think of some punishment
         }
-        if(buildings.get(new Bakery(new Item(Item.ItemType.STONE), Bakery.bakeryStoneCost)) * bakeryCapacity < villagers.size()){
-            addBakery(this.inventory); // more bakeries will produce food more efficiently, will need to set a cap of some sort on producing food from found wheat
+        if(bakeryCount * bakeryCapacity < villagers.size()){ 
+            addBakery(this.inventory);
         }
-
-
         /* 
         TODO: co ticki sprawdza, czy wszyscy villagerzy maja armor i weapon, jesli nie, to tworzy je i wsadza do inventory wioski
         villager jest w wiosce i od razu sobie zaklada armor / weapon, podnosi to jego zycie i atak
-
-        Sprawdza co tick, czy ilosc domow jest wystarczajaca dla villagerow.
-        1 Dom = 12 villagerow
-
-        sprawdza ile jest domow, mnozy razy ilosc miejsc w domach = ilosc dostepnych miejsc
-        jesli jest za malo miejsc, tworzy nowy dom
-        jest nie moze stworzyc domu, tworzy sie nowy counter co liczy ticki,
-        jesli nie zdarza wybudowac dom, ginie czlowiek do momentu kiedy starczy miejsc w domach
         */
     }
 
@@ -94,28 +97,25 @@ public class Village {
     }
 
     public boolean addHouse(Inventory inventory){
-        Building house = House.createHouse(inventory);
-        if (house != null){
-            int houseAmount = buildings.get(house) + 1;
-            buildings.put(house, houseAmount);
+        Building house = new House(this);
+        if(((House)house).createHouse(inventory)){
+            buildings.add(house);
             return true;
         }
         else return false;
     }
 
     public void addForge(Inventory inventory){
-        Building forge = Forge.createForge(inventory);
-        if (forge != null){
-            int forgeAmount = buildings.get(forge) + 1;
-            buildings.put(forge, forgeAmount);
+        Building forge =  new Forge(this);
+        if (((Forge)forge).createForge(inventory)){
+            buildings.add(forge);
         }
     }
 
     public void addBakery(Inventory inventory){
-        Building bakery = Forge.createForge(inventory);
-        if (bakery != null){
-            int bakeryAmount = buildings.get(bakery) + 1;
-            buildings.put(bakery, bakeryAmount);
+        Building bakery = new Bakery(this);
+        if (((Bakery)bakery).createBakery(inventory)){
+            buildings.add(bakery);
         }
     }
 
@@ -132,6 +132,10 @@ public class Village {
 
     public Position getPosition() {
         return position;
+    }
+
+    public Inventory getInventory(){
+        return inventory;
     }
 
     public void addVillager(Human villager) {
