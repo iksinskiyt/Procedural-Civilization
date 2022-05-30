@@ -2,6 +2,8 @@ public class Human extends Creature {
     private final int teamID;
     private boolean onExpedition;
     private final Village parentVillage;
+    private int positionTriesLeft = 10;
+    private int randomTicksLeft = 0;
 
     public Human(int teamID, Map parentMap, Village parentVillage,
                  Position position) {
@@ -36,16 +38,29 @@ public class Human extends Creature {
                 inventory.clear();
                 onExpedition = true;
             } else {
-                Position newRandomPosition = getNewRandomPosition();
-                // If the new position is not in OCEAN biome and is closer to
-                // the parent village than the current position
-                if (parentMap.getBiomeAt(newRandomPosition) !=
-                        BiomeConverter.Biome.OCEAN &&
-                        (Position.squaredDistanceBetween(newRandomPosition,
-                                parentVillage.getPosition()) <
-                                Position.squaredDistanceBetween(position,
-                                        parentVillage.getPosition())))
-                    position = newRandomPosition;
+                if (randomTicksLeft > 0) {
+                    super.move();
+                    randomTicksLeft--;
+                } else {
+                    Position newRandomPosition = getNewRandomPosition();
+                    if (parentMap.getBiomeAt(newRandomPosition) !=
+                            BiomeConverter.Biome.OCEAN &&
+                            (Position.squaredDistanceBetween(newRandomPosition,
+                                    parentVillage.getPosition()) <
+                                    Position.squaredDistanceBetween(position,
+                                            parentVillage.getPosition()))) {
+                        position = newRandomPosition;
+                        positionTriesLeft = 10;
+                    } else
+                        positionTriesLeft--;
+                }
+                if (positionTriesLeft <= 0) {
+                    if (randomTicksLeft <= 0) {
+                        randomTicksLeft = 100;
+                        positionTriesLeft = 10;
+                    } else
+                        randomTicksLeft--;
+                }
             }
         }
 
@@ -63,7 +78,7 @@ public class Human extends Creature {
             onExpedition = false;
         } else {
             Item collectedResource = parentMap.collectResource(this);
-            if(collectedResource != null)
+            if (collectedResource != null)
                 inventory.addItem(collectedResource, 1);
         }
     }
