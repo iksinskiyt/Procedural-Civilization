@@ -73,4 +73,8 @@ public class Village {
         villagers.add(villager);
     }
 
+    public List<Human> getVillagers()
+    {
+        return villagers;
+    }
 }
