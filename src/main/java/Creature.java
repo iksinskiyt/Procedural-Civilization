@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public abstract class Creature {
     protected Inventory inventory;
     protected Position position;
@@ -5,6 +7,7 @@ public abstract class Creature {
     protected final int attackStrength;
     protected final int speed;
     protected Map parentMap;
+    protected Random random;
 
     public Creature(Map parentMap, Position position, int health,
                     int attackStrength, int speed, int inventoryCapacity) {
@@ -15,6 +18,7 @@ public abstract class Creature {
         this.health = health;
         this.attackStrength = attackStrength;
         this.speed = speed;
+        random = new Random();
     }
 
     public void attack(int damage) {
@@ -23,13 +27,20 @@ public abstract class Creature {
             parentMap.killCreature(this);
     }
 
-    public void move() {
-        // TODO: Generate acceptable random values
-        int deltaX = 0;
-        int deltaY = 0;
+    protected Position getNewRandomPosition()
+    {
+        return new Position(Math.min(Math.max(0, position.x +
+                        random.nextInt(speed) * (random.nextBoolean() ? 1 : -1)),
+                parentMap.getMapSize()-1), Math.min(Math.max(0, position.y +
+                        random.nextInt(speed) * (random.nextBoolean() ? 1 : -1)),
+                parentMap.getMapSize()-1));
+    }
 
-        position.x += deltaX;
-        position.y += deltaY;
+    public void move() {
+        Position newRandomPosition = getNewRandomPosition();
+        if(parentMap.getBiomeAt(newRandomPosition) !=
+                BiomeConverter.Biome.OCEAN)
+            position = newRandomPosition;
     }
 
     public Map getParentMap() {

@@ -1,11 +1,23 @@
+import javax.swing.Timer;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 public class Main {
+    private static GUI gui;
+    private static Map map;
+
     public static void main(String[] args) {
-        GUI gui = new GUI();
-        gui.getOptionsFromUser();
-        gui.startSimulation();
-        while (!gui.isSimulationComplete()) {
-            gui.simulationTick();
-            gui.showSimulation();
-        }
+        gui = new GUI();
+        SimulationOptions simulationOptions = gui.getOptionsFromUser();
+        map = new Map(simulationOptions);
+        gui.openMainWindow(simulationOptions.mapSize, map);
+        Timer simulationTimer = new Timer(100, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                map.simulationTick();
+                gui.showSimulation();
+            }
+        });
+        simulationTimer.start();
     }
 }

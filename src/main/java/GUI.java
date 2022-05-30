@@ -2,15 +2,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.util.List;
 
 public class GUI {
     class ErrorDialog extends JDialog {
-        public ErrorDialog(String message)
-        {
+        public ErrorDialog(String message) {
             super();
             setLayout(new BorderLayout());
-            add(new JLabel("An error occurred: " + message, SwingConstants.CENTER), BorderLayout.CENTER);
+            add(new JLabel("An error occurred: " + message,
+                    SwingConstants.CENTER), BorderLayout.CENTER);
             JButton okButton = new JButton("OK");
             add(okButton, BorderLayout.SOUTH);
             okButton.addActionListener(actionEvent -> setVisible(false));
@@ -94,35 +93,20 @@ public class GUI {
             setVisible(true);
         }
 
-        public PerlinOptions getPerlinOptions() {
-            PerlinOptions perlinOptions = new PerlinOptions();
-
-            try {
-                perlinOptions.size = Integer.parseInt(tfMapSize.getText());
-                perlinOptions.noiseScale =
-                        Double.parseDouble(tfNoiseScale.getText());
-                perlinOptions.noiseOctaves =
-                        Integer.parseInt(tfNoiseOctaves.getText());
-            } catch (NumberFormatException e) {
-                new ErrorDialog(e.getMessage());
-                return null;
-            }
-
-            return perlinOptions;
-        }
-
-        public SimulationOptions getSimulationOptions()
-        {
+        public SimulationOptions getSimulationOptions() {
             SimulationOptions simulationOptions = new SimulationOptions();
 
             try {
+                simulationOptions.mapSize = Integer.parseInt(tfMapSize.getText());
                 simulationOptions.nTeams = Integer.parseInt(tfNTeams.getText());
-                simulationOptions.teamPopulation = Integer.parseInt(tfTeamPopulation.getText());
+                simulationOptions.teamPopulation =
+                        Integer.parseInt(tfTeamPopulation.getText());
                 simulationOptions.nCows = Integer.parseInt(tfNCows.getText());
-                simulationOptions.nHamsters = Integer.parseInt(tfNHamsters.getText());
-            }
-            catch (NumberFormatException e)
-            {
+                simulationOptions.nHamsters =
+                        Integer.parseInt(tfNHamsters.getText());
+                simulationOptions.noiseScale = Double.parseDouble(tfNoiseScale.getText());
+                simulationOptions.noiseOctaves = Integer.parseInt(tfNoiseOctaves.getText());
+            } catch (NumberFormatException e) {
                 new ErrorDialog(e.getMessage());
                 return null;
             }
@@ -131,46 +115,32 @@ public class GUI {
         }
     }
 
-    private Map map;
-    private int[] seed;
-    private PerlinOptions perlinOptions;
-    private SimulationOptions simulationOptions;
-    private int nVillages;
+    private MainWindow mainWindow;
 
     public GUI() {
     }
 
-    public void startSimulation() {
-        map = new Map(perlinOptions, simulationOptions);
+    public void openMainWindow(int windowSize, Map map) {
+        mainWindow = new MainWindow(windowSize, map);
     }
 
-    public void getOptionsFromUser() {
+    public SimulationOptions getOptionsFromUser() {
+        SimulationOptions simulationOptions;
         do {
             UserInputDialog dialog = new UserInputDialog();
-            perlinOptions = dialog.getPerlinOptions();
             simulationOptions = dialog.getSimulationOptions();
-        } while(perlinOptions == null || simulationOptions == null);
-        System.out.println(perlinOptions.size);
-        System.out.println(perlinOptions.noiseScale);
-        System.out.println(perlinOptions.noiseOctaves);
+        } while (simulationOptions == null);
+        System.out.println(simulationOptions.mapSize);
+        System.out.println(simulationOptions.noiseScale);
+        System.out.println(simulationOptions.noiseOctaves);
         System.out.println(simulationOptions.nTeams);
         System.out.println(simulationOptions.teamPopulation);
         System.out.println(simulationOptions.nCows);
         System.out.println(simulationOptions.nHamsters);
+        return simulationOptions;
     }
 
     public void showSimulation() {
-        HeightMap heightMap = map.getHeightMap();
-        List<Creature> creatures = map.getCreatureList();
-        List<Village> villages = map.getVillageList();
-        // TODO: Display simulation state using the above parameters
-    }
-
-    public void simulationTick() {
-        map.simulationTick();
-    }
-
-    public boolean isSimulationComplete() {
-        return map.isSimulationComplete();
+        mainWindow.repaint();
     }
 }

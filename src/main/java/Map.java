@@ -1,43 +1,53 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Map {
-    public enum Biome {
-        OCEAN,
-        PLAINS,
-        FOREST,
-        MOUNTAINS
-    }
-
     private final List<Village> villages;
     private final HeightMap heightMap;
     private final List<Creature> creatures;
     private boolean simulationComplete;
+    private final SimulationOptions simulationOptions;
+    private final Random random;
 
-    private Position getRandomPosition(
-            List<Biome> allowedBiomes) {
-        // TODO: Replace with real random position generation
-        return new Position(0, 0);
+    public BiomeConverter.Biome getBiomeAt(Position position)
+    {
+        return BiomeConverter.getBiome(heightMap.height[position.x][position.y]);
     }
 
-    public Map(PerlinOptions perlinOptions,
-               SimulationOptions simulationOptions) {
-        Perlin perlin = new Perlin(perlinOptions);
+    private Position getRandomPosition(List<BiomeConverter.Biome> allowedBiomes) {
+        Position position;
+        while(true) {
+            position = new Position(random.nextInt(simulationOptions.mapSize),
+                    random.nextInt(simulationOptions.mapSize));
+            BiomeConverter.Biome posBiome = getBiomeAt(position);
+            for(BiomeConverter.Biome allowedBiome : allowedBiomes)
+            {
+                if(posBiome == allowedBiome)
+                    return position;
+            }
+        }
+    }
+
+    public Map(SimulationOptions simulationOptions) {
+        this.simulationOptions = simulationOptions;
+        random = new Random();
+        Perlin perlin = new Perlin(simulationOptions);
         heightMap = new HeightMap();
-        // TODO: Perlin generation
+        heightMap.height = perlin.generatePerlinNoise2D();
 
         villages = new ArrayList<>();
 
         for (int i = 0; i < simulationOptions.nTeams; i++) {
             Village village =
-                    new Village(getRandomPosition(List.of(Biome.PLAINS)), i,
-                            this);
+                    new Village(getRandomPosition(
+                            List.of(BiomeConverter.Biome.PLAINS)), i, this);
             villages.add(village);
 
             for (int j = 0; j < simulationOptions.teamPopulation; j++) {
                 village.addVillager(new Human(i, this, village,
                         getRandomPosition(
-                                List.of(Biome.PLAINS, Biome.FOREST))));
+                                List.of(BiomeConverter.Biome.PLAINS))));
             }
         }
 
@@ -45,12 +55,14 @@ public class Map {
 
         for (int i = 0; i < simulationOptions.nCows; i++) {
             creatures.add(
-                    new Cow(this, getRandomPosition(List.of(Biome.PLAINS))));
+                    new Cow(this, getRandomPosition(
+                            List.of(BiomeConverter.Biome.PLAINS))));
         }
 
         for (int i = 0; i < simulationOptions.nHamsters; i++) {
             creatures.add(new Hamster(this,
-                    getRandomPosition(List.of(Biome.MOUNTAINS))));
+                    getRandomPosition(
+                            List.of(BiomeConverter.Biome.MOUNTAINS))));
         }
     }
 
@@ -103,5 +115,10 @@ public class Map {
     Item collectResource(Human requester) {
         // TODO: implementation
         return null;
+    }
+
+    public int getMapSize()
+    {
+        return simulationOptions.mapSize;
     }
 }
