@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
@@ -107,8 +108,26 @@ public class Map {
         creatures.remove(creature);
     }
 
-    Creature getNearestAttackableCreature(Human requester) {
-        // TODO: implementation
+    public Creature getNearestEnemyWithinDistance(Human requester, int distance) {
+        HashMap<Creature, Integer> creatureDistances =
+                new HashMap<Creature, Integer>();
+        for (Creature creature : creatures)
+            creatureDistances.put(creature,
+                    Position.squaredDistanceBetween(requester.getPosition(),
+                            creature.getPosition()));
+        for (Village village : villages)
+            for(Human human : village.getVillagers())
+                creatureDistances.put(human, Position.squaredDistanceBetween(requester.getPosition(), human.getPosition()));
+        List<java.util.Map.Entry<Creature, Integer>> creatureDistancesSorted = new ArrayList<>(creatureDistances.entrySet());
+        creatureDistancesSorted.sort(java.util.Map.Entry.comparingByValue());
+        for(java.util.Map.Entry<Creature, Integer> creatureDistance : creatureDistancesSorted)
+        {
+            if(creatureDistance.getKey() instanceof Human && ((Human)creatureDistance.getKey()).getTeamID() == requester.getTeamID())
+                continue;
+            if(creatureDistance.getValue() > distance*distance)
+                return null;
+            return creatureDistance.getKey();
+        }
         return null;
     }
 
