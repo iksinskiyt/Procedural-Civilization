@@ -2,16 +2,20 @@ public class Human extends Creature {
     private final int teamID;
     private boolean onExpedition;
     private final Village parentVillage;
+    private static int humanBasicHealth = 100;
     private int hasArmor = 0;
     private int hasSword = 0;
-    private int armorBonus = 2;
+    private int armorBonus = 20;
     private int swordBonus = 5;
     private int positionTriesLeft = 10;
     private int randomTicksLeft = 0;
+    private int eatingCounter = 3;
+    private int tempEatingCounter = 1;
+    private int foodRegenAmount = 10;
 
     public Human(int teamID, Map parentMap, Village parentVillage,
                  Position position) {
-        super(parentMap, position, 100, 10, 8, 16);
+        super(parentMap, position, humanBasicHealth, 10, 8, 16);
 
         this.teamID = teamID;
         this.parentVillage = parentVillage;
@@ -60,6 +64,30 @@ public class Human extends Creature {
                         equipSword();
                     }
                 }
+                if(hasArmor>0){// make counter that checks how long ago did the human eat
+                    tempEatingCounter--;
+                    if(tempEatingCounter==0){
+                        tempEatingCounter = eatingCounter;
+                        if(health < humanBasicHealth+armorBonus){
+                            if(parentVillage.getInventory().useItem(new Item(Item.ItemType.FOOD), 1)){
+                                health =+ foodRegenAmount;
+                                if(health>humanBasicHealth+armorBonus) health = humanBasicHealth+armorBonus;
+                            }
+                        }
+                    }
+                }
+                if(!(hasArmor>0)){
+                    tempEatingCounter--;
+                    if(tempEatingCounter==0){
+                        tempEatingCounter = eatingCounter;
+                        if(health<humanBasicHealth){
+                            if(parentVillage.getInventory().useItem(new Item(Item.ItemType.FOOD), 1)){
+                                health =+ foodRegenAmount;
+                                if(health>humanBasicHealth) health = humanBasicHealth;
+                            }
+                        }
+                    }
+                }
             } else {
                 if (randomTicksLeft > 0) {
                     super.move();
@@ -90,7 +118,7 @@ public class Human extends Creature {
         Creature metCreature = parentMap.getNearestAttackableCreature(this);
 
         if (metCreature != null) {
-            if(hasSword<0){
+            if(!(hasSword>0)){
                 metCreature.attack(attackStrength, teamID);
             }
             if(hasSword>0){
@@ -114,13 +142,14 @@ public class Human extends Creature {
 
     @Override
     public void attack(int damage, int teamID) {
-        if(hasArmor < 0){
+        if(!(hasArmor > 0)){
             this.health -= damage;
             if (health <= 0) parentVillage.killVillager(this, teamID);
         }
         if(hasArmor > 0){
             this.health -= damage;
             this.hasArmor--;
+            if(hasArmor == 0 && health > 100) health = 100;
             if (health <= 0) parentVillage.killVillager(this, teamID);
         }
     }
