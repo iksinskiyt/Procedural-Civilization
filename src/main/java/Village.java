@@ -22,11 +22,13 @@ public class Village {
     }
 
     private final List<Human> villagers;
+    // To prevent concurrent modification of `villagers`
+    private final List<Human> deadVillagers;
     private final List<Building> buildings;
-    private Inventory inventory;
+    private final Inventory inventory;
     private final Position position;
     private int teamID;
-    private List<KillCount> killCounts;
+    private final List<KillCount> killCounts;
     private final Map parentMap;
 
     private int houseKillCounter = 150; // changable tick rate untill villager dies from homelessness
@@ -44,7 +46,9 @@ public class Village {
         this.parentMap = parentMap;
         buildings = new ArrayList<>();
         villagers = new ArrayList<>();
+        deadVillagers = new ArrayList<>();
         inventory = new Inventory(128);
+        killCounts = new ArrayList<>();
         buildings.add(new House(this));
     }
 
@@ -83,7 +87,7 @@ public class Village {
                 }
             }
         }
-        if(forgeCount * forgeCapacity < villagers.size()){ 
+        if(forgeCount * forgeCapacity < villagers.size()){
             addForge(this.inventory); // think of some punishment
         }
         if(bakeryCount * bakeryCapacity < villagers.size()){ 
@@ -93,9 +97,14 @@ public class Village {
         TODO: co ticki sprawdza, czy wszyscy villagerzy maja armor i weapon, jesli nie, to tworzy je i wsadza do inventory wioski
         villager jest w wiosce i od razu sobie zaklada armor / weapon, podnosi to jego zycie i atak
         */
+
+        for(Human human : deadVillagers)
+            villagers.remove(human);
+        deadVillagers.clear();
     }
 
     public void storeItems(Inventory storedInventory) {
+        inventory.append(storedInventory);
     }
 
     public void getItems(Inventory neededItems){// NOTE: add to docs
@@ -129,6 +138,15 @@ public class Village {
     }
 
     public void killVillager(Human villager, int killerTeamID) {
+        deadVillagers.add(villager);
+        for(KillCount killCount : killCounts)
+        {
+            if(killCount.teamID == killerTeamID) {
+                killCount.count++;
+                return;
+            }
+        }
+        killCounts.add(new KillCount(killerTeamID, 1));
     }
 
     public Map getParentMap() {
