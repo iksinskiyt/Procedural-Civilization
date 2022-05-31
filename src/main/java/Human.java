@@ -42,52 +42,36 @@ public class Human extends Creature {
         return teamID;
     }
 
+    private void makeMoveTowards(Position position) {
+        if (randomTicksLeft > 0) {
+            super.move();
+            randomTicksLeft--;
+        } else {
+            Position newRandomPosition = getNewRandomPosition();
+            if (parentMap.getBiomeAt(newRandomPosition) !=
+                    BiomeConverter.Biome.OCEAN &&
+                    (Position.squaredDistanceBetween(newRandomPosition,
+                            position) <
+                            Position.squaredDistanceBetween(this.position,
+                                    position))) {
+                this.position = newRandomPosition;
+                positionTriesLeft = 10;
+            }
+            else
+                positionTriesLeft--;
+        }
+        if (positionTriesLeft <= 0) {
+            if (randomTicksLeft <= 0) {
+                randomTicksLeft = 100;
+                positionTriesLeft = 10;
+            } else
+                randomTicksLeft--;
+        }
+    }
+
     @Override
     public void move() {
-        if (onExpedition) super.move();
-        else {
-            if (position == parentVillage.getPosition()) {
-                parentVillage.storeItems(inventory);
-                inventory.clear();
-                onExpedition = true;
-                if(!(hasArmor > 0)){
-                    if(parentVillage.getInventory().useItem(new Item(Item.ItemType.ARMOR), 1)){
-                        equipArmor();
-                    }
-                }
-                if(!(hasSword > 0)){
-                    if(parentVillage.getInventory().useItem(new Item(Item.ItemType.SWORD), 1)){
-                        equipSword();
-                    }
-                }
-            } else {
-                if (randomTicksLeft > 0) {
-                    super.move();
-                    randomTicksLeft--;
-                } else {
-                    Position newRandomPosition = getNewRandomPosition();
-                    if (parentMap.getBiomeAt(newRandomPosition) !=
-                            BiomeConverter.Biome.OCEAN &&
-                            (Position.squaredDistanceBetween(newRandomPosition,
-                                    parentVillage.getPosition()) <
-                                    Position.squaredDistanceBetween(position,
-                                            parentVillage.getPosition()))) {
-                        position = newRandomPosition;
-                        positionTriesLeft = 10;
-                    } else
-                        positionTriesLeft--;
-                }
-                if (positionTriesLeft <= 0) {
-                    if (randomTicksLeft <= 0) {
-                        randomTicksLeft = 100;
-                        positionTriesLeft = 10;
-                    } else
-                        randomTicksLeft--;
-                }
-            }
-        }
-
-        Creature metCreature = parentMap.getNearestAttackableCreature(this);
+        Creature metCreature = parentMap.getNearestEnemyWithinDistance(this, 16);
 
         if (metCreature != null) {
             if(hasSword<=0){
@@ -101,6 +85,34 @@ public class Human extends Creature {
                 Inventory killeeInventory = metCreature.takeInventory();
                 inventory.append(killeeInventory);
             }
+            return;
+        }
+
+        if (onExpedition) {
+            Creature seenCreature = parentMap.getNearestEnemyWithinDistance(this, 256);
+            if(seenCreature != null)
+                makeMoveTowards(seenCreature.getPosition());
+            else
+                super.move();
+        }
+        else {
+            if (Position.squaredDistanceBetween(position, parentVillage.getPosition()) < 64) {
+                parentVillage.storeItems(inventory);
+                inventory.clear();
+                onExpedition = true;
+                if(!(hasArmor > 0)){
+                    if(parentVillage.getInventory().useItem(new Item(Item.ItemType.ARMOR), 1)){
+                        equipArmor();
+                    }
+                }
+                if(!(hasSword > 0)){
+                    if(parentVillage.getInventory().useItem(new Item(Item.ItemType.SWORD), 1)){
+                        equipSword();
+                    }
+                }
+            } else
+                makeMoveTowards(parentVillage.getPosition());
+            return;
         }
 
         if (inventory.isOverflowed()) {
