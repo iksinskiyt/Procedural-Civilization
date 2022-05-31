@@ -5,7 +5,6 @@ import java.awt.image.WritableRaster;
 import java.util.List;
 
 public class MainWindow extends JFrame {
-    private final int windowSize;
     private final Map map;
     private final HeightMap heightMap;
     private final List<Creature> creatures;
@@ -66,8 +65,7 @@ public class MainWindow extends JFrame {
         }
     }
 
-    public MainWindow(int windowSize, Map map) {
-        this.windowSize = windowSize;
+    public MainWindow(Map map) {
         this.map = map;
 
         // Get all necessary references
@@ -76,18 +74,18 @@ public class MainWindow extends JFrame {
         this.villages = map.getVillageList();
 
         // Draw a map image
-        mapImage = new BufferedImage(windowSize, windowSize,
+        mapImage = new BufferedImage(map.getMapSize(), map.getMapSize(),
                 BufferedImage.TYPE_3BYTE_BGR);
         WritableRaster mapImageRaster = mapImage.getRaster();
-        for (int i = 0; i < windowSize; i++) {
-            for (int j = 0; j < windowSize; j++) {
+        for (int i = 0; i < map.getMapSize(); i++) {
+            for (int j = 0; j < map.getMapSize(); j++) {
                 mapImageRaster.setPixel(i, j,
                         BiomeConverter.getBiomeColor(heightMap.height[i][j]));
             }
         }
 
         MapPanel mapPanel = new MapPanel();
-        mapPanel.setPreferredSize(new Dimension(windowSize, windowSize));
+        mapPanel.setPreferredSize(new Dimension(map.getMapSize(), map.getMapSize()));
         add(mapPanel);
         pack();
         setTitle("Procedural Civilization");

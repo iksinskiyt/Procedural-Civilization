@@ -120,8 +120,8 @@ public class GUI {
     public GUI() {
     }
 
-    public void openMainWindow(int windowSize, Map map) {
-        mainWindow = new MainWindow(windowSize, map);
+    public void openMainWindow(Map map) {
+        mainWindow = new MainWindow(map);
     }
 
     public SimulationOptions getOptionsFromUser() {

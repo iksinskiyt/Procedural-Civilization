@@ -10,7 +10,7 @@ public class Main {
         gui = new GUI();
         SimulationOptions simulationOptions = gui.getOptionsFromUser();
         map = new Map(simulationOptions);
-        gui.openMainWindow(simulationOptions.mapSize, map);
+        gui.openMainWindow(map);
         Timer simulationTimer = new Timer(100, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
