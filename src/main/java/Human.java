@@ -59,7 +59,7 @@ public class Human extends Creature {
                         equipArmor();
                     }
                 }
-                if(!(hasSword > 0)){
+                else if(!(hasSword > 0)){
                     if(parentVillage.getInventory().useItem(new Item(Item.ItemType.SWORD), 1)){
                         equipSword();
                     }
@@ -76,7 +76,7 @@ public class Human extends Creature {
                         }
                     }
                 }
-                if(!(hasArmor>0)){
+                else if(!(hasArmor>0)){
                     tempEatingCounter--;
                     if(tempEatingCounter==0){
                         tempEatingCounter = eatingCounter;
@@ -121,13 +121,14 @@ public class Human extends Creature {
             if(!(hasSword>0)){
                 metCreature.attack(attackStrength, teamID);
             }
-            if(hasSword>0){
+            else if(hasSword>0){
                 metCreature.attack(attackStrength + swordBonus, teamID);
                 hasSword--;
             } 
             if (!metCreature.isAlive()) {
                 Inventory killeeInventory = metCreature.takeInventory();
                 inventory.append(killeeInventory);
+                // method that creates a new creature, same type as killed
             }
         }
 
@@ -146,7 +147,7 @@ public class Human extends Creature {
             this.health -= damage;
             if (health <= 0) parentVillage.killVillager(this, teamID);
         }
-        if(hasArmor > 0){
+        else if(hasArmor > 0){
             this.health -= damage;
             this.hasArmor--;
             if(hasArmor == 0 && health > 100) health = 100;

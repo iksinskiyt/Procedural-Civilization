@@ -54,15 +54,11 @@ public class Map {
         this.creatures = new ArrayList<>();
 
         for (int i = 0; i < simulationOptions.nCows; i++) {
-            creatures.add(
-                    new Cow(this, getRandomPosition(
-                            List.of(BiomeConverter.Biome.PLAINS))));
+            addCow();
         }
 
         for (int i = 0; i < simulationOptions.nHamsters; i++) {
-            creatures.add(new Hamster(this,
-                    getRandomPosition(
-                            List.of(BiomeConverter.Biome.MOUNTAINS))));
+            addHamster();
         }
     }
 
@@ -105,6 +101,7 @@ public class Map {
 
     public void killCreature(Creature creature) {
         creatures.remove(creature);
+        createCreature(creature);
     }
 
     Creature getNearestAttackableCreature(Human requester) {
@@ -120,5 +117,22 @@ public class Map {
     public int getMapSize()
     {
         return simulationOptions.mapSize;
+    }
+
+    public void createCreature(Creature creature){
+        if(creature instanceof Cow){
+            addCow();
+        }
+        if(creature instanceof Hamster){
+            addHamster();
+        }
+    }
+
+    public void addCow(){
+        creatures.add(new Cow(this, getRandomPosition(List.of(BiomeConverter.Biome.PLAINS))));
+    }
+
+    public void addHamster(){
+        creatures.add(new Hamster(this, getRandomPosition(List.of(BiomeConverter.Biome.MOUNTAINS))));
     }
 }
