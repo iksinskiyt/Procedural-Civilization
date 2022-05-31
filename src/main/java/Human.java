@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Human extends Creature {
     private final int teamID;
     private boolean onExpedition;
@@ -8,6 +10,7 @@ public class Human extends Creature {
     private int hasSword = 0;
     private int armorBonus = 2;
     private int swordBonus = 5;
+    private final Random random;
 
     public Human(int teamID, Map parentMap, Village parentVillage,
                  Position position) {
@@ -15,6 +18,7 @@ public class Human extends Creature {
 
         this.teamID = teamID;
         this.parentVillage = parentVillage;
+        random = new Random();
     }
 
     public void equipArmor(){
@@ -74,11 +78,12 @@ public class Human extends Creature {
         Creature metCreature = parentMap.getNearestEnemyWithinDistance(this, 16);
 
         if (metCreature != null) {
+            int randomFuzz = random.nextInt(5) - 2;
             if(hasSword<=0){
-                metCreature.attack(attackStrength, teamID);
+                metCreature.attack(attackStrength + randomFuzz, teamID);
             }
             else {
-                metCreature.attack(attackStrength + swordBonus, teamID);
+                metCreature.attack(attackStrength + swordBonus + randomFuzz, teamID);
                 hasSword--;
             }
             if (!metCreature.isAlive()) {
