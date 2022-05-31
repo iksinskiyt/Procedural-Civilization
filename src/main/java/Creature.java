@@ -28,9 +28,12 @@ public abstract class Creature {
     }
 
     protected Position getNewRandomPosition() {
-        int currentSpeed = speed /
-                (parentMap.getBiomeAt(position) == BiomeConverter.Biome.PLAINS ?
-                        1 : 2);
+        int currentSpeed = speed;
+        switch (parentMap.getBiomeAt(position))
+        {
+            case MOUNTAINS -> currentSpeed /= 2;
+            case OCEAN -> currentSpeed /= 4;
+        }
         return new Position(Math.min(Math.max(0, position.x +
                         random.nextInt(currentSpeed + 1) *
                                 (random.nextBoolean() ? 1 : -1)),
@@ -43,7 +46,7 @@ public abstract class Creature {
     public void move() {
         Position newRandomPosition = getNewRandomPosition();
         if (parentMap.getBiomeAt(newRandomPosition) !=
-                BiomeConverter.Biome.OCEAN)
+                BiomeConverter.Biome.OCEAN || parentMap.getBiomeAt(position) == BiomeConverter.Biome.OCEAN)
             position = newRandomPosition;
     }
 

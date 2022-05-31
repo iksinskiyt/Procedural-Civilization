@@ -52,12 +52,10 @@ public class Human extends Creature {
             randomTicksLeft--;
         } else {
             Position newRandomPosition = getNewRandomPosition();
-            if (parentMap.getBiomeAt(newRandomPosition) !=
-                    BiomeConverter.Biome.OCEAN &&
-                    (Position.squaredDistanceBetween(newRandomPosition,
+            if (Position.squaredDistanceBetween(newRandomPosition,
                             position) <
                             Position.squaredDistanceBetween(this.position,
-                                    position))) {
+                                    position)) {
                 this.position = newRandomPosition;
                 positionTriesLeft = 10;
             }
