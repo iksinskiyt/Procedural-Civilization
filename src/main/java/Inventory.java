@@ -22,25 +22,20 @@ public class Inventory {
     }
 
     public int itemAmount(Inventory inventory, Item item){
-        int amount = items.get(item);
-        return amount;
+        return items.get(item);
     }
 
     public int freeCapacity(){
 
         int sum =0;
         for (int usedCapacity : items.values()) {
-            sum =+ usedCapacity;
+            sum += usedCapacity;
         }
         return maxCapacity - sum;
     }
 
     public boolean isOverflowed() {
-        int sum =0;
-        for (int usedCapacity : items.values()) {
-            sum =+ usedCapacity;
-        }
-        return sum > maxCapacity;
+        return freeCapacity() < 0;
     }
 
     public boolean isEnough(Item item, int amount){
