@@ -136,7 +136,7 @@ public class Map {
             else if(randomNumber < 40){
                 return new Item(Item.ItemType.STONE);
             }
-            else if (50 > randomNumber && randomNumber > 120){
+            else if (50 < randomNumber && randomNumber < 120){
                 return new Item(Item.ItemType.WHEAT);
             }
             else return null;
