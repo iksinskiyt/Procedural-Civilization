@@ -90,13 +90,13 @@ public class Human extends Creature {
         Creature metCreature = parentMap.getNearestAttackableCreature(this);
 
         if (metCreature != null) {
-            if(hasSword<0){
+            if(hasSword<=0){
                 metCreature.attack(attackStrength, teamID);
             }
-            if(hasSword>0){
+            else {
                 metCreature.attack(attackStrength + swordBonus, teamID);
                 hasSword--;
-            } 
+            }
             if (!metCreature.isAlive()) {
                 Inventory killeeInventory = metCreature.takeInventory();
                 inventory.append(killeeInventory);
@@ -114,14 +114,13 @@ public class Human extends Creature {
 
     @Override
     public void attack(int damage, int teamID) {
-        if(hasArmor < 0){
+        if(hasArmor <= 0){
             this.health -= damage;
-            if (health <= 0) parentVillage.killVillager(this, teamID);
         }
-        if(hasArmor > 0){
-            this.health -= damage;
+        else {
+            this.health -= damage/2;
             this.hasArmor--;
-            if (health <= 0) parentVillage.killVillager(this, teamID);
         }
+        if (health <= 0) parentVillage.killVillager(this, teamID);
     }
 }
