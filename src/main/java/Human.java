@@ -6,27 +6,31 @@ public class Human extends Creature {
     private final Village parentVillage;
     private int positionTriesLeft = 10;
     private int randomTicksLeft = 0;
+    private static int humanBasicHealth = 100;
     private int hasArmor = 0;
     private int hasSword = 0;
-    private int armorBonus = 2;
+    private int armorBonus = 20;
     private int swordBonus = 5;
     private final Random random;
+    private int eatingCounter = 3;
+    private int tempEatingCounter = 1;
+    private int foodRegenAmount = 10;
 
     public Human(int teamID, Map parentMap, Village parentVillage,
                  Position position) {
-        super(parentMap, position, 100, 10, 8, 16);
+        super(parentMap, position, humanBasicHealth, 10, 8, 16);
 
         this.teamID = teamID;
         this.parentVillage = parentVillage;
         random = new Random();
     }
 
-    public void equipArmor(){
+    public void equipArmor() {
         this.hasArmor = 8;
         this.health += armorBonus;
     }
 
-    public void equipSword(){
+    public void equipSword() {
         this.hasSword = 8;
     }
 
@@ -53,13 +57,12 @@ public class Human extends Creature {
         } else {
             Position newRandomPosition = getNewRandomPosition();
             if (Position.squaredDistanceBetween(newRandomPosition,
-                            position) <
-                            Position.squaredDistanceBetween(this.position,
-                                    position)) {
+                    position) <
+                    Position.squaredDistanceBetween(this.position,
+                            position)) {
                 this.position = newRandomPosition;
                 positionTriesLeft = 10;
-            }
-            else
+            } else
                 positionTriesLeft--;
         }
         if (positionTriesLeft <= 0) {
@@ -73,15 +76,16 @@ public class Human extends Creature {
 
     @Override
     public void move() {
-        Creature metCreature = parentMap.getNearestEnemyWithinDistance(this, 16);
+        Creature metCreature =
+                parentMap.getNearestEnemyWithinDistance(this, 16);
 
         if (metCreature != null) {
             int randomFuzz = random.nextInt(5) - 2;
-            if(hasSword<=0){
+            if (hasSword <= 0) {
                 metCreature.attack(attackStrength + randomFuzz, teamID);
-            }
-            else {
-                metCreature.attack(attackStrength + swordBonus + randomFuzz, teamID);
+            } else {
+                metCreature.attack(attackStrength + swordBonus + randomFuzz,
+                        teamID);
                 hasSword--;
             }
             if (!metCreature.isAlive()) {
@@ -92,31 +96,62 @@ public class Human extends Creature {
         }
 
         if (onExpedition) {
-            Creature seenCreature = parentMap.getNearestEnemyWithinDistance(this, 256);
-            if(seenCreature != null)
+            Creature seenCreature =
+                    parentMap.getNearestEnemyWithinDistance(this, 256);
+            if (seenCreature != null)
                 makeMoveTowards(seenCreature.getPosition());
             else
                 super.move();
-        }
-        else {
-            if (Position.squaredDistanceBetween(position, parentVillage.getPosition()) < 64) {
+        } else {
+            if (Position.squaredDistanceBetween(position,
+                    parentVillage.getPosition()) < 64) {
                 parentVillage.storeItems(inventory);
                 inventory.clear();
                 onExpedition = true;
-                if(!(hasArmor > 0)){
-                    if(parentVillage.getInventory().useItem(new Item(Item.ItemType.ARMOR), 1)){
+                if (!(hasArmor > 0)) {
+                    if (parentVillage.getInventory()
+                            .useItem(new Item(Item.ItemType.ARMOR), 1)) {
                         equipArmor();
                     }
-                }
-                if(!(hasSword > 0)){
-                    if(parentVillage.getInventory().useItem(new Item(Item.ItemType.SWORD), 1)){
+                } else if (!(hasSword > 0)) {
+                    if (parentVillage.getInventory()
+                            .useItem(new Item(Item.ItemType.SWORD), 1)) {
                         equipSword();
+                    }
+                }
+                if (hasArmor >
+                        0) {// make counter that checks how long ago did the human eat
+                    tempEatingCounter--;
+                    if (tempEatingCounter == 0) {
+                        tempEatingCounter = eatingCounter;
+                        if (health < humanBasicHealth + armorBonus) {
+                            if (parentVillage.getInventory()
+                                    .useItem(new Item(Item.ItemType.FOOD), 1)) {
+                                health = +foodRegenAmount;
+                                if (health > humanBasicHealth + armorBonus)
+                                    health = humanBasicHealth + armorBonus;
+                            }
+                        }
+                    }
+                } else if (!(hasArmor > 0)) {
+                    tempEatingCounter--;
+                    if (tempEatingCounter == 0) {
+                        tempEatingCounter = eatingCounter;
+                        if (health < humanBasicHealth) {
+                            if (parentVillage.getInventory()
+                                    .useItem(new Item(Item.ItemType.FOOD), 1)) {
+                                health = +foodRegenAmount;
+                                if (health > humanBasicHealth)
+                                    health = humanBasicHealth;
+                            }
+                        }
                     }
                 }
             } else
                 makeMoveTowards(parentVillage.getPosition());
             return;
         }
+
 
         if (inventory.isOverflowed()) {
             onExpedition = false;
@@ -129,12 +164,13 @@ public class Human extends Creature {
 
     @Override
     public void attack(int damage, int teamID) {
-        if(hasArmor <= 0){
+        if (!(hasArmor > 0)) {
             this.health -= damage;
-        }
-        else {
-            this.health -= damage/2;
+        } else if (hasArmor > 0) {
+            this.health -= damage;
             this.hasArmor--;
+            if (hasArmor == 0 && health > 100) health = 100;
+            if (health <= 0) parentVillage.killVillager(this, teamID);
         }
         if (health <= 0) parentVillage.killVillager(this, teamID);
     }
