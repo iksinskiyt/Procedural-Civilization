@@ -40,15 +40,14 @@ public class Map {
         villages = new ArrayList<>();
 
         for (int i = 0; i < simulationOptions.nTeams; i++) {
+            Position newVillagePosition = getRandomPosition(List.of(BiomeConverter.Biome.PLAINS));
             Village village =
-                    new Village(getRandomPosition(
-                            List.of(BiomeConverter.Biome.PLAINS)), i, this);
+                    new Village(newVillagePosition, i, this);
             villages.add(village);
 
             for (int j = 0; j < simulationOptions.teamPopulation; j++) {
                 village.addVillager(new Human(i, this, village,
-                        getRandomPosition(
-                                List.of(BiomeConverter.Biome.PLAINS))));
+                        newVillagePosition));
             }
         }
 
