@@ -4,7 +4,7 @@ public abstract class Creature {
     protected Inventory inventory;
     protected Position position;
     protected int health;
-    protected final int attackStrength;
+    protected int attackStrength;
     protected final int speed;
     protected Map parentMap;
     protected Random random;
@@ -21,7 +21,7 @@ public abstract class Creature {
         random = new Random();
     }
 
-    public void attack(int damage) {
+    public void attack(int damage, int teamID) {
         health -= damage;
         if (health <= 0)
             parentMap.killCreature(this);

@@ -29,11 +29,13 @@ public class Village {
     private List<KillCount> killCounts;
     private final Map parentMap;
 
-    private int houseKillCounter = 15; // changable tick rate untill villager dies from homelessness
+    private int houseKillCounter = 150; // changable tick rate untill villager dies from homelessness
     private int tempHouseKillCounter = houseKillCounter;
     private int houseSize = 12; // changable house capacity
     private int forgeCapacity = 50; // changable forge workspace capacity
     private int bakeryCapacity = 25;
+    private int armorCounter = 0;
+    private int swordCounter = 0;
 
     Village(Position position, int teamID,
             Map parentMap) {
@@ -43,6 +45,7 @@ public class Village {
         buildings = new ArrayList<>();
         villagers = new ArrayList<>();
         inventory = new Inventory(128);
+        buildings.add(new House(this));
     }
 
     public void simulationTick() {
@@ -57,7 +60,7 @@ public class Village {
         for (Building building : buildings)
             building.simulationTick();
 
-        int houseCount = 0;
+        int houseCount = 1;
         int forgeCount = 0;
         int bakeryCount = 0;
         for (Building building : buildings){
@@ -76,10 +79,8 @@ public class Village {
                 if(tempHouseKillCounter-- == 0){
                     villagers.remove(villagers.size()-1); // kills last human from list
                     //TODO: add to deathcount? maybe new statistic
+                    tempHouseKillCounter = houseKillCounter;
                 }
-            }
-            else{
-                tempHouseKillCounter = houseKillCounter;
             }
         }
         if(forgeCount * forgeCapacity < villagers.size()){ 
@@ -110,15 +111,15 @@ public class Village {
     }
 
     public void addForge(Inventory inventory){
-        Building forge =  new Forge(this);
-        if (((Forge)forge).createForge(inventory)){
+        Forge forge =  new Forge(this);
+        if (forge.createForge(inventory)){
             buildings.add(forge);
         }
     }
 
     public void addBakery(Inventory inventory){
-        Building bakery = new Bakery(this);
-        if (((Bakery)bakery).createBakery(inventory)){
+        Bakery bakery = new Bakery(this);
+        if (bakery.createBakery(inventory)){
             buildings.add(bakery);
         }
     }
@@ -149,5 +150,20 @@ public class Village {
     public List<Human> getVillagers()
     {
         return villagers;
+    }
+
+    public void increaseArmorCount(){
+        armorCounter++;
+    }
+    public void increaseSwordCount(){
+        swordCounter++;
+    }
+
+    public int getArmorCount(){
+        return armorCounter;
+    }
+
+    public int getSwordCount(){
+        return swordCounter;
     }
 }
