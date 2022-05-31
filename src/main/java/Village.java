@@ -55,7 +55,11 @@ public class Village {
     public void simulationTick() {
         if (villagers.isEmpty()) {
             killCounts.sort(new KillCountComparator());
-            teamID = killCounts.get(killCounts.size() - 1).teamID;
+            if(!killCounts.isEmpty())
+            {
+                teamID = killCounts.get(killCounts.size() - 1).teamID;
+                killCounts.clear();
+            }
         }
 
         for (Human human : villagers)
