@@ -28,7 +28,7 @@ public class Inventory {
 
     public void append(Inventory inventory) {
         for (ItemType key : ItemType.values()) {
-            this.items.put(key, this.items.getOrDefault(key, 0) + inventory.items.getOrDefault(key, 0));
+            this.addItem(key, inventory.items.getOrDefault(key, 0));
         }
     }
 
@@ -54,10 +54,8 @@ public class Inventory {
     }
 
     public void addItem(ItemType item, int amount) {
-            if(freeCapacity()>amount){
-            int value = items.getOrDefault(item, 0) + amount;
+            int value = items.getOrDefault(item, 0) + Math.min(amount, freeCapacity());
             items.put(item,value);
-        }
     }
 
     public boolean useItem(ItemType item, int amount){
