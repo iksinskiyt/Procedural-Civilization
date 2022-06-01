@@ -18,6 +18,7 @@ public class GUI {
             pack();
             setResizable(false);
             setModalityType(ModalityType.APPLICATION_MODAL);
+            setLocationRelativeTo(null);
             setVisible(true);
         }
     }
@@ -50,6 +51,7 @@ public class GUI {
             pack();
             setResizable(false);
             setModalityType(ModalityType.APPLICATION_MODAL);
+            setLocationRelativeTo(null);
             setVisible(true);
         }
 
@@ -101,6 +103,7 @@ public class GUI {
                 }
             });
             setTitle("Procedural Civilization (user input)");
+            setLocationRelativeTo(null);
             setVisible(true);
         }
 

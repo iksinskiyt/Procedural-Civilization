@@ -102,6 +102,7 @@ public class MainWindow extends JFrame {
                 gui.maybeExit();
             }
         });
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 }
