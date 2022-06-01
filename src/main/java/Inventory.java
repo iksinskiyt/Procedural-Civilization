@@ -1,13 +1,24 @@
-import java.util.HashMap;
+import java.util.EnumMap;
 
 
 public class Inventory {
     private final int maxCapacity;
-    private HashMap<Item, Integer> items;
+    private EnumMap<ItemType, Integer> items;
 
+    public enum ItemType {
+        STONE,
+        WOOD,
+        WHEAT,
+        LEATHER,
+        MEAT,
+        FOOD,
+        ARMOR,
+        SWORD
+    }
+    public static ItemType itemType;
 
     public Inventory(int capacity) {
-        items = new HashMap<>();
+        items = new EnumMap<>(ItemType.class);
         maxCapacity = capacity;
     }
 
@@ -16,12 +27,12 @@ public class Inventory {
     }
 
     public void append(Inventory inventory) {
-        for (Item key : items.keySet()) {
+        for (ItemType key : items.keySet()) {
             this.items.put(key, this.items.get(key) + inventory.items.get(key));
         }
     }
 
-    public int itemAmount(Inventory inventory, Item item){
+    public int itemAmount(Inventory inventory, ItemType item){
         return items.get(item);
     }
 
