@@ -1,10 +1,10 @@
 public class Forge extends Building {
     
-    private static int forgeWoodCost = 15; // changable forge cost variable
-    private static int forgeStoneCost = 10;
-    private static int armorCost = 5;
-    private static int swordCost = 2;
-    private static int forgeCounter = 15;
+    public static final int forgeWoodCost = 15; // changable forge cost variable
+    public static final int forgeStoneCost = 10;
+    private static final int armorCost = 5;
+    private static final int swordCost = 2;
+    private static final int forgeCounter = 15;
     private int tempForgeCounter = forgeCounter;
 
     public Forge(Village parentVillage){
@@ -22,17 +22,6 @@ public class Forge extends Building {
             produceSword(parentVillage.getInventory());
             }
         }
-    }
-
-    public boolean createForge(Inventory inventory){
-        if (inventory.isEnough(Inventory.ItemType.WOOD, forgeWoodCost)){ // quite a bit unethical, but eh... if it works dont touch it
-            if(inventory.useItem(Inventory.ItemType.STONE, forgeStoneCost)){
-                inventory.useItem(Inventory.ItemType.WOOD, forgeWoodCost);
-                return true;
-            }
-            else return false;
-        }
-        else return false;
     }
 
     private void produceArmor(Inventory inventory){

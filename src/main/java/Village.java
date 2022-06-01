@@ -54,7 +54,7 @@ public class Village {
         for (Building building : buildings)
             building.simulationTick();
 
-        int houseCount = 1;
+        int houseCount = 0;
         int forgeCount = 0;
         int bakeryCount = 0;
         for (Building building : buildings){
@@ -101,26 +101,26 @@ public class Village {
     }
 
     public boolean addHouse(Inventory inventory){
-        House house = new House(this);
-        if(house.createHouse(inventory)){
-            buildings.add(house);
+        if(inventory.useItem(Inventory.ItemType.WOOD, House.houseWoodCost)) {
+            buildings.add(new House(this));
             return true;
         }
-        else return false;
+        return false;
     }
 
     public void addForge(Inventory inventory){
-        Forge forge =  new Forge(this);
-        if (forge.createForge(inventory)){
-            buildings.add(forge);
+        if(inventory.isEnough(Inventory.ItemType.WOOD, Forge.forgeWoodCost) && inventory.isEnough(
+                Inventory.ItemType.STONE, Forge.forgeStoneCost))
+        {
+            inventory.useItem(Inventory.ItemType.WOOD, Forge.forgeWoodCost);
+            inventory.useItem(Inventory.ItemType.STONE, Forge.forgeStoneCost);
+            buildings.add(new Forge(this));
         }
     }
 
     public void addBakery(Inventory inventory){
-        Bakery bakery = new Bakery(this);
-        if (bakery.createBakery(inventory)){
-            buildings.add(bakery);
-        }
+        if(inventory.useItem(Inventory.ItemType.STONE, Bakery.bakeryStoneCost))
+            buildings.add(new Bakery(this));
     }
 
     public int getTeamID() {

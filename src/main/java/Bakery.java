@@ -1,9 +1,9 @@
 public class Bakery extends Building {
     // Yes, the bakery bakes bread and meat... don't ask
-    private static int bakeryStoneCost = 20;
-    private static int meatCost = 5;
-    private static int breadCost = 10 ;
-    private static int bakeryCounter = 15; // how many ticks will it take to produce food from meat
+    public static final int bakeryStoneCost = 20;
+    private static final int meatCost = 5;
+    private static final int breadCost = 10 ;
+    private static final int bakeryCounter = 15; // how many ticks will it take to produce food from meat
     private int tempBakeryCounter = bakeryCounter;
 
     public Bakery(Village parentVillage){
@@ -17,10 +17,6 @@ public class Bakery extends Building {
             produceFood(parentVillage.getInventory());
             tempBakeryCounter = bakeryCounter;
         }
-    }
-
-    public boolean createBakery(Inventory inventory){
-        return inventory.useItem(Inventory.ItemType.STONE, bakeryStoneCost);
     }
 
     private void produceFood(Inventory inventory){
