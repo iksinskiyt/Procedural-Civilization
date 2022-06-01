@@ -157,7 +157,11 @@ public class GUI {
     }
 
     public void openMainWindow(Map map) {
-        mainWindow = new MainWindow(map);
+        mainWindow = new MainWindow(map, this);
+    }
+
+    public void closeMainWindow() {
+        mainWindow.dispose();
     }
 
     public SimulationOptions getOptionsFromUser() {
@@ -166,17 +170,27 @@ public class GUI {
             UserInputDialog dialog = new UserInputDialog();
             simulationOptions = dialog.getSimulationOptions();
         } while (simulationOptions == null);
-        System.out.println(simulationOptions.mapSize);
-        System.out.println(simulationOptions.noiseScale);
-        System.out.println(simulationOptions.noiseOctaves);
-        System.out.println(simulationOptions.nTeams);
-        System.out.println(simulationOptions.teamPopulation);
-        System.out.println(simulationOptions.nCows);
-        System.out.println(simulationOptions.nHamsters);
         return simulationOptions;
     }
 
     public void showSimulation() {
         mainWindow.repaint();
+    }
+
+    public void showMessage(String message) {
+        new MessageDialog(message);
+    }
+
+    private boolean exitRequested = false;
+
+    public void maybeExit()
+    {
+        YesNoDialog yesNoDialog = new YesNoDialog("Do you want to exit the simulation?");
+        exitRequested = yesNoDialog.getYes();
+    }
+
+    public boolean getExitRequested()
+    {
+        return exitRequested;
     }
 }

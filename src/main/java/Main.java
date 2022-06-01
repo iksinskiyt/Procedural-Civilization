@@ -16,6 +16,13 @@ public class Main {
             public void actionPerformed(ActionEvent actionEvent) {
                 map.simulationTick();
                 gui.showSimulation();
+                if(map.isSimulationComplete()) {
+                    gui.showMessage("Simulation complete");
+                    System.exit(0);
+                }
+                if(gui.getExitRequested()) {
+                    System.exit(0);
+                }
             }
         });
         simulationTimer.start();

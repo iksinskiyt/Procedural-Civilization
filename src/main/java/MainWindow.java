@@ -1,11 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 import java.util.List;
 
 public class MainWindow extends JFrame {
     private final Map map;
+    private final GUI gui;
     private final HeightMap heightMap;
     private final List<Creature> creatures;
     private final List<Village> villages;
@@ -65,8 +68,9 @@ public class MainWindow extends JFrame {
         }
     }
 
-    public MainWindow(Map map) {
+    public MainWindow(Map map, GUI gui) {
         this.map = map;
+        this.gui = gui;
 
         // Get all necessary references
         this.heightMap = map.getHeightMap();
@@ -90,6 +94,14 @@ public class MainWindow extends JFrame {
         pack();
         setTitle("Procedural Civilization");
         setResizable(false);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                super.windowClosing(e);
+                gui.maybeExit();
+            }
+        });
         setVisible(true);
     }
 }
