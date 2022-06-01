@@ -128,8 +128,34 @@ public class Map {
     }
 
     Inventory.ItemType collectResource(Human requester) {
-        // TODO: implementation
-        return null;
+        int randomNumber = random.nextInt(1000);
+        if(getBiomeAt(requester.getPosition()) == BiomeConverter.Biome.PLAINS){
+            if(randomNumber > 890){
+                return Inventory.ItemType.WOOD;
+            }
+            else if(randomNumber < 40){
+                return Inventory.ItemType.STONE;
+            }
+            else if (50 > randomNumber && randomNumber > 120){
+                return Inventory.ItemType.WHEAT;
+            }
+            else return null;
+        }
+        else if(getBiomeAt(requester.getPosition()) == BiomeConverter.Biome.MOUNTAINS){
+            if(randomNumber>890){
+                return Inventory.ItemType.STONE;
+            }
+            else return null;
+        }
+        else{
+            if (randomNumber==69){
+                return Inventory.ItemType.SWORD;
+            }
+            else if (randomNumber == 420){
+                return Inventory.ItemType.ARMOR;
+            }
+            else return null;
+        }
     }
 
     public int getMapSize()
