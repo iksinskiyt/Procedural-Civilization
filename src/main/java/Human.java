@@ -74,6 +74,14 @@ public class Human extends Creature {
         }
     }
 
+    public boolean checkArmor(){
+        return hasArmor>0;
+    }
+
+    public boolean checkSword(){
+        return hasSword>0;
+    }
+    
     @Override
     public void move() {
         Creature metCreature =
@@ -158,14 +166,6 @@ public class Human extends Creature {
             if (collectedResource != null)
                 inventory.addItem(collectedResource, 1);
         }
-    }
-
-    public boolean checkArmor(){
-        return hasArmor>0;
-    }
-
-    public boolean checkSword(){
-        return hasSword>0;
     }
 
     @Override
