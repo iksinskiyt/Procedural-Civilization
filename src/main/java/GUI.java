@@ -136,12 +136,12 @@ public class GUI {
                 if(simulationOptions.noiseOctaves < 2 || simulationOptions.noiseOctaves > 10)
                     throw new Exception("Number of octaves must be in range 2-10 (inclusive)");
             } catch (NumberFormatException e) {
-                showMessage("Invalid number format: " + e.getMessage());
+                showMessage("Invalid number format: " + e.getMessage(), false);
                 return null;
             }
             catch (Exception e)
             {
-                showMessage(e.getMessage());
+                showMessage(e.getMessage(), false);
                 return null;
             }
 
@@ -175,8 +175,10 @@ public class GUI {
         mainWindow.repaint();
     }
 
-    public void showMessage(String message) {
+    public void showMessage(String message, boolean fatal) {
         new MessageDialog(message);
+        if(fatal)
+            System.exit(1);
     }
 
     private boolean exitRequested = false;

@@ -1,5 +1,6 @@
 .idea/
 bin/
+output.csv
 
 # Ignore Gradle project-specific cache directory
 .gradle

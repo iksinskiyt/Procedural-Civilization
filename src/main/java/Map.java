@@ -10,6 +10,7 @@ public class Map {
     private boolean simulationComplete;
     private final SimulationOptions simulationOptions;
     private final Random random;
+    private int tickCounter = 0;
 
     public BiomeConverter.Biome getBiomeAt(Position position)
     {
@@ -63,6 +64,7 @@ public class Map {
     }
 
     public void simulationTick() {
+        tickCounter++;
         int lastTeamID = -1;
         simulationComplete = true;
         for (Village village : villages) {
@@ -179,5 +181,14 @@ public class Map {
     public void addHamster(){
         creatures.add(new Hamster(this, getRandomPosition(List.of(
                 BiomeConverter.Biome.PLAINS, BiomeConverter.Biome.MOUNTAINS))));
+    }
+
+    public int getTickCounter() {
+        return tickCounter;
+    }
+
+    public int getTeamCount()
+    {
+        return simulationOptions.nTeams;
     }
 }
