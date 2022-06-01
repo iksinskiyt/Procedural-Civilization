@@ -1,26 +1,9 @@
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 
 
 public class Village {
-    private class KillCount {
-        public final int teamID;
-        public int count;
-
-        public KillCount(int teamID, int count) {
-            this.teamID = teamID;
-            this.count = count;
-        }
-    }
-
-    private class KillCountComparator implements Comparator<KillCount> {
-        @Override
-        public int compare(KillCount killCount, KillCount t1) {
-            return killCount.count - t1.count;
-        }
-    }
-
     private final List<Human> villagers;
     // To prevent concurrent modification of `villagers`
     private final List<Human> deadVillagers;
@@ -28,7 +11,8 @@ public class Village {
     private final Inventory inventory;
     private final Position position;
     private int teamID;
-    private final List<KillCount> killCounts;
+    // HashMap of teamID and kill count
+    private final HashMap<Integer, Integer> killCounts;
     private final Map parentMap;
 
     private int houseKillCounter = 150; // changable tick rate untill villager dies from homelessness
@@ -48,16 +32,17 @@ public class Village {
         villagers = new ArrayList<>();
         deadVillagers = new ArrayList<>();
         inventory = new Inventory(128);
-        killCounts = new ArrayList<>();
+        killCounts = new HashMap<>();
         buildings.add(new House(this));
     }
 
     public void simulationTick() {
         if (villagers.isEmpty()) {
-            killCounts.sort(new KillCountComparator());
-            if(!killCounts.isEmpty())
+            List<HashMap.Entry<Integer, Integer>> killCountList = new ArrayList<>(killCounts.entrySet());
+            killCountList.sort(HashMap.Entry.comparingByValue());
+            if(!killCountList.isEmpty())
             {
-                teamID = killCounts.get(killCounts.size() - 1).teamID;
+                teamID = killCountList.get(killCountList.size() - 1).getKey();
                 killCounts.clear();
             }
         }
@@ -144,14 +129,7 @@ public class Village {
 
     public void killVillager(Human villager, int killerTeamID) {
         deadVillagers.add(villager);
-        for(KillCount killCount : killCounts)
-        {
-            if(killCount.teamID == killerTeamID) {
-                killCount.count++;
-                return;
-            }
-        }
-        killCounts.add(new KillCount(killerTeamID, 1));
+        killCounts.put(killerTeamID, killCounts.getOrDefault(killerTeamID, 0) + 1);
     }
 
     public Map getParentMap() {
