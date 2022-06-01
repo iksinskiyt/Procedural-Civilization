@@ -136,7 +136,7 @@ public class Map {
             else if(randomNumber < 40){
                 return Inventory.ItemType.STONE;
             }
-            else if (50 > randomNumber && randomNumber > 120){
+            else if (50 < randomNumber && randomNumber < 120){
                 return Inventory.ItemType.WHEAT;
             }
             else return null;
@@ -177,6 +177,7 @@ public class Map {
     }
 
     public void addHamster(){
-        creatures.add(new Hamster(this, getRandomPosition(List.of(BiomeConverter.Biome.MOUNTAINS))));
+        creatures.add(new Hamster(this, getRandomPosition(List.of(
+                BiomeConverter.Biome.PLAINS, BiomeConverter.Biome.MOUNTAINS))));
     }
 }

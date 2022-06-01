@@ -63,7 +63,8 @@ public class Village {
         }
 
         for (Human human : villagers)
-            human.move();
+            if(human.isAlive())
+                human.move();
 
         for (Building building : buildings)
             building.simulationTick();
