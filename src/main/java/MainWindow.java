@@ -22,12 +22,12 @@ public class MainWindow extends JFrame {
             g.drawOval(x - 3, y - 3, 7, 7);
         }
 
-        private void drawHumanIcon(Graphics g, int x, int y, Color color, int health, int maxHealth, int armor, int maxArmor, int sword, int maxSword) {
+        private void drawHumanIcon(Graphics g, int x, int y, Color color, Human human) {
             g.setColor(color);
             g.fillRect(x - 3, y - 3, 7, 7);
             g.setColor(Color.BLACK);
             g.drawRect(x - 3, y - 3, 7, 7);
-            drawStatIcon(g, x, y, health, maxHealth, armor, maxArmor, sword, maxSword);
+            drawStatIcon(g, x, y, human);
         }
 
         private void drawVillageIcon(Graphics g, int x, int y, Color color) {
@@ -39,10 +39,16 @@ public class MainWindow extends JFrame {
                     new int[]{y + 8, y, y - 8, y}, 4);
         }
 
-        private void drawStatIcon(Graphics g, int x, int y, int health, int maxHealth, int armor, int maxArmor, int sword, int maxSword){
+        private void drawStatIcon(Graphics g, int x, int y, Human human){
             int pixelHealthWidth;
             int pixelArmorWidth;
             int pixelSwordWidth;
+            int health = human.getHealth();
+            int maxHealth = human.getMaxHealth();
+            int armor = human.getArmor();
+            int maxArmor = human.getMaxArmor();
+            int sword = human.getSword();
+            int maxSword = human.getMaxSword();
             
             pixelHealthWidth = (int)Math.ceil((double)health/(double)maxHealth)*5;
             pixelArmorWidth = (int)Math.ceil((double)armor/(double)maxArmor)*5;
@@ -83,7 +89,7 @@ public class MainWindow extends JFrame {
                 for (Human human : village.getVillagers()) {
                     Position position = human.getPosition();
                     drawHumanIcon(g, position.x, position.y,
-                            getTeamColor(human.getTeamID()),human.getHealth(),human.getMaxHealth(),human.getArmor(), human.getMaxArmor(), human.getSword(), human.getMaxSword());
+                            getTeamColor(human.getTeamID()),human);
                 }
             }
             Toolkit.getDefaultToolkit().sync();
