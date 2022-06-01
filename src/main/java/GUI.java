@@ -92,7 +92,7 @@ public class GUI {
             add(new Label(""));
             add(bStart);
             setResizable(false);
-            setLayout(new GridLayout(8, 2));
+            setLayout(new GridLayout(8, 2, 20, 0));
             pack();
             setModalityType(ModalityType.APPLICATION_MODAL);
             addWindowListener(new WindowAdapter() {
