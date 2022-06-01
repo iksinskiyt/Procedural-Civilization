@@ -113,17 +113,37 @@ public class GUI {
             SimulationOptions simulationOptions = new SimulationOptions();
 
             try {
-                simulationOptions.mapSize = Integer.parseInt(tfMapSize.getText());
+                simulationOptions.mapSize =
+                        Integer.parseInt(tfMapSize.getText());
+                if(simulationOptions.mapSize < 1)
+                    throw new Exception("Map size must be a positive integer");
                 simulationOptions.nTeams = Integer.parseInt(tfNTeams.getText());
+                if(simulationOptions.nTeams < 1 || simulationOptions.nTeams > 8)
+                    throw new Exception("Number of teams must be in range 1-8 (inclusive)");
                 simulationOptions.teamPopulation =
                         Integer.parseInt(tfTeamPopulation.getText());
+                if(simulationOptions.teamPopulation < 0)
+                    throw new Exception("Team population must be a natural number");
                 simulationOptions.nCows = Integer.parseInt(tfNCows.getText());
+                if(simulationOptions.nCows < 0)
+                    throw new Exception("Number of cows must be a natural number");
                 simulationOptions.nHamsters =
                         Integer.parseInt(tfNHamsters.getText());
-                simulationOptions.noiseScale = Double.parseDouble(tfNoiseScale.getText());
-                simulationOptions.noiseOctaves = Integer.parseInt(tfNoiseOctaves.getText());
+                if(simulationOptions.nHamsters < 0)
+                    throw new Exception("Number of hamsters must be a natural number");
+                simulationOptions.noiseScale =
+                        Double.parseDouble(tfNoiseScale.getText());
+                simulationOptions.noiseOctaves =
+                        Integer.parseInt(tfNoiseOctaves.getText());
+                if(simulationOptions.noiseOctaves < 2 || simulationOptions.noiseOctaves > 10)
+                    throw new Exception("Number of octaves must be in range 2-10 (inclusive)");
             } catch (NumberFormatException e) {
-                new ErrorDialog(e.getMessage());
+                showMessage("Invalid number format: " + e.getMessage());
+                return null;
+            }
+            catch (Exception e)
+            {
+                showMessage(e.getMessage());
                 return null;
             }
 
