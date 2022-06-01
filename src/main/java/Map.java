@@ -127,7 +127,7 @@ public class Map {
         return null;
     }
 
-    Item collectResource(Human requester) {
+    Inventory.ItemType collectResource(Human requester) {
         // TODO: implementation
         return null;
     }

@@ -27,8 +27,8 @@ public class Inventory {
     }
 
     public void append(Inventory inventory) {
-        for (ItemType key : items.keySet()) {
-            this.items.put(key, this.items.get(key) + inventory.items.get(key));
+        for (ItemType key : ItemType.values()) {
+            this.items.put(key, this.items.getOrDefault(key, 0) + inventory.items.getOrDefault(key, 0));
         }
     }
 
@@ -49,18 +49,18 @@ public class Inventory {
         return freeCapacity() < 0;
     }
 
-    public boolean isEnough(Item item, int amount){
+    public boolean isEnough(ItemType item, int amount){
         return items.getOrDefault(item, 0) >= amount;
     }
 
-    public void addItem(Item item, int amount) {
+    public void addItem(ItemType item, int amount) {
             if(freeCapacity()>amount){
             int value = items.getOrDefault(item, 0) + amount;
             items.put(item,value);
         }
     }
 
-    public boolean useItem(Item item, int amount){
+    public boolean useItem(ItemType item, int amount){
         if (isEnough(item, amount)){
             int value = items.get(item) - amount;
             items.put(item,value);

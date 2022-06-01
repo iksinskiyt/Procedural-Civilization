@@ -18,13 +18,6 @@ public class House extends Building {
     }
 
     public boolean createHouse(Inventory inventory){
-        Item.ItemType itemType = Item.ItemType.WOOD;
-        Item item = new Item(itemType);
-        if (inventory.useItem(item, houseCost)){
-            return true;
-        }
-        else{
-            return false;
-        } 
+        return inventory.useItem(Inventory.ItemType.WOOD, houseCost);
     }
 }
