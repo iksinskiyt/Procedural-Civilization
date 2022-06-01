@@ -4,12 +4,11 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 public class GUI {
-    class ErrorDialog extends JDialog {
-        public ErrorDialog(String message) {
+    class MessageDialog extends JDialog {
+        public MessageDialog(String message) {
             super();
             setLayout(new BorderLayout());
-            add(new JLabel("An error occurred: " + message,
-                    SwingConstants.CENTER), BorderLayout.CENTER);
+            add(new JLabel(message, SwingConstants.CENTER), BorderLayout.CENTER);
             JButton okButton = new JButton("OK");
             add(okButton, BorderLayout.SOUTH);
             okButton.addActionListener(actionEvent -> setVisible(false));
@@ -17,6 +16,13 @@ public class GUI {
             setResizable(false);
             setModalityType(ModalityType.APPLICATION_MODAL);
             setVisible(true);
+        }
+    }
+
+    class ErrorDialog extends MessageDialog {
+        ErrorDialog(String errorMessage)
+        {
+            super("An error occured: " + errorMessage);
         }
     }
 
