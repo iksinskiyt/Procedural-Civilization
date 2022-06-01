@@ -20,10 +20,6 @@ public class Inventory {
     public Inventory(int capacity) {
         items = new EnumMap<>(ItemType.class);
         maxCapacity = capacity;
-        
-        for (Item.ItemType itemKey : Item.ItemType.values()) {
-            this.addItem(new Item(itemKey), 0);
-        }
     }
 
     public void clear() {
