@@ -187,7 +187,7 @@ public class Human extends Creature {
             return;
         }
 
-        if (inventory.isOverflowed()) {
+        if (inventory.isFull()) {
             onExpedition = false;
         } else {
             Inventory.ItemType collectedResource = parentMap.collectResource(this);

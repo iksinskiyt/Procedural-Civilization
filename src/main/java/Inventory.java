@@ -45,8 +45,8 @@ public class Inventory {
         return maxCapacity - sum;
     }
 
-    public boolean isOverflowed() {
-        return freeCapacity() < 0;
+    public boolean isFull() {
+        return freeCapacity() <= 0;
     }
 
     public boolean isEnough(ItemType item, int amount){
