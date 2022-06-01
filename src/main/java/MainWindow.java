@@ -5,6 +5,7 @@ import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 import java.util.List;
+import java.util.Random;
 
 public class MainWindow extends JFrame {
     private final Map map;
@@ -49,10 +50,11 @@ public class MainWindow extends JFrame {
             int maxArmor = human.getMaxArmor();
             int sword = human.getSword();
             int maxSword = human.getMaxSword();
-            
-            pixelHealthWidth = (int)Math.ceil((double)health/(double)maxHealth)*5;
-            pixelArmorWidth = (int)Math.ceil((double)armor/(double)maxArmor)*5;
-            pixelSwordWidth = (int)Math.ceil((double)sword/(double)maxSword)*5;
+
+            pixelHealthWidth = (int)Math.ceil((double)health*5/(double)maxHealth);
+            pixelArmorWidth = (int)Math.ceil((double)armor*5/(double)maxArmor);
+            pixelSwordWidth = (int)Math.ceil((double)sword*5/(double)maxSword);
+
             g.setColor(new Color(237, 31, 36));
             g.fillRect(x-2, y-2, 6, 3);
 
