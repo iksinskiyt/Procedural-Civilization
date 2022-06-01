@@ -68,36 +68,30 @@ public class GUI {
         private final JTextField tfNCows;
         private final JTextField tfNHamsters;
 
+        private JTextField addNewInput(String label, String defaultValue)
+        {
+            add(new JLabel(label));
+            JTextField textField = new JTextField(defaultValue);
+            add(textField);
+            return textField;
+        }
+
         public UserInputDialog() {
             super();
-            tfMapSize = new JTextField("800");
-            tfNoiseScale = new JTextField("1.0");
-            tfNoiseOctaves = new JTextField("10");
-            tfNTeams = new JTextField("4");
-            tfTeamPopulation = new JTextField("4");
-            tfNCows = new JTextField("4");
-            tfNHamsters = new JTextField("4");
+            tfMapSize = addNewInput("Map size", "800");
+            tfNoiseScale = addNewInput("Noise scale", "1.0");
+            tfNoiseOctaves = addNewInput("Noise octaves", "10");
+            tfNTeams = addNewInput("Number of teams", "4");
+            tfTeamPopulation = addNewInput("Team population", "8");
+            tfNCows = addNewInput("Number of cows", "10");
+            tfNHamsters = addNewInput("Number of hamsters", "5");
             JButton bStart = new JButton("Start");
             bStart.addActionListener(actionEvent -> setVisible(false));
-            add(new JLabel("Map size:"));
-            add(tfMapSize);
-            add(new JLabel("Noise scale:"));
-            add(tfNoiseScale);
-            add(new JLabel("Noise octaves:"));
-            add(tfNoiseOctaves);
-            add(new JLabel("Number of teams:"));
-            add(tfNTeams);
-            add(new JLabel("Team population:"));
-            add(tfTeamPopulation);
-            add(new JLabel("Number of cows:"));
-            add(tfNCows);
-            add(new JLabel("Number of hamsters:"));
-            add(tfNHamsters);
-            add(new JLabel(""));
+            add(new Label(""));
             add(bStart);
-            setSize(400, 300);
             setResizable(false);
             setLayout(new GridLayout(8, 2));
+            pack();
             setModalityType(ModalityType.APPLICATION_MODAL);
             addWindowListener(new WindowAdapter() {
                 @Override
@@ -106,6 +100,7 @@ public class GUI {
                     System.exit(0);
                 }
             });
+            setTitle("Procedural Civilization (user input)");
             setVisible(true);
         }
 
