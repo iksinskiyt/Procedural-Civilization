@@ -15,6 +15,9 @@ public class Human extends Creature {
     private int eatingCounter = 3;
     private int tempEatingCounter = 1;
     private int foodRegenAmount = 10;
+    public int maxHealth=humanBasicHealth;
+    public int maxArmor = 8;
+    public int maxSword = 8;
 
     public Human(int teamID, Map parentMap, Village parentVillage,
                  Position position) {
@@ -26,12 +29,13 @@ public class Human extends Creature {
     }
 
     public void equipArmor() {
-        this.hasArmor = 8;
+        this.hasArmor = maxArmor;
         this.health += armorBonus;
+        maxHealth += armorBonus;
     }
 
     public void equipSword() {
-        this.hasSword = 8;
+        this.hasSword = maxSword;
     }
 
     public boolean isOnExpedition() {
@@ -81,7 +85,31 @@ public class Human extends Creature {
     public boolean checkSword(){
         return hasSword>0;
     }
-    
+
+    public int getArmor(){
+        return hasArmor;
+    }
+
+    public int getSword(){
+        return hasSword;
+    }
+
+    public int getHealth(){
+        return health;
+    }
+
+    public int getMaxHealth(){
+        return maxHealth;
+    }
+
+    public int getMaxArmor(){
+        return maxArmor;
+    }
+
+    public int getMaxSword(){
+        return maxSword;
+    }
+
     @Override
     public void move() {
         Creature metCreature =
@@ -175,6 +203,7 @@ public class Human extends Creature {
         } else {
             this.health -= damage;
             this.hasArmor--;
+            if (hasArmor == 0) maxHealth = humanBasicHealth;
             if (hasArmor == 0 && health > 100) health = 100;
             if (health <= 0) parentVillage.killVillager(this, teamID);
         }
