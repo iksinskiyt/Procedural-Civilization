@@ -132,19 +132,19 @@ public class Map {
     Inventory.ItemType collectResource(Human requester) {
         int randomNumber = random.nextInt(1000);
         if(getBiomeAt(requester.getPosition()) == BiomeConverter.Biome.PLAINS){
-            if(randomNumber > 890){
+            if(randomNumber > 990){
                 return Inventory.ItemType.WOOD;
             }
-            else if(randomNumber < 40){
+            else if(randomNumber < 4){
                 return Inventory.ItemType.STONE;
             }
-            else if (50 < randomNumber && randomNumber < 120){
+            else if (5 < randomNumber && randomNumber < 12){
                 return Inventory.ItemType.WHEAT;
             }
             else return null;
         }
         else if(getBiomeAt(requester.getPosition()) == BiomeConverter.Biome.MOUNTAINS){
-            if(randomNumber>890){
+            if(randomNumber>990){
                 return Inventory.ItemType.STONE;
             }
             else return null;
