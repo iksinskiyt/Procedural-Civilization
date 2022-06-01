@@ -99,34 +99,11 @@ public class GUI {
             setResizable(false);
             setLayout(new GridLayout(8, 2));
             setModalityType(ModalityType.APPLICATION_MODAL);
-            addWindowListener(new WindowListener() {
+            addWindowListener(new WindowAdapter() {
                 @Override
-                public void windowOpened(WindowEvent windowEvent) {
-                }
-
-                @Override
-                public void windowClosing(WindowEvent windowEvent) {
+                public void windowClosing(WindowEvent e) {
+                    super.windowClosing(e);
                     System.exit(0);
-                }
-
-                @Override
-                public void windowClosed(WindowEvent windowEvent) {
-                }
-
-                @Override
-                public void windowIconified(WindowEvent windowEvent) {
-                }
-
-                @Override
-                public void windowDeiconified(WindowEvent windowEvent) {
-                }
-
-                @Override
-                public void windowActivated(WindowEvent windowEvent) {
-                }
-
-                @Override
-                public void windowDeactivated(WindowEvent windowEvent) {
                 }
             });
             setVisible(true);
