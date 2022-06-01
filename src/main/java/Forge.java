@@ -25,13 +25,9 @@ public class Forge extends Building {
     }
 
     public boolean createForge(Inventory inventory){
-        Item.ItemType wood = Item.ItemType.WOOD;
-        Item.ItemType stone = Item.ItemType.STONE;
-        Item woodItem = new Item(wood);
-        Item stoneItem = new Item(stone);
-        if (inventory.isEnough(woodItem, forgeWoodCost)){ // quite a bit unethical, but eh... if it works dont touch it
-            if(inventory.useItem(stoneItem, forgeStoneCost)){
-                inventory.useItem(woodItem, forgeWoodCost);
+        if (inventory.isEnough(Inventory.ItemType.WOOD, forgeWoodCost)){ // quite a bit unethical, but eh... if it works dont touch it
+            if(inventory.useItem(Inventory.ItemType.STONE, forgeStoneCost)){
+                inventory.useItem(Inventory.ItemType.WOOD, forgeWoodCost);
                 return true;
             }
             else return false;
@@ -40,20 +36,16 @@ public class Forge extends Building {
     }
 
     private void produceArmor(Inventory inventory){
-        Item leather = new Item(Item.ItemType.LEATHER);
-        if(inventory.useItem(leather, armorCost)){
-            Item armor = new Item(Item.ItemType.ARMOR);
-            inventory.addItem(armor, 1);
+        if(inventory.useItem(Inventory.ItemType.LEATHER, armorCost)){
+            inventory.addItem(Inventory.ItemType.ARMOR, 1);
             parentVillage.increaseArmorCount();
         }
 
     }
 
     private void produceSword(Inventory inventory){
-        Item stone = new Item(Item.ItemType.STONE);
-        if(inventory.useItem(stone, swordCost)){
-            Item sword = new Item(Item.ItemType.SWORD);
-            inventory.addItem(sword, 1);
+        if(inventory.useItem(Inventory.ItemType.STONE, swordCost)){
+            inventory.addItem(Inventory.ItemType.SWORD, 1);
             parentVillage.increaseSwordCount();
         }
     }

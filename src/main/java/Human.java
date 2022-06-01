@@ -110,12 +110,12 @@ public class Human extends Creature {
                 onExpedition = true;
                 if (!(hasArmor > 0)) {
                     if (parentVillage.getInventory()
-                            .useItem(new Item(Item.ItemType.ARMOR), 1)) {
+                            .useItem(Inventory.ItemType.ARMOR, 1)) {
                         equipArmor();
                     }
                 } else if (!(hasSword > 0)) {
                     if (parentVillage.getInventory()
-                            .useItem(new Item(Item.ItemType.SWORD), 1)) {
+                            .useItem(Inventory.ItemType.SWORD, 1)) {
                         equipSword();
                     }
                 }
@@ -126,20 +126,20 @@ public class Human extends Creature {
                         tempEatingCounter = eatingCounter;
                         if (health < humanBasicHealth + armorBonus) {
                             if (parentVillage.getInventory()
-                                    .useItem(new Item(Item.ItemType.FOOD), 1)) {
+                                    .useItem(Inventory.ItemType.FOOD, 1)) {
                                 health = +foodRegenAmount;
                                 if (health > humanBasicHealth + armorBonus)
                                     health = humanBasicHealth + armorBonus;
                             }
                         }
                     }
-                } else if (!(hasArmor > 0)) {
+                } else {
                     tempEatingCounter--;
                     if (tempEatingCounter == 0) {
                         tempEatingCounter = eatingCounter;
                         if (health < humanBasicHealth) {
                             if (parentVillage.getInventory()
-                                    .useItem(new Item(Item.ItemType.FOOD), 1)) {
+                                    .useItem(Inventory.ItemType.FOOD, 1)) {
                                 health = +foodRegenAmount;
                                 if (health > humanBasicHealth)
                                     health = humanBasicHealth;
@@ -152,11 +152,10 @@ public class Human extends Creature {
             return;
         }
 
-
         if (inventory.isOverflowed()) {
             onExpedition = false;
         } else {
-            Item collectedResource = parentMap.collectResource(this);
+            Inventory.ItemType collectedResource = parentMap.collectResource(this);
             if (collectedResource != null)
                 inventory.addItem(collectedResource, 1);
         }

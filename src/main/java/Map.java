@@ -127,32 +127,32 @@ public class Map {
         return null;
     }
 
-    Item collectResource(Human requester) {
+    Inventory.ItemType collectResource(Human requester) {
         int randomNumber = random.nextInt(1000);
         if(getBiomeAt(requester.getPosition()) == BiomeConverter.Biome.PLAINS){
             if(randomNumber > 890){
-                return new Item(Item.ItemType.WOOD);
+                return Inventory.ItemType.WOOD;
             }
             else if(randomNumber < 40){
-                return new Item(Item.ItemType.STONE);
+                return Inventory.ItemType.STONE;
             }
             else if (50 < randomNumber && randomNumber < 120){
-                return new Item(Item.ItemType.WHEAT);
+                return Inventory.ItemType.WHEAT;
             }
             else return null;
         }
         else if(getBiomeAt(requester.getPosition()) == BiomeConverter.Biome.MOUNTAINS){
             if(randomNumber>890){
-                return new Item(Item.ItemType.STONE);
+                return Inventory.ItemType.STONE;
             }
             else return null;
         }
         else{
             if (randomNumber==69){
-                return new Item(Item.ItemType.SWORD);
+                return Inventory.ItemType.SWORD;
             }
             else if (randomNumber == 420){
-                return new Item(Item.ItemType.ARMOR);
+                return Inventory.ItemType.ARMOR;
             }
             else return null;
         }
