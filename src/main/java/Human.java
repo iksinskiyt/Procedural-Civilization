@@ -15,6 +15,9 @@ public class Human extends Creature {
     private int eatingCounter = 3;
     private int tempEatingCounter = 1;
     private int foodRegenAmount = 10;
+    public int maxHealth=humanBasicHealth;
+    public int maxArmor = 8;
+    public int maxSword = 8;
 
     public Human(int teamID, Map parentMap, Village parentVillage,
                  Position position) {
@@ -26,12 +29,13 @@ public class Human extends Creature {
     }
 
     public void equipArmor() {
-        this.hasArmor = 8;
+        this.hasArmor = maxArmor;
         this.health += armorBonus;
+        maxHealth += armorBonus;
     }
 
     public void equipSword() {
-        this.hasSword = 8;
+        this.hasSword = maxSword;
     }
 
     public boolean isOnExpedition() {
@@ -74,6 +78,38 @@ public class Human extends Creature {
         }
     }
 
+    public boolean checkArmor(){
+        return hasArmor>0;
+    }
+
+    public boolean checkSword(){
+        return hasSword>0;
+    }
+
+    public int getArmor(){
+        return hasArmor;
+    }
+
+    public int getSword(){
+        return hasSword;
+    }
+
+    public int getHealth(){
+        return health;
+    }
+
+    public int getMaxHealth(){
+        return maxHealth;
+    }
+
+    public int getMaxArmor(){
+        return maxArmor;
+    }
+
+    public int getMaxSword(){
+        return maxSword;
+    }
+
     @Override
     public void move() {
         Creature metCreature =
@@ -81,7 +117,7 @@ public class Human extends Creature {
 
         if (metCreature != null) {
             int randomFuzz = random.nextInt(5) - 2;
-            if (hasSword <= 0) {
+            if (!checkSword()) {
                 metCreature.attack(attackStrength + randomFuzz, teamID);
             } else {
                 metCreature.attack(attackStrength + swordBonus + randomFuzz,
@@ -108,19 +144,18 @@ public class Human extends Creature {
                 parentVillage.storeItems(inventory);
                 inventory.clear();
                 onExpedition = true;
-                if (!(hasArmor > 0)) {
+                if (!(checkArmor())) {
                     if (parentVillage.getInventory()
                             .useItem(Inventory.ItemType.ARMOR, 1)) {
                         equipArmor();
                     }
-                } else if (!(hasSword > 0)) {
+                } else if (!checkSword()) {
                     if (parentVillage.getInventory()
                             .useItem(Inventory.ItemType.SWORD, 1)) {
                         equipSword();
                     }
                 }
-                if (hasArmor >
-                        0) {// make counter that checks how long ago did the human eat
+                if (checkArmor()) {
                     tempEatingCounter--;
                     if (tempEatingCounter == 0) {
                         tempEatingCounter = eatingCounter;
@@ -163,11 +198,12 @@ public class Human extends Creature {
 
     @Override
     public void attack(int damage, int teamID) {
-        if (!(hasArmor > 0)) {
+        if (!(checkArmor())) {
             this.health -= damage;
-        } else if (hasArmor > 0) {
+        } else {
             this.health -= damage;
             this.hasArmor--;
+            if (hasArmor == 0) maxHealth = humanBasicHealth;
             if (hasArmor == 0 && health > 100) health = 100;
             if (health <= 0) parentVillage.killVillager(this, teamID);
         }

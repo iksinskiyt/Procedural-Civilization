@@ -5,6 +5,7 @@ import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 import java.util.List;
+import java.util.Random;
 
 public class MainWindow extends JFrame {
     private final Map map;
@@ -22,11 +23,12 @@ public class MainWindow extends JFrame {
             g.drawOval(x - 3, y - 3, 7, 7);
         }
 
-        private void drawHumanIcon(Graphics g, int x, int y, Color color) {
+        private void drawHumanIcon(Graphics g, int x, int y, Color color, Human human) {
             g.setColor(color);
             g.fillRect(x - 3, y - 3, 7, 7);
             g.setColor(Color.BLACK);
             g.drawRect(x - 3, y - 3, 7, 7);
+            drawStatIcon(g, x, y, human);
         }
 
         private void drawVillageIcon(Graphics g, int x, int y, Color color) {
@@ -36,6 +38,34 @@ public class MainWindow extends JFrame {
             g.setColor(Color.BLACK);
             g.drawPolygon(new int[]{x, x + 8, x, x - 8},
                     new int[]{y + 8, y, y - 8, y}, 4);
+        }
+
+        private void drawStatIcon(Graphics g, int x, int y, Human human){
+            int pixelHealthWidth;
+            int pixelArmorWidth;
+            int pixelSwordWidth;
+            int health = human.getHealth();
+            int maxHealth = human.getMaxHealth();
+            int armor = human.getArmor();
+            int maxArmor = human.getMaxArmor();
+            int sword = human.getSword();
+            int maxSword = human.getMaxSword();
+
+            pixelHealthWidth = (int)Math.ceil((double)health*5/(double)maxHealth);
+            pixelArmorWidth = (int)Math.ceil((double)armor*5/(double)maxArmor);
+            pixelSwordWidth = (int)Math.ceil((double)sword*5/(double)maxSword);
+
+            g.setColor(new Color(237, 31, 36));
+            g.fillRect(x-2, y-2, 6, 3);
+
+            g.setColor(new Color(65, 182, 73));
+            g.drawRect(x-2, y-2, pixelHealthWidth, 0);
+
+            g.setColor(new Color(137, 137, 137));
+            g.drawRect(x-2, y-1, pixelArmorWidth, 0);
+            
+            g.setColor(new Color(249, 155, 77));
+            g.drawRect(x-2, y, pixelSwordWidth, 0);
         }
 
         private Color getTeamColor(int teamID) {
@@ -61,7 +91,7 @@ public class MainWindow extends JFrame {
                 for (Human human : village.getVillagers()) {
                     Position position = human.getPosition();
                     drawHumanIcon(g, position.x, position.y,
-                            getTeamColor(human.getTeamID()));
+                            getTeamColor(human.getTeamID()),human);
                 }
             }
             Toolkit.getDefaultToolkit().sync();
