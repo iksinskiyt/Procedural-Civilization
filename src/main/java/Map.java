@@ -177,6 +177,7 @@ public class Map {
     }
 
     public void addHamster(){
-        creatures.add(new Hamster(this, getRandomPosition(List.of(BiomeConverter.Biome.MOUNTAINS))));
+        creatures.add(new Hamster(this, getRandomPosition(List.of(
+                BiomeConverter.Biome.PLAINS, BiomeConverter.Biome.MOUNTAINS))));
     }
 }
