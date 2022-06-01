@@ -24,7 +24,7 @@ public class Main {
             gui.showMessage("Unable to write to the output file: " + e.getMessage(), true);
         }
 
-        Timer simulationTimer = new Timer(100, new ActionListener() {
+        Timer simulationTimer = new Timer(simulationOptions.simulationSpeed, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 try {

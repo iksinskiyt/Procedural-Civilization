@@ -31,7 +31,7 @@ public class Village {
         buildings = new ArrayList<>();
         villagers = new ArrayList<>();
         deadVillagers = new ArrayList<>();
-        inventory = new Inventory(128);
+        inventory = new Inventory(Integer.MAX_VALUE);
         killCounts = new HashMap<>();
         buildings.add(new House(this));
     }

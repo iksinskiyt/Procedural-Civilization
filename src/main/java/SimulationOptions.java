@@ -5,6 +5,7 @@ public class SimulationOptions {
     public int teamPopulation;
     public int nCows;
     public int nHamsters;
+    public int simulationSpeed;
 
     // Perlin noise options
     public double noiseScale;

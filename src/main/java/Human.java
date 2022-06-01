@@ -149,39 +149,24 @@ public class Human extends Creature {
                             .useItem(Inventory.ItemType.ARMOR, 1)) {
                         equipArmor();
                     }
-                } else if (!checkSword()) {
+                }
+                if (!checkSword()) {
                     if (parentVillage.getInventory()
                             .useItem(Inventory.ItemType.SWORD, 1)) {
                         equipSword();
                     }
                 }
-                if (checkArmor()) {
                     tempEatingCounter--;
                     if (tempEatingCounter == 0) {
                         tempEatingCounter = eatingCounter;
-                        if (health < humanBasicHealth + armorBonus) {
+                        if (health < humanBasicHealth + (checkArmor() ? armorBonus : 0)) {
                             if (parentVillage.getInventory()
                                     .useItem(Inventory.ItemType.FOOD, 1)) {
-                                health = +foodRegenAmount;
-                                if (health > humanBasicHealth + armorBonus)
-                                    health = humanBasicHealth + armorBonus;
+                                health += foodRegenAmount;
+                                health = Math.min(health, humanBasicHealth + (checkArmor() ? armorBonus : 0));
                             }
                         }
                     }
-                } else {
-                    tempEatingCounter--;
-                    if (tempEatingCounter == 0) {
-                        tempEatingCounter = eatingCounter;
-                        if (health < humanBasicHealth) {
-                            if (parentVillage.getInventory()
-                                    .useItem(Inventory.ItemType.FOOD, 1)) {
-                                health = +foodRegenAmount;
-                                if (health > humanBasicHealth)
-                                    health = humanBasicHealth;
-                            }
-                        }
-                    }
-                }
             } else
                 makeMoveTowards(parentVillage.getPosition());
             return;
@@ -198,14 +183,13 @@ public class Human extends Creature {
 
     @Override
     public void attack(int damage, int teamID) {
-        if (!(checkArmor())) {
-            this.health -= damage;
-        } else {
-            this.health -= damage;
+        this.health -= damage;
+        if(checkArmor()) {
             this.hasArmor--;
-            if (hasArmor == 0) maxHealth = humanBasicHealth;
-            if (hasArmor == 0 && health > 100) health = 100;
-            if (health <= 0) parentVillage.killVillager(this, teamID);
+            if (hasArmor == 0) {
+                maxHealth = humanBasicHealth;
+                health = Math.max(health, 100);
+            }
         }
         if (health <= 0) parentVillage.killVillager(this, teamID);
     }

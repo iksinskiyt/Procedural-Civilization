@@ -69,6 +69,7 @@ public class GUI {
         private final JTextField tfTeamPopulation;
         private final JTextField tfNCows;
         private final JTextField tfNHamsters;
+        private final JTextField tfSimulationSpeed;
 
         private JTextField addNewInput(String label, String defaultValue)
         {
@@ -87,12 +88,13 @@ public class GUI {
             tfTeamPopulation = addNewInput("Team population", "8");
             tfNCows = addNewInput("Number of cows", "10");
             tfNHamsters = addNewInput("Number of hamsters", "5");
+            tfSimulationSpeed = addNewInput("Simulation speed", "32");
             JButton bStart = new JButton("Start");
             bStart.addActionListener(actionEvent -> setVisible(false));
             add(new Label(""));
             add(bStart);
             setResizable(false);
-            setLayout(new GridLayout(8, 2, 20, 0));
+            setLayout(new GridLayout(9, 2, 20, 0));
             pack();
             setModalityType(ModalityType.APPLICATION_MODAL);
             addWindowListener(new WindowAdapter() {
@@ -135,6 +137,9 @@ public class GUI {
                         Integer.parseInt(tfNoiseOctaves.getText());
                 if(simulationOptions.noiseOctaves < 2 || simulationOptions.noiseOctaves > 10)
                     throw new Exception("Number of octaves must be in range 2-10 (inclusive)");
+                simulationOptions.simulationSpeed = Integer.parseInt(tfSimulationSpeed.getText());
+                if(simulationOptions.simulationSpeed < 1)
+                    throw new Exception("Simulation speed must be a positive integer");
             } catch (NumberFormatException e) {
                 showMessage("Invalid number format: " + e.getMessage(), false);
                 return null;
