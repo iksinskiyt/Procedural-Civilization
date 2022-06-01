@@ -1,32 +1,65 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 
 public class GUI {
-    class MessageDialog extends JDialog {
+    private class MessageDialog extends JDialog {
         public MessageDialog(String message) {
             super();
             setLayout(new BorderLayout());
-            add(new JLabel(message, SwingConstants.CENTER), BorderLayout.CENTER);
+            add(new JLabel(message, SwingConstants.CENTER),
+                    BorderLayout.CENTER);
             JButton okButton = new JButton("OK");
             add(okButton, BorderLayout.SOUTH);
             okButton.addActionListener(actionEvent -> setVisible(false));
-            setSize(400, 100);
+            pack();
             setResizable(false);
             setModalityType(ModalityType.APPLICATION_MODAL);
             setVisible(true);
         }
     }
 
-    class ErrorDialog extends MessageDialog {
-        ErrorDialog(String errorMessage)
+    private class YesNoDialog extends JDialog {
+        boolean yes = false;
+
+        private class YesNoPanel extends JPanel {
+            public YesNoPanel()
+            {
+                JButton yesButton = new JButton("Yes");
+                JButton noButton = new JButton("No");
+                add(yesButton);
+                add(noButton);
+                yesButton.addActionListener(actionEvent -> {
+                    yes = true;
+                    YesNoDialog.this.setVisible(false);
+                });
+                noButton.addActionListener(actionEvent -> YesNoDialog.this.setVisible(false));
+            }
+        }
+
+        public YesNoDialog(String message)
         {
-            super("An error occured: " + errorMessage);
+            super();
+            setLayout(new BorderLayout());
+            add(new JLabel(message, SwingConstants.CENTER),
+                    BorderLayout.CENTER);
+            add(new YesNoPanel(), BorderLayout.SOUTH);
+            pack();
+            setResizable(false);
+            setModalityType(ModalityType.APPLICATION_MODAL);
+            setVisible(true);
+        }
+
+        public boolean getYes()
+        {
+            return yes;
         }
     }
 
-    class UserInputDialog extends JDialog {
+    private class UserInputDialog extends JDialog {
         private final JTextField tfMapSize;
         private final JTextField tfNoiseScale;
         private final JTextField tfNoiseOctaves;
