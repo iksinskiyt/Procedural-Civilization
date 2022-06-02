@@ -117,6 +117,8 @@ public class GUI {
                         Integer.parseInt(tfMapSize.getText());
                 if(simulationOptions.mapSize < 1)
                     throw new Exception("Map size must be a positive integer");
+                if(simulationOptions.mapSize<512)
+                    throw new Exception("Map size must be at least 512");
                 simulationOptions.nTeams = Integer.parseInt(tfNTeams.getText());
                 if(simulationOptions.nTeams < 1 || simulationOptions.nTeams > 8)
                     throw new Exception("Number of teams must be in range 1-8 (inclusive)");
