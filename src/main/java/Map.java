@@ -108,7 +108,7 @@ public class Map {
 
     public Creature getNearestEnemyWithinDistance(Human requester, int distance) {
         HashMap<Creature, Integer> creatureDistances =
-                new HashMap<Creature, Integer>();
+                new HashMap<>();
         for (Creature creature : creatures)
             creatureDistances.put(creature,
                     Position.squaredDistanceBetween(requester.getPosition(),

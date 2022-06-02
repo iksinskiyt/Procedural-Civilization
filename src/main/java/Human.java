@@ -6,15 +6,15 @@ public class Human extends Creature {
     private final Village parentVillage;
     private int positionTriesLeft = 10;
     private int randomTicksLeft = 0;
-    private static int humanBasicHealth = 100;
+    private static final int humanBasicHealth = 100;
     private int hasArmor = 0;
     private int hasSword = 0;
-    private int armorBonus = 20;
-    private int swordBonus = 5;
+    private final int armorBonus = 20;
+    private final int swordBonus = 5;
     private final Random random;
-    private int eatingCounter = 3;
+    private final int eatingCounter = 3;
     private int tempEatingCounter = 1;
-    private int foodRegenAmount = 10;
+    private final int foodRegenAmount = 10;
     public int maxHealth=humanBasicHealth;
     public int maxArmor = 8;
     public int maxSword = 8;
@@ -36,18 +36,6 @@ public class Human extends Creature {
 
     public void equipSword() {
         this.hasSword = maxSword;
-    }
-
-    public boolean isOnExpedition() {
-        return onExpedition;
-    }
-
-    public void goToExpedition() {
-        onExpedition = true;
-    }
-
-    public Village getParentVillage() {
-        return parentVillage;
     }
 
     public int getTeamID() {

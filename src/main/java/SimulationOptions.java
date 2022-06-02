@@ -10,6 +10,4 @@ public class SimulationOptions {
     // Perlin noise options
     public double noiseScale;
     public int noiseOctaves;
-    public double scaleFactorSeaLevel;
-    public double scaleFactorMountainLevel;
 }

@@ -5,12 +5,8 @@ import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 import java.util.List;
-import java.util.Random;
 
 public class MainWindow extends JFrame {
-    private final Map map;
-    private final GUI gui;
-    private final HeightMap heightMap;
     private final List<Creature> creatures;
     private final List<Village> villages;
     private final BufferedImage mapImage;
@@ -99,11 +95,8 @@ public class MainWindow extends JFrame {
     }
 
     public MainWindow(Map map, GUI gui) {
-        this.map = map;
-        this.gui = gui;
-
         // Get all necessary references
-        this.heightMap = map.getHeightMap();
+        HeightMap heightMap = map.getHeightMap();
         this.creatures = map.getCreatureList();
         this.villages = map.getVillageList();
 

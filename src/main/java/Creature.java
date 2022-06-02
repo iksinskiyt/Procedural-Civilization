@@ -50,10 +50,6 @@ public abstract class Creature {
             position = newRandomPosition;
     }
 
-    public Map getParentMap() {
-        return parentMap;
-    }
-
     public Inventory takeInventory() {
         return inventory;
     }

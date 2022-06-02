@@ -15,11 +15,11 @@ public class Village {
     private final HashMap<Integer, Integer> killCounts;
     private final Map parentMap;
 
-    private int houseKillCounter = 150; // changable tick rate untill villager dies from homelessness
+    private final int houseKillCounter = 150; // changable tick rate untill villager dies from homelessness
     private int tempHouseKillCounter = houseKillCounter;
-    private int houseSize = 12; // changable house capacity
-    private int forgeCapacity = 50; // changable forge workspace capacity
-    private int bakeryCapacity = 25;
+    private final int houseSize = 12; // changable house capacity
+    private final int forgeCapacity = 50; // changable forge workspace capacity
+    private final int bakeryCapacity = 25;
     private int armorCounter = 0;
     private int swordCounter = 0;
 
@@ -95,9 +95,6 @@ public class Village {
 
     public void storeItems(Inventory storedInventory) {
         inventory.append(storedInventory);
-    }
-
-    public void getItems(Inventory neededItems){// NOTE: add to docs
     }
 
     public boolean addHouse(Inventory inventory){

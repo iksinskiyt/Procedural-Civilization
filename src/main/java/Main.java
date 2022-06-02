@@ -1,6 +1,4 @@
 import javax.swing.Timer;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -24,24 +22,22 @@ public class Main {
             gui.showMessage("Unable to write to the output file: " + e.getMessage(), true);
         }
 
-        Timer simulationTimer = new Timer(simulationOptions.simulationSpeed, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                try {
-                    dataCollector.collectData();
-                } catch (IOException e) {
-                    gui.showMessage("Unable to write to the output file: " + e.getMessage(), true);
-                }
-                if(map.isSimulationComplete()) {
-                    gui.showMessage("Simulation complete", false);
-                    exit();
-                }
-                if(gui.getExitRequested())
-                    exit();
-                map.simulationTick();
-                gui.showSimulation();
-            }
-        });
+        Timer simulationTimer = new Timer(simulationOptions.simulationSpeed,
+                actionEvent -> {
+                    try {
+                        dataCollector.collectData();
+                    } catch (IOException e) {
+                        gui.showMessage("Unable to write to the output file: " + e.getMessage(), true);
+                    }
+                    if(map.isSimulationComplete()) {
+                        gui.showMessage("Simulation complete", false);
+                        exit();
+                    }
+                    if(gui.getExitRequested())
+                        exit();
+                    map.simulationTick();
+                    gui.showSimulation();
+                });
         simulationTimer.start();
     }
 

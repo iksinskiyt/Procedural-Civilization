@@ -1,12 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class GUI {
-    private class MessageDialog extends JDialog {
+    private static class MessageDialog extends JDialog {
         public MessageDialog(String message) {
             super();
             setLayout(new BorderLayout());
@@ -23,7 +21,7 @@ public class GUI {
         }
     }
 
-    private class YesNoDialog extends JDialog {
+    private static class YesNoDialog extends JDialog {
         boolean yes = false;
 
         private class YesNoPanel extends JPanel {
@@ -192,7 +190,8 @@ public class GUI {
 
     public void maybeExit()
     {
-        YesNoDialog yesNoDialog = new YesNoDialog("Do you want to exit the simulation?");
+        YesNoDialog yesNoDialog =
+                new YesNoDialog("Do you want to exit the simulation?");
         exitRequested = yesNoDialog.getYes();
     }
 

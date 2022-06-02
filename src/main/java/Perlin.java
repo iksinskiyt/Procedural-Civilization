@@ -1,4 +1,3 @@
-import java.security.SecureRandom;
 import java.util.Random;
 
 public class Perlin {
@@ -14,7 +13,6 @@ public class Perlin {
     }
 
     Random rand = new Random();
-    SecureRandom random = new SecureRandom();
     public double average = 0;
 
     double[] seed;

@@ -3,7 +3,7 @@ import java.util.EnumMap;
 
 public class Inventory {
     private final int maxCapacity;
-    private EnumMap<ItemType, Integer> items;
+    private final EnumMap<ItemType, Integer> items;
 
     public enum ItemType {
         STONE,
@@ -15,7 +15,6 @@ public class Inventory {
         ARMOR,
         SWORD
     }
-    public static ItemType itemType;
 
     public Inventory(int capacity) {
         items = new EnumMap<>(ItemType.class);
@@ -30,10 +29,6 @@ public class Inventory {
         for (ItemType key : ItemType.values()) {
             this.addItem(key, inventory.items.getOrDefault(key, 0));
         }
-    }
-
-    public int itemAmount(Inventory inventory, ItemType item){
-        return items.get(item);
     }
 
     public int freeCapacity(){
