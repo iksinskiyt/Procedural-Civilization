@@ -25,8 +25,7 @@ public class GUI {
         boolean yes = false;
 
         private class YesNoPanel extends JPanel {
-            public YesNoPanel()
-            {
+            public YesNoPanel() {
                 JButton yesButton = new JButton("Yes");
                 JButton noButton = new JButton("No");
                 add(yesButton);
@@ -35,12 +34,12 @@ public class GUI {
                     yes = true;
                     YesNoDialog.this.setVisible(false);
                 });
-                noButton.addActionListener(actionEvent -> YesNoDialog.this.setVisible(false));
+                noButton.addActionListener(
+                        actionEvent -> YesNoDialog.this.setVisible(false));
             }
         }
 
-        public YesNoDialog(String message)
-        {
+        public YesNoDialog(String message) {
             super();
             setLayout(new BorderLayout());
             add(new JLabel(message, SwingConstants.CENTER),
@@ -53,8 +52,7 @@ public class GUI {
             setVisible(true);
         }
 
-        public boolean getYes()
-        {
+        public boolean getYes() {
             return yes;
         }
     }
@@ -69,8 +67,7 @@ public class GUI {
         private final JTextField tfNHamsters;
         private final JTextField tfSimulationSpeed;
 
-        private JTextField addNewInput(String label, String defaultValue)
-        {
+        private JTextField addNewInput(String label, String defaultValue) {
             add(new JLabel(label));
             JTextField textField = new JTextField(defaultValue);
             add(textField);
@@ -113,39 +110,47 @@ public class GUI {
             try {
                 simulationOptions.mapSize =
                         Integer.parseInt(tfMapSize.getText());
-                if(simulationOptions.mapSize < 1)
+                if (simulationOptions.mapSize < 1)
                     throw new Exception("Map size must be a positive integer");
                 simulationOptions.nTeams = Integer.parseInt(tfNTeams.getText());
-                if(simulationOptions.nTeams < 1 || simulationOptions.nTeams > 8)
-                    throw new Exception("Number of teams must be in range 1-8 (inclusive)");
+                if (simulationOptions.nTeams < 1 ||
+                        simulationOptions.nTeams > 8)
+                    throw new Exception(
+                            "Number of teams must be in range 1-8 (inclusive)");
                 simulationOptions.teamPopulation =
                         Integer.parseInt(tfTeamPopulation.getText());
-                if(simulationOptions.teamPopulation < 0)
-                    throw new Exception("Team population must be a natural number");
+                if (simulationOptions.teamPopulation < 0)
+                    throw new Exception(
+                            "Team population must be a natural number");
                 simulationOptions.nCows = Integer.parseInt(tfNCows.getText());
-                if(simulationOptions.nCows < 0)
-                    throw new Exception("Number of cows must be a natural number");
+                if (simulationOptions.nCows < 0)
+                    throw new Exception(
+                            "Number of cows must be a natural number");
                 simulationOptions.nHamsters =
                         Integer.parseInt(tfNHamsters.getText());
-                if(simulationOptions.nHamsters < 0)
-                    throw new Exception("Number of hamsters must be a natural number");
+                if (simulationOptions.nHamsters < 0)
+                    throw new Exception(
+                            "Number of hamsters must be a natural number");
                 simulationOptions.noiseScale =
                         Double.parseDouble(tfNoiseScale.getText());
                 simulationOptions.noiseOctaves =
                         Integer.parseInt(tfNoiseOctaves.getText());
-                if(simulationOptions.noiseOctaves < 2)
-                    throw new Exception("Number of octaves must be grater than 1");
-                if (1 << (simulationOptions.noiseOctaves-1) > simulationOptions.mapSize)
-                    throw new Exception("Number of octaves must not exceed log2(mapSize)+1");
-                simulationOptions.simulationSpeed = Integer.parseInt(tfSimulationSpeed.getText());
-                if(simulationOptions.simulationSpeed < 1)
-                    throw new Exception("Simulation speed must be a positive integer");
+                if (simulationOptions.noiseOctaves < 2)
+                    throw new Exception(
+                            "Number of octaves must be grater than 1");
+                if (1 << (simulationOptions.noiseOctaves - 1) >
+                        simulationOptions.mapSize)
+                    throw new Exception(
+                            "Number of octaves must not exceed log2(mapSize)+1");
+                simulationOptions.simulationSpeed =
+                        Integer.parseInt(tfSimulationSpeed.getText());
+                if (simulationOptions.simulationSpeed < 1)
+                    throw new Exception(
+                            "Simulation speed must be a positive integer");
             } catch (NumberFormatException e) {
                 showMessage("Invalid number format: " + e.getMessage(), false);
                 return null;
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 showMessage(e.getMessage(), false);
                 return null;
             }
@@ -182,21 +187,19 @@ public class GUI {
 
     public void showMessage(String message, boolean fatal) {
         new MessageDialog(message);
-        if(fatal)
+        if (fatal)
             System.exit(1);
     }
 
     private boolean exitRequested = false;
 
-    public void maybeExit()
-    {
+    public void maybeExit() {
         YesNoDialog yesNoDialog =
                 new YesNoDialog("Do you want to exit the simulation?");
         exitRequested = yesNoDialog.getYes();
     }
 
-    public boolean getExitRequested()
-    {
+    public boolean getExitRequested() {
         return exitRequested;
     }
 }

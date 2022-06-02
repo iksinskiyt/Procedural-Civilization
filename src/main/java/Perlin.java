@@ -39,12 +39,12 @@ public class Perlin {
                     double blendX = (double) (i - sampleX1) / (double) pitch;
                     double blendY = (double) (k - sampleY1) / (double) pitch;
 
-                    double sampleX = (1.0 - blendX) *
-                            seed[sampleY1 * size + sampleX1] +
-                            blendX * seed[sampleY1 * size + sampleX2];
-                    double sampleY = (1.0 - blendX) *
-                            seed[sampleY2 * size + sampleX1] +
-                            blendX * seed[sampleY2 * size + sampleX2];
+                    double sampleX =
+                            (1.0 - blendX) * seed[sampleY1 * size + sampleX1] +
+                                    blendX * seed[sampleY1 * size + sampleX2];
+                    double sampleY =
+                            (1.0 - blendX) * seed[sampleY2 * size + sampleX1] +
+                                    blendX * seed[sampleY2 * size + sampleX2];
 
                     scaleAcc += scale;
                     noise += (((blendY * (sampleY - sampleX) + sampleX) *

@@ -15,7 +15,8 @@ public class Village {
     private final HashMap<Integer, Integer> killCounts;
     private final Map parentMap;
 
-    private final int houseKillCounter = 150; // changable tick rate untill villager dies from homelessness
+    private final int houseKillCounter = 150;
+    // changable tick rate untill villager dies from homelessness
     private int tempHouseKillCounter = houseKillCounter;
     private final int houseSize = 12; // changable house capacity
     private final int forgeCapacity = 50; // changable forge workspace capacity
@@ -23,8 +24,7 @@ public class Village {
     private int armorCounter = 0;
     private int swordCounter = 0;
 
-    Village(Position position, int teamID,
-            Map parentMap) {
+    Village(Position position, int teamID, Map parentMap) {
         this.position = position;
         this.teamID = teamID;
         this.parentMap = parentMap;
@@ -38,17 +38,17 @@ public class Village {
 
     public void simulationTick() {
         if (villagers.isEmpty()) {
-            List<HashMap.Entry<Integer, Integer>> killCountList = new ArrayList<>(killCounts.entrySet());
+            List<HashMap.Entry<Integer, Integer>> killCountList =
+                    new ArrayList<>(killCounts.entrySet());
             killCountList.sort(HashMap.Entry.comparingByValue());
-            if(!killCountList.isEmpty())
-            {
+            if (!killCountList.isEmpty()) {
                 teamID = killCountList.get(killCountList.size() - 1).getKey();
                 killCounts.clear();
             }
         }
 
         for (Human human : villagers)
-            if(human.isAlive())
+            if (human.isAlive())
                 human.move();
 
         for (Building building : buildings)
@@ -57,30 +57,31 @@ public class Village {
         int houseCount = 0;
         int forgeCount = 0;
         int bakeryCount = 0;
-        for (Building building : buildings){
-            if(building instanceof House){
+        for (Building building : buildings) {
+            if (building instanceof House) {
                 houseCount++;
             }
-            if(building instanceof Forge){
+            if (building instanceof Forge) {
                 forgeCount++;
             }
-            if(building instanceof Bakery){
+            if (building instanceof Bakery) {
                 bakeryCount++;
             }
         }
-        if(houseCount * houseSize < villagers.size()){
-            if (!addHouse(this.inventory)){
-                if(tempHouseKillCounter-- == 0){
-                    villagers.remove(villagers.size()-1); // kills last human from list
+        if (houseCount * houseSize < villagers.size()) {
+            if (!addHouse(this.inventory)) {
+                if (tempHouseKillCounter-- == 0) {
+                    villagers.remove(
+                            villagers.size() - 1); // kills last human from list
                     //TODO: add to deathcount? maybe new statistic
                     tempHouseKillCounter = houseKillCounter;
                 }
             }
         }
-        if(forgeCount * forgeCapacity < villagers.size()){
+        if (forgeCount * forgeCapacity < villagers.size()) {
             addForge(this.inventory); // think of some punishment
         }
-        if(bakeryCount * bakeryCapacity < villagers.size()){ 
+        if (bakeryCount * bakeryCapacity < villagers.size()) {
             addBakery(this.inventory);
         }
         /* 
@@ -88,7 +89,7 @@ public class Village {
         villager jest w wiosce i od razu sobie zaklada armor / weapon, podnosi to jego zycie i atak
         */
 
-        for(Human human : deadVillagers)
+        for (Human human : deadVillagers)
             villagers.remove(human);
         deadVillagers.clear();
     }
@@ -97,26 +98,26 @@ public class Village {
         inventory.append(storedInventory);
     }
 
-    public boolean addHouse(Inventory inventory){
-        if(inventory.useItem(Inventory.ItemType.WOOD, House.houseWoodCost)) {
+    public boolean addHouse(Inventory inventory) {
+        if (inventory.useItem(Inventory.ItemType.WOOD, House.houseWoodCost)) {
             buildings.add(new House(this));
             return true;
         }
         return false;
     }
 
-    public void addForge(Inventory inventory){
-        if(inventory.isEnough(Inventory.ItemType.WOOD, Forge.forgeWoodCost) && inventory.isEnough(
-                Inventory.ItemType.STONE, Forge.forgeStoneCost))
-        {
+    public void addForge(Inventory inventory) {
+        if (inventory.isEnough(Inventory.ItemType.WOOD, Forge.forgeWoodCost) &&
+                inventory.isEnough(Inventory.ItemType.STONE,
+                        Forge.forgeStoneCost)) {
             inventory.useItem(Inventory.ItemType.WOOD, Forge.forgeWoodCost);
             inventory.useItem(Inventory.ItemType.STONE, Forge.forgeStoneCost);
             buildings.add(new Forge(this));
         }
     }
 
-    public void addBakery(Inventory inventory){
-        if(inventory.useItem(Inventory.ItemType.STONE, Bakery.bakeryStoneCost))
+    public void addBakery(Inventory inventory) {
+        if (inventory.useItem(Inventory.ItemType.STONE, Bakery.bakeryStoneCost))
             buildings.add(new Bakery(this));
     }
 
@@ -126,7 +127,8 @@ public class Village {
 
     public void killVillager(Human villager, int killerTeamID) {
         deadVillagers.add(villager);
-        killCounts.put(killerTeamID, killCounts.getOrDefault(killerTeamID, 0) + 1);
+        killCounts.put(killerTeamID,
+                killCounts.getOrDefault(killerTeamID, 0) + 1);
     }
 
     public Map getParentMap() {
@@ -137,7 +139,7 @@ public class Village {
         return position;
     }
 
-    public Inventory getInventory(){
+    public Inventory getInventory() {
         return inventory;
     }
 
@@ -145,23 +147,23 @@ public class Village {
         villagers.add(villager);
     }
 
-    public List<Human> getVillagers()
-    {
+    public List<Human> getVillagers() {
         return villagers;
     }
 
-    public void increaseArmorCount(){
+    public void increaseArmorCount() {
         armorCounter++;
     }
-    public void increaseSwordCount(){
+
+    public void increaseSwordCount() {
         swordCounter++;
     }
 
-    public int getArmorCount(){
+    public int getArmorCount() {
         return armorCounter;
     }
 
-    public int getSwordCount(){
+    public int getSwordCount() {
         return swordCounter;
     }
 }

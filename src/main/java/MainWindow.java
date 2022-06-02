@@ -19,7 +19,8 @@ public class MainWindow extends JFrame {
             g.drawOval(x - 3, y - 3, 7, 7);
         }
 
-        private void drawHumanIcon(Graphics g, int x, int y, Color color, Human human) {
+        private void drawHumanIcon(Graphics g, int x, int y, Color color,
+                                   Human human) {
             g.setColor(color);
             g.fillRect(x - 3, y - 3, 7, 7);
             g.setColor(Color.BLACK);
@@ -36,7 +37,7 @@ public class MainWindow extends JFrame {
                     new int[]{y + 8, y, y - 8, y}, 4);
         }
 
-        private void drawStatIcon(Graphics g, int x, int y, Human human){
+        private void drawStatIcon(Graphics g, int x, int y, Human human) {
             int pixelHealthWidth;
             int pixelArmorWidth;
             int pixelSwordWidth;
@@ -47,21 +48,24 @@ public class MainWindow extends JFrame {
             int sword = human.getSword();
             int maxSword = human.getMaxSword();
 
-            pixelHealthWidth = (int)Math.ceil((double)health*5/(double)maxHealth);
-            pixelArmorWidth = (int)Math.ceil((double)armor*5/(double)maxArmor);
-            pixelSwordWidth = (int)Math.ceil((double)sword*5/(double)maxSword);
+            pixelHealthWidth =
+                    (int) Math.ceil((double) health * 5 / (double) maxHealth);
+            pixelArmorWidth =
+                    (int) Math.ceil((double) armor * 5 / (double) maxArmor);
+            pixelSwordWidth =
+                    (int) Math.ceil((double) sword * 5 / (double) maxSword);
 
             g.setColor(new Color(237, 31, 36));
-            g.fillRect(x-2, y-2, 6, 3);
+            g.fillRect(x - 2, y - 2, 6, 3);
 
             g.setColor(new Color(65, 182, 73));
-            g.drawRect(x-2, y-2, pixelHealthWidth, 0);
+            g.drawRect(x - 2, y - 2, pixelHealthWidth, 0);
 
             g.setColor(new Color(137, 137, 137));
-            g.drawRect(x-2, y-1, pixelArmorWidth, 0);
-            
+            g.drawRect(x - 2, y - 1, pixelArmorWidth, 0);
+
             g.setColor(new Color(249, 155, 77));
-            g.drawRect(x-2, y, pixelSwordWidth, 0);
+            g.drawRect(x - 2, y, pixelSwordWidth, 0);
         }
 
         private Color getTeamColor(int teamID) {
@@ -83,11 +87,12 @@ public class MainWindow extends JFrame {
             }
             for (Village village : villages) {
                 Position villagePosition = village.getPosition();
-                drawVillageIcon(g, villagePosition.x, villagePosition.y, getTeamColor(village.getTeamID()));
+                drawVillageIcon(g, villagePosition.x, villagePosition.y,
+                        getTeamColor(village.getTeamID()));
                 for (Human human : village.getVillagers()) {
                     Position position = human.getPosition();
                     drawHumanIcon(g, position.x, position.y,
-                            getTeamColor(human.getTeamID()),human);
+                            getTeamColor(human.getTeamID()), human);
                 }
             }
             Toolkit.getDefaultToolkit().sync();
@@ -112,7 +117,8 @@ public class MainWindow extends JFrame {
         }
 
         MapPanel mapPanel = new MapPanel();
-        mapPanel.setPreferredSize(new Dimension(map.getMapSize(), map.getMapSize()));
+        mapPanel.setPreferredSize(
+                new Dimension(map.getMapSize(), map.getMapSize()));
         add(mapPanel);
         pack();
         setTitle("Procedural Civilization");

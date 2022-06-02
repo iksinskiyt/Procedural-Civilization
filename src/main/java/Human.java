@@ -15,7 +15,7 @@ public class Human extends Creature {
     private final int eatingCounter = 3;
     private int tempEatingCounter = 1;
     private final int foodRegenAmount = 10;
-    public int maxHealth=humanBasicHealth;
+    public int maxHealth = humanBasicHealth;
     public int maxArmor = 8;
     public int maxSword = 8;
 
@@ -48,10 +48,8 @@ public class Human extends Creature {
             randomTicksLeft--;
         } else {
             Position newRandomPosition = getNewRandomPosition();
-            if (Position.squaredDistanceBetween(newRandomPosition,
-                    position) <
-                    Position.squaredDistanceBetween(this.position,
-                            position)) {
+            if (Position.squaredDistanceBetween(newRandomPosition, position) <
+                    Position.squaredDistanceBetween(this.position, position)) {
                 this.position = newRandomPosition;
                 positionTriesLeft = 10;
             } else
@@ -66,35 +64,35 @@ public class Human extends Creature {
         }
     }
 
-    public boolean checkArmor(){
-        return hasArmor>0;
+    public boolean checkArmor() {
+        return hasArmor > 0;
     }
 
-    public boolean checkSword(){
-        return hasSword>0;
+    public boolean checkSword() {
+        return hasSword > 0;
     }
 
-    public int getArmor(){
+    public int getArmor() {
         return hasArmor;
     }
 
-    public int getSword(){
+    public int getSword() {
         return hasSword;
     }
 
-    public int getHealth(){
+    public int getHealth() {
         return health;
     }
 
-    public int getMaxHealth(){
+    public int getMaxHealth() {
         return maxHealth;
     }
 
-    public int getMaxArmor(){
+    public int getMaxArmor() {
         return maxArmor;
     }
 
-    public int getMaxSword(){
+    public int getMaxSword() {
         return maxSword;
     }
 
@@ -144,17 +142,19 @@ public class Human extends Creature {
                         equipSword();
                     }
                 }
-                    tempEatingCounter--;
-                    if (tempEatingCounter == 0) {
-                        tempEatingCounter = eatingCounter;
-                        if (health < humanBasicHealth + (checkArmor() ? armorBonus : 0)) {
-                            if (parentVillage.getInventory()
-                                    .useItem(Inventory.ItemType.FOOD, 1)) {
-                                health += foodRegenAmount;
-                                health = Math.min(health, humanBasicHealth + (checkArmor() ? armorBonus : 0));
-                            }
+                tempEatingCounter--;
+                if (tempEatingCounter == 0) {
+                    tempEatingCounter = eatingCounter;
+                    if (health < humanBasicHealth +
+                            (checkArmor() ? armorBonus : 0)) {
+                        if (parentVillage.getInventory()
+                                .useItem(Inventory.ItemType.FOOD, 1)) {
+                            health += foodRegenAmount;
+                            health = Math.min(health, humanBasicHealth +
+                                    (checkArmor() ? armorBonus : 0));
                         }
                     }
+                }
             } else
                 makeMoveTowards(parentVillage.getPosition());
             return;
@@ -163,7 +163,8 @@ public class Human extends Creature {
         if (inventory.isFull()) {
             onExpedition = false;
         } else {
-            Inventory.ItemType collectedResource = parentMap.collectResource(this);
+            Inventory.ItemType collectedResource =
+                    parentMap.collectResource(this);
             if (collectedResource != null)
                 inventory.addItem(collectedResource, 1);
         }
@@ -172,13 +173,14 @@ public class Human extends Creature {
     @Override
     public void attack(int damage, int teamID) {
         this.health -= damage;
-        if(checkArmor()) {
+        if (checkArmor()) {
             this.hasArmor--;
             if (hasArmor == 0) {
                 maxHealth = humanBasicHealth;
                 health = Math.max(health, 100);
             }
         }
-        if (health <= 0) parentVillage.killVillager(this, teamID);
+        if (health <= 0)
+            parentVillage.killVillager(this, teamID);
     }
 }

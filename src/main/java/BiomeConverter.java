@@ -1,8 +1,6 @@
 public class BiomeConverter {
     public enum Biome {
-        OCEAN,
-        PLAINS,
-        MOUNTAINS
+        OCEAN, PLAINS, MOUNTAINS
     }
 
     public static Biome getBiome(double height) {

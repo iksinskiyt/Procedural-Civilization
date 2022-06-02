@@ -12,20 +12,20 @@ public class Map {
     private final Random random;
     private int tickCounter = 0;
 
-    public BiomeConverter.Biome getBiomeAt(Position position)
-    {
-        return BiomeConverter.getBiome(heightMap.height[position.x][position.y]);
+    public BiomeConverter.Biome getBiomeAt(Position position) {
+        return BiomeConverter.getBiome(
+                heightMap.height[position.x][position.y]);
     }
 
-    private Position getRandomPosition(List<BiomeConverter.Biome> allowedBiomes) {
+    private Position getRandomPosition(
+            List<BiomeConverter.Biome> allowedBiomes) {
         Position position;
-        while(true) {
+        while (true) {
             position = new Position(random.nextInt(simulationOptions.mapSize),
                     random.nextInt(simulationOptions.mapSize));
             BiomeConverter.Biome posBiome = getBiomeAt(position);
-            for(BiomeConverter.Biome allowedBiome : allowedBiomes)
-            {
-                if(posBiome == allowedBiome)
+            for (BiomeConverter.Biome allowedBiome : allowedBiomes) {
+                if (posBiome == allowedBiome)
                     return position;
             }
         }
@@ -41,14 +41,14 @@ public class Map {
         villages = new ArrayList<>();
 
         for (int i = 0; i < simulationOptions.nTeams; i++) {
-            Position newVillagePosition = getRandomPosition(List.of(BiomeConverter.Biome.PLAINS));
-            Village village =
-                    new Village(newVillagePosition, i, this);
+            Position newVillagePosition =
+                    getRandomPosition(List.of(BiomeConverter.Biome.PLAINS));
+            Village village = new Village(newVillagePosition, i, this);
             villages.add(village);
 
             for (int j = 0; j < simulationOptions.teamPopulation; j++) {
-                village.addVillager(new Human(i, this, village,
-                        newVillagePosition));
+                village.addVillager(
+                        new Human(i, this, village, newVillagePosition));
             }
         }
 
@@ -106,23 +106,27 @@ public class Map {
         createCreature(creature);
     }
 
-    public Creature getNearestEnemyWithinDistance(Human requester, int distance) {
-        HashMap<Creature, Integer> creatureDistances =
-                new HashMap<>();
+    public Creature getNearestEnemyWithinDistance(Human requester,
+                                                  int distance) {
+        HashMap<Creature, Integer> creatureDistances = new HashMap<>();
         for (Creature creature : creatures)
             creatureDistances.put(creature,
                     Position.squaredDistanceBetween(requester.getPosition(),
                             creature.getPosition()));
         for (Village village : villages)
-            for(Human human : village.getVillagers())
-                creatureDistances.put(human, Position.squaredDistanceBetween(requester.getPosition(), human.getPosition()));
-        List<java.util.Map.Entry<Creature, Integer>> creatureDistancesSorted = new ArrayList<>(creatureDistances.entrySet());
+            for (Human human : village.getVillagers())
+                creatureDistances.put(human,
+                        Position.squaredDistanceBetween(requester.getPosition(),
+                                human.getPosition()));
+        List<java.util.Map.Entry<Creature, Integer>> creatureDistancesSorted =
+                new ArrayList<>(creatureDistances.entrySet());
         creatureDistancesSorted.sort(java.util.Map.Entry.comparingByValue());
-        for(java.util.Map.Entry<Creature, Integer> creatureDistance : creatureDistancesSorted)
-        {
-            if(creatureDistance.getKey() instanceof Human && ((Human)creatureDistance.getKey()).getTeamID() == requester.getTeamID())
+        for (java.util.Map.Entry<Creature, Integer> creatureDistance : creatureDistancesSorted) {
+            if (creatureDistance.getKey() instanceof Human &&
+                    ((Human) creatureDistance.getKey()).getTeamID() ==
+                            requester.getTeamID())
                 continue;
-            if(creatureDistance.getValue() > distance*distance)
+            if (creatureDistance.getValue() > distance * distance)
                 return null;
             return creatureDistance.getKey();
         }
@@ -131,64 +135,61 @@ public class Map {
 
     Inventory.ItemType collectResource(Human requester) {
         int randomNumber = random.nextInt(1000);
-        if(getBiomeAt(requester.getPosition()) == BiomeConverter.Biome.PLAINS){
-            if(randomNumber > 990){
+        if (getBiomeAt(requester.getPosition()) ==
+                BiomeConverter.Biome.PLAINS) {
+            if (randomNumber > 990) {
                 return Inventory.ItemType.WOOD;
-            }
-            else if(randomNumber < 4){
+            } else if (randomNumber < 4) {
                 return Inventory.ItemType.STONE;
-            }
-            else if (5 < randomNumber && randomNumber < 12){
+            } else if (5 < randomNumber && randomNumber < 12) {
                 return Inventory.ItemType.WHEAT;
-            }
-            else return null;
-        }
-        else if(getBiomeAt(requester.getPosition()) == BiomeConverter.Biome.MOUNTAINS){
-            if(randomNumber>990){
+            } else
+                return null;
+        } else if (getBiomeAt(requester.getPosition()) ==
+                BiomeConverter.Biome.MOUNTAINS) {
+            if (randomNumber > 990) {
                 return Inventory.ItemType.STONE;
-            }
-            else return null;
-        }
-        else{
-            if (randomNumber==69){
+            } else
+                return null;
+        } else {
+            if (randomNumber == 69) {
                 return Inventory.ItemType.SWORD;
-            }
-            else if (randomNumber == 420){
+            } else if (randomNumber == 420) {
                 return Inventory.ItemType.ARMOR;
-            }
-            else return null;
+            } else
+                return null;
         }
     }
 
-    public int getMapSize()
-    {
+    public int getMapSize() {
         return simulationOptions.mapSize;
     }
 
-    public void createCreature(Creature creature){
-        if(creature instanceof Cow){
+    public void createCreature(Creature creature) {
+        if (creature instanceof Cow) {
             addCow();
         }
-        if(creature instanceof Hamster){
+        if (creature instanceof Hamster) {
             addHamster();
         }
     }
 
-    public void addCow(){
-        creatures.add(new Cow(this, getRandomPosition(List.of(BiomeConverter.Biome.PLAINS))));
+    public void addCow() {
+        creatures.add(new Cow(this,
+                getRandomPosition(List.of(BiomeConverter.Biome.PLAINS))));
     }
 
-    public void addHamster(){
-        creatures.add(new Hamster(this, getRandomPosition(List.of(
-                BiomeConverter.Biome.PLAINS, BiomeConverter.Biome.MOUNTAINS))));
+    public void addHamster() {
+        creatures.add(new Hamster(this, getRandomPosition(
+                List.of(BiomeConverter.Biome.PLAINS,
+                        BiomeConverter.Biome.MOUNTAINS))));
     }
 
     public int getTickCounter() {
         return tickCounter;
     }
 
-    public int getTeamCount()
-    {
+    public int getTeamCount() {
         return simulationOptions.nTeams;
     }
 }

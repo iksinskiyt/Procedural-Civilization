@@ -6,14 +6,7 @@ public class Inventory {
     private final EnumMap<ItemType, Integer> items;
 
     public enum ItemType {
-        STONE,
-        WOOD,
-        WHEAT,
-        LEATHER,
-        MEAT,
-        FOOD,
-        ARMOR,
-        SWORD
+        STONE, WOOD, WHEAT, LEATHER, MEAT, FOOD, ARMOR, SWORD
     }
 
     public Inventory(int capacity) {
@@ -31,9 +24,9 @@ public class Inventory {
         }
     }
 
-    public int freeCapacity(){
+    public int freeCapacity() {
 
-        int sum =0;
+        int sum = 0;
         for (int usedCapacity : items.values()) {
             sum += usedCapacity;
         }
@@ -44,21 +37,22 @@ public class Inventory {
         return freeCapacity() <= 0;
     }
 
-    public boolean isEnough(ItemType item, int amount){
+    public boolean isEnough(ItemType item, int amount) {
         return items.getOrDefault(item, 0) >= amount;
     }
 
     public void addItem(ItemType item, int amount) {
-            int value = items.getOrDefault(item, 0) + Math.min(amount, freeCapacity());
-            items.put(item,value);
+        int value =
+                items.getOrDefault(item, 0) + Math.min(amount, freeCapacity());
+        items.put(item, value);
     }
 
-    public boolean useItem(ItemType item, int amount){
-        if (isEnough(item, amount)){
+    public boolean useItem(ItemType item, int amount) {
+        if (isEnough(item, amount)) {
             int value = items.get(item) - amount;
-            items.put(item,value);
+            items.put(item, value);
             return true;
-        }
-        else return false;       
+        } else
+            return false;
     }
 }

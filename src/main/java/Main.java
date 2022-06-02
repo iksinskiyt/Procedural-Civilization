@@ -17,23 +17,28 @@ public class Main {
             dataCollector = new DataCollector(map);
             dataCollector.printHeaderLine();
         } catch (FileNotFoundException e) {
-            gui.showMessage("Unable to open the data output file: " + e.getMessage(), true);
+            gui.showMessage(
+                    "Unable to open the data output file: " + e.getMessage(),
+                    true);
         } catch (IOException e) {
-            gui.showMessage("Unable to write to the output file: " + e.getMessage(), true);
+            gui.showMessage(
+                    "Unable to write to the output file: " + e.getMessage(),
+                    true);
         }
 
-        Timer simulationTimer = new Timer(simulationOptions.simulationSpeed,
-                actionEvent -> {
+        Timer simulationTimer =
+                new Timer(simulationOptions.simulationSpeed, actionEvent -> {
                     try {
                         dataCollector.collectData();
                     } catch (IOException e) {
-                        gui.showMessage("Unable to write to the output file: " + e.getMessage(), true);
+                        gui.showMessage("Unable to write to the output file: " +
+                                e.getMessage(), true);
                     }
-                    if(map.isSimulationComplete()) {
+                    if (map.isSimulationComplete()) {
                         gui.showMessage("Simulation complete", false);
                         exit();
                     }
-                    if(gui.getExitRequested())
+                    if (gui.getExitRequested())
                         exit();
                     map.simulationTick();
                     gui.showSimulation();
@@ -41,12 +46,12 @@ public class Main {
         simulationTimer.start();
     }
 
-    public static void exit()
-    {
+    public static void exit() {
         try {
             dataCollector.closeOutputFile();
         } catch (IOException e) {
-            gui.showMessage("Unable to close the output file: " + e.getMessage(), true);
+            gui.showMessage(
+                    "Unable to close the output file: " + e.getMessage(), true);
         }
         gui.closeMainWindow();
         System.exit(0);

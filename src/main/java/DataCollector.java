@@ -17,7 +17,7 @@ public class DataCollector {
     public void printHeaderLine() throws IOException {
         String headerLine = "";
         headerLine += "tick,";
-        for(int teamID = 0; teamID < map.getTeamCount(); teamID++)
+        for (int teamID = 0; teamID < map.getTeamCount(); teamID++)
             headerLine += "team" + teamID + "Population,";
         headerLine += "\n";
         outfile.write(headerLine.getBytes(StandardCharsets.UTF_8));
