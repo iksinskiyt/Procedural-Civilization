@@ -52,6 +52,7 @@ public class Main {
         } catch (IOException e) {
             gui.showMessage("Unable to close the output file: " + e.getMessage(), true);
         }
+        gui.closeMainWindow();
         System.exit(0);
     }
 }
