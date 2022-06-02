@@ -117,8 +117,6 @@ public class GUI {
                         Integer.parseInt(tfMapSize.getText());
                 if(simulationOptions.mapSize < 1)
                     throw new Exception("Map size must be a positive integer");
-                if(simulationOptions.mapSize<512)
-                    throw new Exception("Map size must be at least 512");
                 simulationOptions.nTeams = Integer.parseInt(tfNTeams.getText());
                 if(simulationOptions.nTeams < 1 || simulationOptions.nTeams > 8)
                     throw new Exception("Number of teams must be in range 1-8 (inclusive)");
@@ -137,8 +135,10 @@ public class GUI {
                         Double.parseDouble(tfNoiseScale.getText());
                 simulationOptions.noiseOctaves =
                         Integer.parseInt(tfNoiseOctaves.getText());
-                if(simulationOptions.noiseOctaves < 2 || simulationOptions.noiseOctaves > 10)
-                    throw new Exception("Number of octaves must be in range 2-10 (inclusive)");
+                if(simulationOptions.noiseOctaves < 2)
+                    throw new Exception("Number of octaves must be grater than 1");
+                if (1 << (simulationOptions.noiseOctaves-1) > simulationOptions.mapSize)
+                    throw new Exception("Number of octaves must not exceed log2(mapSize)+1");
                 simulationOptions.simulationSpeed = Integer.parseInt(tfSimulationSpeed.getText());
                 if(simulationOptions.simulationSpeed < 1)
                     throw new Exception("Simulation speed must be a positive integer");
