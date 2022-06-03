@@ -57,8 +57,7 @@ public class Map {
             villages.add(village);
 
             for (int j = 0; j < simulationOptions.teamPopulation; j++) {
-                village.addVillager(
-                        Human.createNew(village, newVillagePosition));
+                village.addVillager();
             }
         }
 

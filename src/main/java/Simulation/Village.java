@@ -125,8 +125,8 @@ public class Village {
         return inventory;
     }
 
-    public void addVillager(Human villager) {
-        villagers.add(villager);
+    public void addVillager() {
+        villagers.add(Human.createNew(this, position));
     }
 
     public List<Human> getVillagers() {

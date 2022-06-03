@@ -1,6 +1,5 @@
 package Buildings;
 
-import Creatures.Human;
 import Simulation.Village;
 
 class House extends Building {
@@ -15,8 +14,7 @@ class House extends Building {
     public void simulationTick() {
         if (tempSexCounter-- == 0) {
             tempSexCounter = sexCounter;
-            parentVillage.addVillager(Human.createNew(parentVillage,
-                    parentVillage.getPosition()));
+            parentVillage.addVillager();
         }
     }
 }
