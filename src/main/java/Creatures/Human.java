@@ -8,7 +8,6 @@ import Structures.Position;
 import java.util.Random;
 
 public class Human extends Creature {
-    private final int teamID;
     private boolean onExpedition;
     private final Village parentVillage;
     private int positionTriesLeft = 10;
@@ -29,7 +28,6 @@ public class Human extends Creature {
     Human(Map parentMap, Position position, Village parentVillage) {
         super(parentMap, position, humanBasicHealth, 10, 8, 16);
 
-        this.teamID = teamID;
         this.parentVillage = parentVillage;
         random = new Random();
     }
@@ -45,7 +43,7 @@ public class Human extends Creature {
     }
 
     public int getTeamID() {
-        return teamID;
+        return parentVillage.getTeamID();
     }
 
     private void makeMoveTowards(Position position) {
@@ -110,10 +108,11 @@ public class Human extends Creature {
         if (metCreature != null) {
             int randomFuzz = random.nextInt(5) - 2;
             if (!checkSword()) {
-                metCreature.attack(attackStrength + randomFuzz, teamID);
+                metCreature.attack(attackStrength + randomFuzz,
+                        parentVillage.getTeamID());
             } else {
                 metCreature.attack(attackStrength + swordBonus + randomFuzz,
-                        teamID);
+                        parentVillage.getTeamID());
                 hasSword--;
             }
             if (!metCreature.isAlive()) {
