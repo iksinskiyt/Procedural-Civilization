@@ -3,13 +3,14 @@ package Creatures;
 import Simulation.BiomeConverter;
 import Simulation.Inventory;
 import Simulation.Map;
-import Simulation.Village;
 import Structures.Position;
 
+import java.awt.*;
+import java.util.List;
 import java.util.Random;
 
 public abstract class Creature {
-    public static enum CreatureType {
+    public enum CreatureType {
         COW, HAMSTER
     }
 
@@ -33,14 +34,15 @@ public abstract class Creature {
         random = new Random();
     }
 
-    public static Creature createNew(CreatureType creatureType, Map parentMap,
-                                     Position position) {
+    public static Creature createNew(CreatureType creatureType, Map parentMap) {
         switch (creatureType) {
             case COW -> {
-                return new Cow(parentMap, position);
+                return new Cow(parentMap, parentMap.getRandomPosition(List.of(
+                        BiomeConverter.Biome.PLAINS)));
             }
             case HAMSTER -> {
-                return new Hamster(parentMap, position);
+                return new Hamster(parentMap, parentMap.getRandomPosition(List.of(
+                        BiomeConverter.Biome.PLAINS, BiomeConverter.Biome.MOUNTAINS)));
             }
         }
         return null;
@@ -85,5 +87,13 @@ public abstract class Creature {
 
     public boolean isAlive() {
         return health > 0;
+    }
+
+    public abstract Creature resurrect();
+    public abstract Color getIconColor();
+
+    public int getTeamID()
+    {
+        return -1;
     }
 }

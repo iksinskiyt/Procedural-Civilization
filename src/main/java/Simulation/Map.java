@@ -1,8 +1,6 @@
 package Simulation;
 
-import Creatures.Cow;
 import Creatures.Creature;
-import Creatures.Hamster;
 import Creatures.Human;
 import Structures.HeightMap;
 import Structures.Position;
@@ -27,7 +25,7 @@ public class Map {
                 heightMap.height[position.x][position.y]);
     }
 
-    private Position getRandomPosition(
+    public Position getRandomPosition(
             List<BiomeConverter.Biome> allowedBiomes) {
         Position position;
         while (true) {
@@ -64,11 +62,11 @@ public class Map {
         this.creatures = new ArrayList<>();
 
         for (int i = 0; i < simulationOptions.nCows; i++) {
-            addCow();
+            creatures.add(Creature.createNew(Creature.CreatureType.COW, this));
         }
 
         for (int i = 0; i < simulationOptions.nHamsters; i++) {
-            addHamster();
+            creatures.add(Creature.createNew(Creature.CreatureType.HAMSTER, this));
         }
     }
 
@@ -112,7 +110,7 @@ public class Map {
 
     public void killCreature(Creature creature) {
         creatures.remove(creature);
-        createCreature(creature);
+        creatures.add(creature.resurrect());
     }
 
     public Creature getNearestEnemyWithinDistance(Human requester,
@@ -131,8 +129,7 @@ public class Map {
                 new ArrayList<>(creatureDistances.entrySet());
         creatureDistancesSorted.sort(java.util.Map.Entry.comparingByValue());
         for (java.util.Map.Entry<Creature, Integer> creatureDistance : creatureDistancesSorted) {
-            if (creatureDistance.getKey() instanceof Human &&
-                    ((Human) creatureDistance.getKey()).getTeamID() ==
+            if (creatureDistance.getKey().getTeamID() ==
                             requester.getTeamID())
                 continue;
             if (creatureDistance.getValue() > distance * distance)
@@ -172,26 +169,6 @@ public class Map {
 
     public int getMapSize() {
         return simulationOptions.mapSize;
-    }
-
-    public void createCreature(Creature creature) {
-        if (creature instanceof Cow) {
-            addCow();
-        }
-        if (creature instanceof Hamster) {
-            addHamster();
-        }
-    }
-
-    public void addCow() {
-        creatures.add(Creature.createNew(Creature.CreatureType.COW, this,
-                getRandomPosition(List.of(BiomeConverter.Biome.PLAINS))));
-    }
-
-    public void addHamster() {
-        creatures.add(Creature.createNew(Creature.CreatureType.HAMSTER, this,
-                getRandomPosition(List.of(BiomeConverter.Biome.PLAINS,
-                        BiomeConverter.Biome.MOUNTAINS))));
     }
 
     public int getTickCounter() {

@@ -1,10 +1,10 @@
 package Creatures;
 
 import Simulation.Inventory;
-import Simulation.Map;
 import Simulation.Village;
 import Structures.Position;
 
+import java.awt.*;
 import java.util.Random;
 
 public class Human extends Creature {
@@ -47,6 +47,7 @@ public class Human extends Creature {
         this.hasSword = maxSword;
     }
 
+    @Override
     public int getTeamID() {
         return parentVillage.getTeamID();
     }
@@ -178,6 +179,17 @@ public class Human extends Creature {
             if (collectedResource != null)
                 inventory.addItem(collectedResource, 1);
         }
+    }
+
+    @Override
+    public Creature resurrect() {
+        // A human can not be resurrected
+        return null;
+    }
+
+    @Override
+    public Color getIconColor() {
+        return parentVillage.getTeamColor();
     }
 
     @Override

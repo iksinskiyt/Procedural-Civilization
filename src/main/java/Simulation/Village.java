@@ -4,6 +4,7 @@ import Buildings.Building;
 import Creatures.Human;
 import Structures.Position;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -147,5 +148,10 @@ public class Village {
 
     public int getSwordCount() {
         return swordCounter;
+    }
+
+    public Color getTeamColor() {
+        return new Color((teamID & 4) > 0 ? 255 : 0,
+                (teamID & 2) > 0 ? 255 : 0, (teamID & 1) > 0 ? 255 : 0);
     }
 }
