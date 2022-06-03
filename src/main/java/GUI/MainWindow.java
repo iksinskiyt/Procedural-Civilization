@@ -18,7 +18,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 import java.util.List;
 
-public class MainWindow extends JFrame {
+class MainWindow extends JFrame {
     private final List<Creature> creatures;
     private final List<Village> villages;
     private final BufferedImage mapImage;
