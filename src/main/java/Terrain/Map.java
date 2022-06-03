@@ -1,7 +1,9 @@
-package Simulation;
+package Terrain;
 
 import Creatures.Creature;
 import Creatures.Human;
+import Simulation.Inventory;
+import Simulation.Village;
 import Structures.HeightMap;
 import Structures.Position;
 import Structures.SimulationOptions;

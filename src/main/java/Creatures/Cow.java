@@ -1,8 +1,8 @@
 package Creatures;
 
 import Simulation.Inventory;
-import Simulation.Map;
 import Structures.Position;
+import Terrain.Map;
 
 import java.awt.*;
 

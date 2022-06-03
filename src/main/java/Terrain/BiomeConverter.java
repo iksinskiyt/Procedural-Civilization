@@ -1,4 +1,4 @@
-package Simulation;
+package Terrain;
 
 public class BiomeConverter {
     public enum Biome {

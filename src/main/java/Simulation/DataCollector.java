@@ -1,6 +1,7 @@
 package Simulation;
 
 import Creatures.Human;
+import Terrain.Map;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

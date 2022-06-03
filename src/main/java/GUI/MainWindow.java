@@ -2,8 +2,8 @@ package GUI;
 
 import Creatures.Creature;
 import Creatures.Human;
-import Simulation.BiomeConverter;
-import Simulation.Map;
+import Terrain.BiomeConverter;
+import Terrain.Map;
 import Simulation.Village;
 import Structures.HeightMap;
 import Structures.Position;

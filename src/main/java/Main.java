@@ -1,6 +1,6 @@
 import GUI.GUI;
 import Simulation.DataCollector;
-import Simulation.Map;
+import Terrain.Map;
 import Structures.SimulationOptions;
 
 import javax.swing.Timer;

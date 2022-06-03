@@ -1,8 +1,8 @@
 package Creatures;
 
-import Simulation.BiomeConverter;
+import Terrain.BiomeConverter;
 import Simulation.Inventory;
-import Simulation.Map;
+import Terrain.Map;
 import Structures.Position;
 
 import java.awt.*;

@@ -1,6 +1,6 @@
 package GUI;
 
-import Simulation.Map;
+import Terrain.Map;
 import Structures.SimulationOptions;
 
 import javax.swing.*;

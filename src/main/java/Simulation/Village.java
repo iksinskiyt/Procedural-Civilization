@@ -3,6 +3,7 @@ package Simulation;
 import Buildings.Building;
 import Creatures.Human;
 import Structures.Position;
+import Terrain.Map;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class Village {
     private int armorCounter = 0;
     private int swordCounter = 0;
 
-    Village(Position position, int teamID, Map parentMap) {
+    public Village(Position position, int teamID, Map parentMap) {
         this.position = position;
         this.teamID = teamID;
         this.parentMap = parentMap;
