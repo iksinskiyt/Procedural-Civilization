@@ -10,7 +10,7 @@ import java.util.Random;
 
 public abstract class Creature {
     public static enum CreatureType {
-        COW, HAMSTER, HUMAN
+        COW, HAMSTER
     }
 
     protected Inventory inventory;
@@ -34,16 +34,13 @@ public abstract class Creature {
     }
 
     public static Creature createNew(CreatureType creatureType, Map parentMap,
-                                     Position position, Village parentVillage) {
+                                     Position position) {
         switch (creatureType) {
             case COW -> {
                 return new Cow(parentMap, position);
             }
             case HAMSTER -> {
                 return new Hamster(parentMap, position);
-            }
-            case HUMAN -> {
-                return new Human(parentMap, position, parentVillage);
             }
         }
         return null;

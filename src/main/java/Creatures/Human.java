@@ -25,11 +25,16 @@ public class Human extends Creature {
     public int maxArmor = 8;
     public int maxSword = 8;
 
-    Human(Map parentMap, Position position, Village parentVillage) {
-        super(parentMap, position, humanBasicHealth, 10, 8, 16);
+    Human(Village parentVillage, Position position) {
+        super(parentVillage.getParentMap(), position, humanBasicHealth, 10, 8,
+                16);
 
         this.parentVillage = parentVillage;
         random = new Random();
+    }
+
+    public static Human createNew(Village parentVillage, Position position) {
+        return new Human(parentVillage, position);
     }
 
     public void equipArmor() {

@@ -18,10 +18,8 @@ public class House extends Building {
     public void simulationTick() {
         if (tempSexCounter-- == 0) {
             tempSexCounter = sexCounter;
-            parentVillage.addVillager(
-                    (Human) Creature.createNew(Creature.CreatureType.HUMAN,
-                            parentVillage.getParentMap(),
-                            parentVillage.getPosition(), parentVillage));
+            parentVillage.addVillager(Human.createNew(parentVillage,
+                    parentVillage.getPosition()));
         }
     }
 }
