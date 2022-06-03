@@ -42,16 +42,29 @@ public class Village {
         buildings.add(Building.createNew(Building.BuildingType.HOUSE, this));
     }
 
-    public void simulationTick() {
-        if (villagers.isEmpty()) {
-            List<HashMap.Entry<Integer, Integer>> killCountList =
-                    new ArrayList<>(killCounts.entrySet());
-            killCountList.sort(HashMap.Entry.comparingByValue());
-            if (!killCountList.isEmpty()) {
-                teamID = killCountList.get(killCountList.size() - 1).getKey();
-                killCounts.clear();
-            }
+    private void changeTeam() {
+        List<HashMap.Entry<Integer, Integer>> killCountList =
+                new ArrayList<>(killCounts.entrySet());
+        killCountList.sort(HashMap.Entry.comparingByValue());
+        if (!killCountList.isEmpty()) {
+            teamID = killCountList.get(killCountList.size() - 1).getKey();
+            killCounts.clear();
         }
+    }
+
+    private void addHouseOrKill() {
+        if (!addBuilding(Building.BuildingType.HOUSE) &&
+                tempHouseKillCounter-- == 0) {
+            villagers.remove(
+                    villagers.size() - 1); // kills last human from list
+            //TODO: add to deathcount? maybe new statistic
+            tempHouseKillCounter = houseKillCounter;
+        }
+    }
+
+    public void simulationTick() {
+        if (villagers.isEmpty())
+            changeTeam();
 
         for (Human human : villagers)
             if (human.isAlive())
@@ -61,31 +74,21 @@ public class Village {
             building.simulationTick();
 
         if (Building.getNumberOfBuildingsFor(this,
-                Building.BuildingType.HOUSE) * houseSize < villagers.size()) {
-            if (!addBuilding(Building.BuildingType.HOUSE)) {
-                if (tempHouseKillCounter-- == 0) {
-                    villagers.remove(
-                            villagers.size() - 1); // kills last human from list
-                    //TODO: add to deathcount? maybe new statistic
-                    tempHouseKillCounter = houseKillCounter;
-                }
-            }
-        }
+                Building.BuildingType.HOUSE) * houseSize < villagers.size())
+            addHouseOrKill();
+
         if (Building.getNumberOfBuildingsFor(this,
                 Building.BuildingType.FORGE) * forgeCapacity <
                 villagers.size()) {
             addBuilding(
                     Building.BuildingType.FORGE); // think of some punishment
         }
+
         if (Building.getNumberOfBuildingsFor(this,
                 Building.BuildingType.BAKERY) * bakeryCapacity <
                 villagers.size()) {
             addBuilding(Building.BuildingType.BAKERY);
         }
-        /* 
-        TODO: co ticki sprawdza, czy wszyscy villagerzy maja armor i weapon, jesli nie, to tworzy je i wsadza do inventory wioski
-        villager jest w wiosce i od razu sobie zaklada armor / weapon, podnosi to jego zycie i atak
-        */
 
         for (Human human : deadVillagers)
             villagers.remove(human);
@@ -151,7 +154,7 @@ public class Village {
     }
 
     public Color getTeamColor() {
-        return new Color((teamID & 4) > 0 ? 255 : 0,
-                (teamID & 2) > 0 ? 255 : 0, (teamID & 1) > 0 ? 255 : 0);
+        return new Color((teamID & 4) > 0 ? 255 : 0, (teamID & 2) > 0 ? 255 : 0,
+                (teamID & 1) > 0 ? 255 : 0);
     }
 }
