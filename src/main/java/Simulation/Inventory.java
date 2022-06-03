@@ -48,12 +48,26 @@ public class Inventory {
         items.put(item, value);
     }
 
+    private void removeItem(ItemType item, int amount)
+    {
+        items.put(item, items.get(item) - amount);
+    }
+
     public boolean useItem(ItemType item, int amount) {
         if (isEnough(item, amount)) {
-            int value = items.get(item) - amount;
-            items.put(item, value);
+            removeItem(item, amount);
             return true;
         } else
             return false;
+    }
+
+    public boolean useItems(EnumMap<ItemType, Integer> items)
+    {
+        for(ItemType itemType : items.keySet())
+            if(!isEnough(itemType, items.get(itemType)))
+                return false;
+        for(ItemType itemType : items.keySet())
+            removeItem(itemType, items.get(itemType));
+        return true;
     }
 }
