@@ -3,11 +3,16 @@ package Creatures;
 import Simulation.BiomeConverter;
 import Simulation.Inventory;
 import Simulation.Map;
+import Simulation.Village;
 import Structures.Position;
 
 import java.util.Random;
 
 public abstract class Creature {
+    public static enum CreatureType {
+        COW, HAMSTER, HUMAN
+    }
+
     protected Inventory inventory;
     protected Position position;
     protected int health;
@@ -16,8 +21,8 @@ public abstract class Creature {
     protected Map parentMap;
     protected Random random;
 
-    public Creature(Map parentMap, Position position, int health,
-                    int attackStrength, int speed, int inventoryCapacity) {
+    Creature(Map parentMap, Position position, int health, int attackStrength,
+             int speed, int inventoryCapacity) {
         this.parentMap = parentMap;
         this.position = position;
         inventory = new Inventory(inventoryCapacity);
@@ -26,6 +31,22 @@ public abstract class Creature {
         this.attackStrength = attackStrength;
         this.speed = speed;
         random = new Random();
+    }
+
+    public static Creature createNew(CreatureType creatureType, Map parentMap,
+                                     Position position, Village parentVillage) {
+        switch (creatureType) {
+            case COW -> {
+                return new Cow(parentMap, position);
+            }
+            case HAMSTER -> {
+                return new Hamster(parentMap, position);
+            }
+            case HUMAN -> {
+                return new Human(parentMap, position, parentVillage);
+            }
+        }
+        return null;
     }
 
     public void attack(int damage, int teamID) {

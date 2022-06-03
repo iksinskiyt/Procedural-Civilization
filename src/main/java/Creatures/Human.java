@@ -26,8 +26,7 @@ public class Human extends Creature {
     public int maxArmor = 8;
     public int maxSword = 8;
 
-    public Human(int teamID, Map parentMap, Village parentVillage,
-                 Position position) {
+    Human(Map parentMap, Position position, Village parentVillage) {
         super(parentMap, position, humanBasicHealth, 10, 8, 16);
 
         this.teamID = teamID;

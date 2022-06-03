@@ -58,7 +58,8 @@ public class Map {
 
             for (int j = 0; j < simulationOptions.teamPopulation; j++) {
                 village.addVillager(
-                        new Human(i, this, village, newVillagePosition));
+                        (Human) Creature.createNew(Creature.CreatureType.HUMAN,
+                                this, newVillagePosition, village));
             }
         }
 
@@ -185,14 +186,14 @@ public class Map {
     }
 
     public void addCow() {
-        creatures.add(new Cow(this,
-                getRandomPosition(List.of(BiomeConverter.Biome.PLAINS))));
+        creatures.add(Creature.createNew(Creature.CreatureType.COW, this,
+                getRandomPosition(List.of(BiomeConverter.Biome.PLAINS)), null));
     }
 
     public void addHamster() {
-        creatures.add(new Hamster(this, getRandomPosition(
-                List.of(BiomeConverter.Biome.PLAINS,
-                        BiomeConverter.Biome.MOUNTAINS))));
+        creatures.add(Creature.createNew(Creature.CreatureType.HAMSTER, this,
+                getRandomPosition(List.of(BiomeConverter.Biome.PLAINS,
+                        BiomeConverter.Biome.MOUNTAINS)), null));
     }
 
     public int getTickCounter() {
