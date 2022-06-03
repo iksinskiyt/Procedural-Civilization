@@ -68,7 +68,8 @@ public class Map {
         }
 
         for (int i = 0; i < simulationOptions.nHamsters; i++) {
-            creatures.add(Creature.createNew(Creature.CreatureType.HAMSTER, this));
+            creatures.add(
+                    Creature.createNew(Creature.CreatureType.HAMSTER, this));
         }
     }
 
@@ -131,8 +132,7 @@ public class Map {
                 new ArrayList<>(creatureDistances.entrySet());
         creatureDistancesSorted.sort(java.util.Map.Entry.comparingByValue());
         for (java.util.Map.Entry<Creature, Integer> creatureDistance : creatureDistancesSorted) {
-            if (creatureDistance.getKey().getTeamID() ==
-                            requester.getTeamID())
+            if (creatureDistance.getKey().getTeamID() == requester.getTeamID())
                 continue;
             if (creatureDistance.getValue() > distance * distance)
                 return null;
@@ -147,24 +147,32 @@ public class Map {
                 BiomeConverter.Biome.PLAINS) {
             if (randomNumber > 990) {
                 return Inventory.ItemType.WOOD;
-            } else if (randomNumber < 4) {
+            }
+            else if (randomNumber < 4) {
                 return Inventory.ItemType.STONE;
-            } else if (5 < randomNumber && randomNumber < 12) {
+            }
+            else if (5 < randomNumber && randomNumber < 12) {
                 return Inventory.ItemType.WHEAT;
-            } else
+            }
+            else
                 return null;
-        } else if (getBiomeAt(requester.getPosition()) ==
+        }
+        else if (getBiomeAt(requester.getPosition()) ==
                 BiomeConverter.Biome.MOUNTAINS) {
             if (randomNumber > 990) {
                 return Inventory.ItemType.STONE;
-            } else
+            }
+            else
                 return null;
-        } else {
+        }
+        else {
             if (randomNumber == 69) {
                 return Inventory.ItemType.SWORD;
-            } else if (randomNumber == 420) {
+            }
+            else if (randomNumber == 420) {
                 return Inventory.ItemType.ARMOR;
-            } else
+            }
+            else
                 return null;
         }
     }

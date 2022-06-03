@@ -21,11 +21,13 @@ public class Main {
         try {
             dataCollector = new DataCollector(map);
             dataCollector.printHeaderLine();
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e) {
             gui.showMessage(
                     "Unable to open the data output file: " + e.getMessage(),
                     true);
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             gui.showMessage(
                     "Unable to write to the output file: " + e.getMessage(),
                     true);
@@ -35,7 +37,8 @@ public class Main {
                 new Timer(simulationOptions.simulationSpeed, actionEvent -> {
                     try {
                         dataCollector.collectData();
-                    } catch (IOException e) {
+                    }
+                    catch (IOException e) {
                         gui.showMessage("Unable to write to the output file: " +
                                 e.getMessage(), true);
                     }
@@ -54,7 +57,8 @@ public class Main {
     public static void exit() {
         try {
             dataCollector.closeOutputFile();
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             gui.showMessage(
                     "Unable to close the output file: " + e.getMessage(), true);
         }

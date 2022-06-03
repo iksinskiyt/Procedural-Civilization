@@ -22,7 +22,8 @@ class MainWindow extends JFrame {
     private final BufferedImage mapImage;
 
     public class MapPanel extends JPanel {
-        private void drawCreatureIcon(Graphics g, Position position, Color color) {
+        private void drawCreatureIcon(Graphics g, Position position,
+                                      Color color) {
             g.setColor(color);
             g.fillOval(position.x - 3, position.y - 3, 7, 7);
             g.setColor(Color.BLACK);

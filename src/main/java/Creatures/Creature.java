@@ -37,12 +37,13 @@ public abstract class Creature {
     public static Creature createNew(CreatureType creatureType, Map parentMap) {
         switch (creatureType) {
             case COW -> {
-                return new Cow(parentMap, parentMap.getRandomPosition(List.of(
-                        BiomeConverter.Biome.PLAINS)));
+                return new Cow(parentMap, parentMap.getRandomPosition(
+                        List.of(BiomeConverter.Biome.PLAINS)));
             }
             case HAMSTER -> {
-                return new Hamster(parentMap, parentMap.getRandomPosition(List.of(
-                        BiomeConverter.Biome.PLAINS, BiomeConverter.Biome.MOUNTAINS)));
+                return new Hamster(parentMap, parentMap.getRandomPosition(
+                        List.of(BiomeConverter.Biome.PLAINS,
+                                BiomeConverter.Biome.MOUNTAINS)));
             }
         }
         return null;
@@ -90,10 +91,10 @@ public abstract class Creature {
     }
 
     public abstract Creature resurrect();
+
     public abstract Color getIconColor();
 
-    public int getTeamID()
-    {
+    public int getTeamID() {
         return -1;
     }
 }

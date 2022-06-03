@@ -152,10 +152,12 @@ public class GUI {
                 if (simulationOptions.simulationSpeed < 1)
                     throw new Exception(
                             "Simulation speed must be a positive integer");
-            } catch (NumberFormatException e) {
+            }
+            catch (NumberFormatException e) {
                 showMessage("Invalid number format: " + e.getMessage(), false);
                 return null;
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
                 showMessage(e.getMessage(), false);
                 return null;
             }
@@ -182,7 +184,8 @@ public class GUI {
         do {
             UserInputDialog dialog = new UserInputDialog();
             simulationOptions = dialog.getSimulationOptions();
-        } while (simulationOptions == null);
+        }
+        while (simulationOptions == null);
         return simulationOptions;
     }
 

@@ -62,7 +62,8 @@ public class Human extends Creature {
                 Position.squaredDistanceBetween(this.position, position)) {
             this.position = newRandomPosition;
             positionTriesLeft = 10;
-        } else
+        }
+        else
             positionTriesLeft--;
     }
 
@@ -70,13 +71,15 @@ public class Human extends Creature {
         if (randomTicksLeft > 0) {
             super.move();
             randomTicksLeft--;
-        } else
+        }
+        else
             tryMoveTowards(position);
         if (positionTriesLeft <= 0) {
             if (randomTicksLeft <= 0) {
                 randomTicksLeft = 100;
                 positionTriesLeft = 10;
-            } else
+            }
+            else
                 randomTicksLeft--;
         }
     }
