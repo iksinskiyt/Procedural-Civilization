@@ -1,3 +1,9 @@
+package Creatures;
+
+import Simulation.Inventory;
+import Simulation.Map;
+import Structures.Position;
+
 public class Cow extends Creature {
     public Cow(Map parentMap, Position position) {
         super(parentMap, position, 50, 0, 2, 6);

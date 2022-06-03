@@ -1,3 +1,8 @@
+package GUI;
+
+import Simulation.Map;
+import Structures.SimulationOptions;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;

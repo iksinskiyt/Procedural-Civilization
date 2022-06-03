@@ -1,3 +1,7 @@
+package Simulation;
+
+import Structures.SimulationOptions;
+
 import java.util.Random;
 
 public class Perlin {

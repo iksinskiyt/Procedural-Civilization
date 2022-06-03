@@ -1,5 +1,6 @@
-import java.util.EnumMap;
+package Simulation;
 
+import java.util.EnumMap;
 
 public class Inventory {
     private final int maxCapacity;

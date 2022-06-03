@@ -1,3 +1,8 @@
+package Buildings;
+
+import Simulation.Inventory;
+import Simulation.Village;
+
 public class Bakery extends Building {
     // Yes, the bakery bakes bread and meat... don't ask
     public static final int bakeryStoneCost = 20;

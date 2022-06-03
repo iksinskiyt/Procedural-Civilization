@@ -1,3 +1,7 @@
+package Buildings;
+
+import Simulation.Village;
+
 public abstract class Building {
 
     public abstract void simulationTick();

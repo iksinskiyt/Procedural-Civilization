@@ -1,3 +1,10 @@
+package Creatures;
+
+import Simulation.Inventory;
+import Simulation.Map;
+import Simulation.Village;
+import Structures.Position;
+
 import java.util.Random;
 
 public class Human extends Creature {

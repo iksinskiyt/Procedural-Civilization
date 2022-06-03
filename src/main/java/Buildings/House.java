@@ -1,3 +1,8 @@
+package Buildings;
+
+import Creatures.Human;
+import Simulation.Village;
+
 public class House extends Building {
 
     public static final int houseWoodCost = 25; // changable house cost variable

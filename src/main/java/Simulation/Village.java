@@ -1,7 +1,12 @@
+package Simulation;
+
+import Buildings.*;
+import Creatures.Human;
+import Structures.Position;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 
 public class Village {
     private final List<Human> villagers;

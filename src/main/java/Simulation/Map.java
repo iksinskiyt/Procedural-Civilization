@@ -1,3 +1,13 @@
+package Simulation;
+
+import Creatures.Cow;
+import Creatures.Creature;
+import Creatures.Hamster;
+import Creatures.Human;
+import Structures.HeightMap;
+import Structures.Position;
+import Structures.SimulationOptions;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
@@ -133,7 +143,7 @@ public class Map {
         return null;
     }
 
-    Inventory.ItemType collectResource(Human requester) {
+    public Inventory.ItemType collectResource(Human requester) {
         int randomNumber = random.nextInt(1000);
         if (getBiomeAt(requester.getPosition()) ==
                 BiomeConverter.Biome.PLAINS) {

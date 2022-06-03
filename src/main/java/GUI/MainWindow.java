@@ -1,3 +1,15 @@
+package GUI;
+
+import Creatures.Cow;
+import Creatures.Creature;
+import Creatures.Hamster;
+import Creatures.Human;
+import Simulation.BiomeConverter;
+import Simulation.Map;
+import Simulation.Village;
+import Structures.HeightMap;
+import Structures.Position;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;

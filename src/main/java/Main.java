@@ -1,3 +1,8 @@
+import GUI.GUI;
+import Simulation.DataCollector;
+import Simulation.Map;
+import Structures.SimulationOptions;
+
 import javax.swing.Timer;
 import java.io.FileNotFoundException;
 import java.io.IOException;

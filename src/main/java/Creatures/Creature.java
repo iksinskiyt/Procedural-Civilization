@@ -1,3 +1,10 @@
+package Creatures;
+
+import Simulation.BiomeConverter;
+import Simulation.Inventory;
+import Simulation.Map;
+import Structures.Position;
+
 import java.util.Random;
 
 public abstract class Creature {

@@ -1,3 +1,5 @@
+package Structures;
+
 public class SimulationOptions {
     // General simulation options
     public int mapSize;

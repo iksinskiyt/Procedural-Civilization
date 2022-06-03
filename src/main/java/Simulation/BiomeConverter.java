@@ -1,3 +1,5 @@
+package Simulation;
+
 public class BiomeConverter {
     public enum Biome {
         OCEAN, PLAINS, MOUNTAINS

@@ -1,3 +1,8 @@
+package Buildings;
+
+import Simulation.Inventory;
+import Simulation.Village;
+
 public class Forge extends Building {
 
     public static final int forgeWoodCost = 15; // changable forge cost variable
