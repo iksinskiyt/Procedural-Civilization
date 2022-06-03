@@ -12,7 +12,7 @@ public class Bakery extends Building {
     // how many ticks will it take to produce food from meat
     private int tempBakeryCounter = bakeryCounter;
 
-    public Bakery(Village parentVillage) {
+    Bakery(Village parentVillage) {
         super(parentVillage);
     }
 

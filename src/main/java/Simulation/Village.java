@@ -38,7 +38,7 @@ public class Village {
         deadVillagers = new ArrayList<>();
         inventory = new Inventory(Integer.MAX_VALUE);
         killCounts = new HashMap<>();
-        buildings.add(new House(this));
+        buildings.add(Building.createNew(Building.BuildingType.HOUSE, this));
     }
 
     public void simulationTick() {
@@ -105,7 +105,8 @@ public class Village {
 
     public boolean addHouse(Inventory inventory) {
         if (inventory.useItem(Inventory.ItemType.WOOD, House.houseWoodCost)) {
-            buildings.add(new House(this));
+            buildings.add(
+                    Building.createNew(Building.BuildingType.HOUSE, this));
             return true;
         }
         return false;
@@ -117,13 +118,15 @@ public class Village {
                         Forge.forgeStoneCost)) {
             inventory.useItem(Inventory.ItemType.WOOD, Forge.forgeWoodCost);
             inventory.useItem(Inventory.ItemType.STONE, Forge.forgeStoneCost);
-            buildings.add(new Forge(this));
+            buildings.add(
+                    Building.createNew(Building.BuildingType.FORGE, this));
         }
     }
 
     public void addBakery(Inventory inventory) {
         if (inventory.useItem(Inventory.ItemType.STONE, Bakery.bakeryStoneCost))
-            buildings.add(new Bakery(this));
+            buildings.add(
+                    Building.createNew(Building.BuildingType.BAKERY, this));
     }
 
     public int getTeamID() {

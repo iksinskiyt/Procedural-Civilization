@@ -12,7 +12,7 @@ public class Forge extends Building {
     private static final int forgeCounter = 15;
     private int tempForgeCounter = forgeCounter;
 
-    public Forge(Village parentVillage) {
+    Forge(Village parentVillage) {
         super(parentVillage);
     }
 

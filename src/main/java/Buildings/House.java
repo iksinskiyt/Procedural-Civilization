@@ -10,7 +10,7 @@ public class House extends Building {
     private final int sexCounter = 420;
     private int tempSexCounter = sexCounter;
 
-    public House(Village parentVillage) {
+    House(Village parentVillage) {
         super(parentVillage);
     }
 
