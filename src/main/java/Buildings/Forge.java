@@ -3,10 +3,7 @@ package Buildings;
 import Simulation.Inventory;
 import Simulation.Village;
 
-public class Forge extends Building {
-
-    public static final int forgeWoodCost = 15; // changable forge cost variable
-    public static final int forgeStoneCost = 10;
+class Forge extends Building {
     private static final int armorCost = 5;
     private static final int swordCost = 2;
     private static final int forgeCounter = 15;

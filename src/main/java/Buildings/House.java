@@ -1,12 +1,9 @@
 package Buildings;
 
-import Creatures.Creature;
 import Creatures.Human;
 import Simulation.Village;
 
-public class House extends Building {
-
-    public static final int houseWoodCost = 25; // changable house cost variable
+class House extends Building {
     private final int sexCounter = 420;
     private int tempSexCounter = sexCounter;
 

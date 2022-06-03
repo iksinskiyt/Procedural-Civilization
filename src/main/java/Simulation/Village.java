@@ -1,6 +1,6 @@
 package Simulation;
 
-import Buildings.*;
+import Buildings.Building;
 import Creatures.Human;
 import Structures.Position;
 
@@ -59,22 +59,9 @@ public class Village {
         for (Building building : buildings)
             building.simulationTick();
 
-        int houseCount = 0;
-        int forgeCount = 0;
-        int bakeryCount = 0;
-        for (Building building : buildings) {
-            if (building instanceof House) {
-                houseCount++;
-            }
-            if (building instanceof Forge) {
-                forgeCount++;
-            }
-            if (building instanceof Bakery) {
-                bakeryCount++;
-            }
-        }
-        if (houseCount * houseSize < villagers.size()) {
-            if (!addHouse()) {
+        if (Building.getNumberOfBuildingsFor(this,
+                Building.BuildingType.HOUSE) * houseSize < villagers.size()) {
+            if (!addBuilding(Building.BuildingType.HOUSE)) {
                 if (tempHouseKillCounter-- == 0) {
                     villagers.remove(
                             villagers.size() - 1); // kills last human from list
@@ -83,11 +70,16 @@ public class Village {
                 }
             }
         }
-        if (forgeCount * forgeCapacity < villagers.size()) {
-            addForge(); // think of some punishment
+        if (Building.getNumberOfBuildingsFor(this,
+                Building.BuildingType.FORGE) * forgeCapacity <
+                villagers.size()) {
+            addBuilding(
+                    Building.BuildingType.FORGE); // think of some punishment
         }
-        if (bakeryCount * bakeryCapacity < villagers.size()) {
-            addBakery();
+        if (Building.getNumberOfBuildingsFor(this,
+                Building.BuildingType.BAKERY) * bakeryCapacity <
+                villagers.size()) {
+            addBuilding(Building.BuildingType.BAKERY);
         }
         /* 
         TODO: co ticki sprawdza, czy wszyscy villagerzy maja armor i weapon, jesli nie, to tworzy je i wsadza do inventory wioski
@@ -103,30 +95,12 @@ public class Village {
         inventory.append(storedInventory);
     }
 
-    private boolean addHouse() {
-        if (inventory.useItem(Inventory.ItemType.WOOD, House.houseWoodCost)) {
-            buildings.add(
-                    Building.createNew(Building.BuildingType.HOUSE, this));
+    private boolean addBuilding(Building.BuildingType buildingType) {
+        if (inventory.useItems(Building.getMaterialCosts(buildingType))) {
+            buildings.add(Building.createNew(buildingType, this));
             return true;
         }
         return false;
-    }
-
-    private void addForge() {
-        if (inventory.isEnough(Inventory.ItemType.WOOD, Forge.forgeWoodCost) &&
-                inventory.isEnough(Inventory.ItemType.STONE,
-                        Forge.forgeStoneCost)) {
-            inventory.useItem(Inventory.ItemType.WOOD, Forge.forgeWoodCost);
-            inventory.useItem(Inventory.ItemType.STONE, Forge.forgeStoneCost);
-            buildings.add(
-                    Building.createNew(Building.BuildingType.FORGE, this));
-        }
-    }
-
-    private void addBakery() {
-        if (inventory.useItem(Inventory.ItemType.STONE, Bakery.bakeryStoneCost))
-            buildings.add(
-                    Building.createNew(Building.BuildingType.BAKERY, this));
     }
 
     public int getTeamID() {
