@@ -74,7 +74,7 @@ public class Village {
             }
         }
         if (houseCount * houseSize < villagers.size()) {
-            if (!addHouse(this.inventory)) {
+            if (!addHouse()) {
                 if (tempHouseKillCounter-- == 0) {
                     villagers.remove(
                             villagers.size() - 1); // kills last human from list
@@ -84,10 +84,10 @@ public class Village {
             }
         }
         if (forgeCount * forgeCapacity < villagers.size()) {
-            addForge(this.inventory); // think of some punishment
+            addForge(); // think of some punishment
         }
         if (bakeryCount * bakeryCapacity < villagers.size()) {
-            addBakery(this.inventory);
+            addBakery();
         }
         /* 
         TODO: co ticki sprawdza, czy wszyscy villagerzy maja armor i weapon, jesli nie, to tworzy je i wsadza do inventory wioski
@@ -103,7 +103,7 @@ public class Village {
         inventory.append(storedInventory);
     }
 
-    public boolean addHouse(Inventory inventory) {
+    private boolean addHouse() {
         if (inventory.useItem(Inventory.ItemType.WOOD, House.houseWoodCost)) {
             buildings.add(
                     Building.createNew(Building.BuildingType.HOUSE, this));
@@ -112,7 +112,7 @@ public class Village {
         return false;
     }
 
-    public void addForge(Inventory inventory) {
+    private void addForge() {
         if (inventory.isEnough(Inventory.ItemType.WOOD, Forge.forgeWoodCost) &&
                 inventory.isEnough(Inventory.ItemType.STONE,
                         Forge.forgeStoneCost)) {
@@ -123,7 +123,7 @@ public class Village {
         }
     }
 
-    public void addBakery(Inventory inventory) {
+    private void addBakery() {
         if (inventory.useItem(Inventory.ItemType.STONE, Bakery.bakeryStoneCost))
             buildings.add(
                     Building.createNew(Building.BuildingType.BAKERY, this));
