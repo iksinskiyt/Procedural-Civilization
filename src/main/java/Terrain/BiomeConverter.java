@@ -1,3 +1,5 @@
+package Terrain;
+
 public class BiomeConverter {
     public enum Biome {
         OCEAN, PLAINS, MOUNTAINS

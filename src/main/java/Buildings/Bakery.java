@@ -1,13 +1,17 @@
-public class Bakery extends Building {
+package Buildings;
+
+import Simulation.Inventory;
+import Simulation.Village;
+
+class Bakery extends Building {
     // Yes, the bakery bakes bread and meat... don't ask
-    public static final int bakeryStoneCost = 20;
     private static final int meatCost = 5;
     private static final int breadCost = 10;
     private static final int bakeryCounter = 15;
     // how many ticks will it take to produce food from meat
     private int tempBakeryCounter = bakeryCounter;
 
-    public Bakery(Village parentVillage) {
+    Bakery(Village parentVillage) {
         super(parentVillage);
     }
 

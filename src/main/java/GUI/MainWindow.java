@@ -1,3 +1,13 @@
+package GUI;
+
+import Creatures.Creature;
+import Creatures.Human;
+import Terrain.BiomeConverter;
+import Terrain.Map;
+import Simulation.Village;
+import Structures.HeightMap;
+import Structures.Position;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
@@ -6,17 +16,18 @@ import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 import java.util.List;
 
-public class MainWindow extends JFrame {
+class MainWindow extends JFrame {
     private final List<Creature> creatures;
     private final List<Village> villages;
     private final BufferedImage mapImage;
 
     public class MapPanel extends JPanel {
-        private void drawCreatureIcon(Graphics g, int x, int y, Color color) {
+        private void drawCreatureIcon(Graphics g, Position position,
+                                      Color color) {
             g.setColor(color);
-            g.fillOval(x - 3, y - 3, 7, 7);
+            g.fillOval(position.x - 3, position.y - 3, 7, 7);
             g.setColor(Color.BLACK);
-            g.drawOval(x - 3, y - 3, 7, 7);
+            g.drawOval(position.x - 3, position.y - 3, 7, 7);
         }
 
         private void drawHumanIcon(Graphics g, int x, int y, Color color,
@@ -68,31 +79,21 @@ public class MainWindow extends JFrame {
             g.drawRect(x - 2, y, pixelSwordWidth, 0);
         }
 
-        private Color getTeamColor(int teamID) {
-            return new Color((teamID & 4) > 0 ? 255 : 0,
-                    (teamID & 2) > 0 ? 255 : 0, (teamID & 1) > 0 ? 255 : 0);
-        }
-
         @Override
         public void paint(Graphics g) {
             g.drawImage(mapImage, 0, 0, null);
             for (Creature creature : creatures) {
-                Color color = null;
-                if (creature instanceof Cow)
-                    color = new Color(0xffff00);
-                else if (creature instanceof Hamster)
-                    color = new Color(0x00ffff);
                 Position position = creature.getPosition();
-                drawCreatureIcon(g, position.x, position.y, color);
+                drawCreatureIcon(g, position, creature.getIconColor());
             }
             for (Village village : villages) {
                 Position villagePosition = village.getPosition();
                 drawVillageIcon(g, villagePosition.x, villagePosition.y,
-                        getTeamColor(village.getTeamID()));
+                        village.getTeamColor());
                 for (Human human : village.getVillagers()) {
                     Position position = human.getPosition();
                     drawHumanIcon(g, position.x, position.y,
-                            getTeamColor(human.getTeamID()), human);
+                            village.getTeamColor(), human);
                 }
             }
             Toolkit.getDefaultToolkit().sync();

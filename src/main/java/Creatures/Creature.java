@@ -1,6 +1,19 @@
+package Creatures;
+
+import Terrain.BiomeConverter;
+import Simulation.Inventory;
+import Terrain.Map;
+import Structures.Position;
+
+import java.awt.*;
+import java.util.List;
 import java.util.Random;
 
 public abstract class Creature {
+    public enum CreatureType {
+        COW, HAMSTER
+    }
+
     protected Inventory inventory;
     protected Position position;
     protected int health;
@@ -9,8 +22,8 @@ public abstract class Creature {
     protected Map parentMap;
     protected Random random;
 
-    public Creature(Map parentMap, Position position, int health,
-                    int attackStrength, int speed, int inventoryCapacity) {
+    Creature(Map parentMap, Position position, int health, int attackStrength,
+             int speed, int inventoryCapacity) {
         this.parentMap = parentMap;
         this.position = position;
         inventory = new Inventory(inventoryCapacity);
@@ -19,6 +32,21 @@ public abstract class Creature {
         this.attackStrength = attackStrength;
         this.speed = speed;
         random = new Random();
+    }
+
+    public static Creature createNew(CreatureType creatureType, Map parentMap) {
+        switch (creatureType) {
+            case COW -> {
+                return new Cow(parentMap, parentMap.getRandomPosition(
+                        List.of(BiomeConverter.Biome.PLAINS)));
+            }
+            case HAMSTER -> {
+                return new Hamster(parentMap, parentMap.getRandomPosition(
+                        List.of(BiomeConverter.Biome.PLAINS,
+                                BiomeConverter.Biome.MOUNTAINS)));
+            }
+        }
+        return null;
     }
 
     public void attack(int damage, int teamID) {
@@ -60,5 +88,13 @@ public abstract class Creature {
 
     public boolean isAlive() {
         return health > 0;
+    }
+
+    public abstract Creature resurrect();
+
+    public abstract Color getIconColor();
+
+    public int getTeamID() {
+        return -1;
     }
 }

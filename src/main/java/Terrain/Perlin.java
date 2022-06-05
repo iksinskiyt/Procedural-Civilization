@@ -1,6 +1,10 @@
+package Terrain;
+
+import Structures.SimulationOptions;
+
 import java.util.Random;
 
-public class Perlin {
+class Perlin {
     double scale_base;
     int size;
     int octaves;
