@@ -2,20 +2,24 @@ plugins {
     id 'application'
 }
 
-group 'me.polibuda.koxy'
-version '1.0-SNAPSHOT'
-
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.8.2'
+
+    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.8.2'
 }
 
 application {
     mainClass = 'Main'
+}
+
+java {
+    sourceCompatibility(JavaVersion.VERSION_17)
 }
 
 test {
