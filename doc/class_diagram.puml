@@ -1,0 +1,343 @@
+@startuml
+class Structures.SimulationOptions {
++ int mapSize
++ int nTeams
++ int teamPopulation
++ int nCows
++ int nHamsters
++ int simulationSpeed
++ double noiseScale
++ int noiseOctaves
+}
+class Creatures.Hamster {
+~ <<Create>> Hamster(Map,Position)
++ Creature resurrect()
++ Color getIconColor()
+}
+abstract class Creatures.Creature {
+# Inventory inventory
+# Position position
+# int health
+# int attackStrength
+# int speed
+# Map parentMap
+# Random random
+~ <<Create>> Creature(Map,Position,int,int,int,int)
++ {static} Creature createNew(CreatureType,Map)
++ void attack(int,int)
+# Position getNewRandomPosition()
++ void move()
++ Inventory takeInventory()
++ Position getPosition()
++ boolean isAlive()
++ {abstract}Creature resurrect()
++ {abstract}Color getIconColor()
++ int getTeamID()
+}
+enum Creatures.CreatureType {
++  COW
++  HAMSTER
+}
+class Terrain.Map {
+- List<Village> villages
+- HeightMap heightMap
+- List<Creature> creatures
+- boolean simulationComplete
+- SimulationOptions simulationOptions
+- Random random
+- int tickCounter
++ <<Create>> Map(SimulationOptions)
++ BiomeConverter.Biome getBiomeAt(Position)
++ Position getRandomPosition(List<BiomeConverter.Biome>)
++ void simulationTick()
++ HeightMap getHeightMap()
++ List<Creature> getCreatureList()
++ List<Village> getVillageList()
++ boolean isSimulationComplete()
++ void killCreature(Creature)
++ Creature getNearestEnemyWithinDistance(Human,int)
++ Inventory.ItemType collectResource(Human)
++ int getMapSize()
++ int getTickCounter()
++ int getTeamCount()
+}
+class Creatures.Cow {
+~ <<Create>> Cow(Map,Position)
++ Creature resurrect()
++ Color getIconColor()
+}
+class Buildings.Bakery {
+- {static} int meatCost
+- {static} int breadCost
+- {static} int bakeryCounter
+- int tempBakeryCounter
+~ <<Create>> Bakery(Village)
++ void simulationTick()
+- void produceFood(Inventory)
+}
+class GUI.GUI {
+- MainWindow mainWindow
+- boolean exitRequested
++ <<Create>> GUI()
++ void openMainWindow(Map)
++ void closeMainWindow()
++ SimulationOptions getOptionsFromUser()
++ void showSimulation()
++ void showMessage(String,boolean)
++ void maybeExit()
++ boolean getExitRequested()
+}
+class GUI.GUI.MessageDialog {
++ <<Create>> MessageDialog(String)
+}
+class GUI.GUI.YesNoDialog {
+~ boolean yes
++ <<Create>> YesNoDialog(String)
++ boolean getYes()
+}
+class GUI.GUI.YesNoDialog.YesNoPanel {
++ <<Create>> YesNoPanel()
+}
+class GUI.GUI.UserInputDialog {
+- JTextField tfMapSize
+- JTextField tfNoiseScale
+- JTextField tfNoiseOctaves
+- JTextField tfNTeams
+- JTextField tfTeamPopulation
+- JTextField tfNCows
+- JTextField tfNHamsters
+- JTextField tfSimulationSpeed
++ <<Create>> UserInputDialog()
+- JTextField addNewInput(String,String)
++ SimulationOptions getSimulationOptions()
+}
+class Simulation.Village {
+- List<Human> villagers
+- List<Human> deadVillagers
+- List<Building> buildings
+- Inventory inventory
+- Position position
+- int teamID
+- HashMap<Integer,Integer> killCounts
+- Map parentMap
+- int houseKillCounter
+- int tempHouseKillCounter
+- int houseSize
+- int forgeCapacity
+- int bakeryCapacity
+- int armorCounter
+- int swordCounter
++ <<Create>> Village(Position,int,Map)
+- void changeTeam()
+- void addHouseOrKill()
++ void simulationTick()
++ void storeItems(Inventory)
+- boolean addBuilding(Building.BuildingType)
++ int getTeamID()
++ void killVillager(Human,int)
++ Map getParentMap()
++ Position getPosition()
++ Inventory getInventory()
++ void addVillager()
++ List<Human> getVillagers()
++ void increaseArmorCount()
++ void increaseSwordCount()
++ int getArmorCount()
++ int getSwordCount()
++ Color getTeamColor()
+}
+class Terrain.Perlin {
+~ double scale_base
+~ int size
+~ int octaves
+~ Random rand
++ double average
+~ double[] seed
++ <<Create>> Perlin(SimulationOptions)
+~ double[][] generatePerlinNoise2D()
+}
+class Structures.HeightMap {
++ double[][] height
++ <<Create>> HeightMap()
+}
+class GUI.MainWindow {
+- List<Creature> creatures
+- List<Village> villages
+- BufferedImage mapImage
++ <<Create>> MainWindow(Map,GUI)
+}
+class GUI.MainWindow.MapPanel {
+- void drawCreatureIcon(Graphics,Position,Color)
+- void drawHumanIcon(Graphics,int,int,Color,Human)
+- void drawVillageIcon(Graphics,int,int,Color)
+- void drawStatIcon(Graphics,int,int,Human)
++ void paint(Graphics)
+}
+class Simulation.Inventory {
+- int maxCapacity
+- EnumMap<ItemType,Integer> items
++ <<Create>> Inventory(int)
++ void clear()
++ void append(Inventory)
++ int freeCapacity()
++ boolean isFull()
++ boolean isEnough(ItemType,int)
++ void addItem(ItemType,int)
+- void removeItem(ItemType,int)
++ boolean useItem(ItemType,int)
++ boolean useItems(EnumMap<ItemType,Integer>)
+}
+enum Simulation.ItemType {
++  STONE
++  WOOD
++  WHEAT
++  LEATHER
++  MEAT
++  FOOD
++  ARMOR
++  SWORD
+}
+class Creatures.Human {
+- boolean onExpedition
+- Village parentVillage
+- int positionTriesLeft
+- int randomTicksLeft
+- {static} int humanBasicHealth
+- int hasArmor
+- int hasSword
+- int armorBonus
+- int swordBonus
+- Random random
+- int eatingCounter
+- int tempEatingCounter
+- int foodRegenAmount
++ int maxHealth
++ int maxArmor
++ int maxSword
+~ <<Create>> Human(Village,Position)
++ {static} Human createNew(Village,Position)
+- void tryEquipArmor()
++ void tryEquipSword()
++ int getTeamID()
+- void tryMoveTowards(Position)
+- void makeMoveTowards(Position)
++ int getArmor()
++ int getSword()
++ int getHealth()
++ int getMaxHealth()
++ int getMaxArmor()
++ int getMaxSword()
+- void attackCreature(Creature)
+- void observeAndFollow()
+- void tryEatFood()
+- void inVillageActions()
+- void tryCollectResource()
++ void move()
++ Creature resurrect()
++ Color getIconColor()
++ void attack(int,int)
+}
+class Buildings.House {
+- int sexCounter
+- int tempSexCounter
+~ <<Create>> House(Village)
++ void simulationTick()
+}
+abstract class Buildings.Building {
+- {static} EnumMap<BuildingType,EnumMap<Inventory.ItemType,Integer>> materialCosts
+- {static} HashMap<Village,EnumMap<BuildingType,Integer>> buildingsCreatedFor
+# Village parentVillage
+~ <<Create>> Building(Village)
++ {abstract}void simulationTick()
++ {static} Building createNew(BuildingType,Village)
++ {static} int getNumberOfBuildingsFor(Village,BuildingType)
++ {static} EnumMap<Inventory.ItemType,Integer> getMaterialCosts(BuildingType)
+}
+enum Buildings.BuildingType {
++  BAKERY
++  FORGE
++  HOUSE
+}
+class Structures.Position {
++ int x
++ int y
++ <<Create>> Position(int,int)
++ {static} int squaredDistanceBetween(Position,Position)
+}
+class Main {
+- {static} GUI gui
+- {static} Map map
+- {static} DataCollector dataCollector
++ {static} void main(String[])
++ {static} void exit()
+}
+class Simulation.DataCollector {
+- Map map
+- FileOutputStream outfile
++ <<Create>> DataCollector(Map)
++ void printHeaderLine()
++ void collectData()
++ void closeOutputFile()
+}
+class Terrain.BiomeConverter {
++ {static} Biome getBiome(double)
++ {static} int[] getBiomeColor(double)
+}
+enum Terrain.Biome {
++  OCEAN
++  PLAINS
++  MOUNTAINS
+}
+class Buildings.Forge {
+- {static} int armorCost
+- {static} int swordCost
+- {static} int forgeCounter
+- int tempForgeCounter
+~ <<Create>> Forge(Village)
++ void simulationTick()
+- void produceArmor(Inventory)
+- void produceSword(Inventory)
+}
+
+
+Creatures.Creature <|-- Creatures.Hamster
+Creatures.Creature <|-- Creatures.Cow
+Buildings.Building <|-- Buildings.Bakery
+GUI.GUI +.. GUI.GUI.MessageDialog
+GUI.JDialog <|-- GUI.GUI.MessageDialog
+GUI.GUI +.. GUI.GUI.YesNoDialog
+GUI.JDialog <|-- GUI.GUI.YesNoDialog
+GUI.GUI.YesNoDialog +.. GUI.GUI.YesNoDialog.YesNoPanel
+GUI.JPanel <|-- GUI.GUI.YesNoDialog.YesNoPanel
+GUI.GUI +.. GUI.GUI.UserInputDialog
+GUI.JDialog <|-- GUI.GUI.UserInputDialog
+GUI.JFrame <|-- GUI.MainWindow
+GUI.MainWindow +.. GUI.MainWindow.MapPanel
+GUI.JPanel <|-- GUI.MainWindow.MapPanel
+Creatures.Creature <|-- Creatures.Human
+Buildings.Building <|-- Buildings.House
+Buildings.Building <|-- Buildings.Forge
+
+Main *-- GUI.GUI
+Main *-- Terrain.Map
+Main *-- Simulation.DataCollector
+
+GUI.GUI *-- GUI.MainWindow
+GUI.MainWindow o-- Creatures.Creature
+GUI.MainWindow o-- Simulation.Village
+
+Terrain.Map *-- Simulation.Village
+Terrain.Map *-- Structures.HeightMap
+Terrain.Map *-- Creatures.Creature
+Terrain.Map *-- Structures.SimulationOptions
+Terrain.Map <-- Terrain.Perlin
+
+Simulation.Village *-- Creatures.Human
+Simulation.Village *-- Buildings.Building
+Simulation.Village *-- Simulation.Inventory
+Simulation.Village *-- Structures.Position
+
+Creatures.Creature *-- Simulation.Inventory
+
+Simulation.DataCollector o-- Terrain.Map
+@enduml
