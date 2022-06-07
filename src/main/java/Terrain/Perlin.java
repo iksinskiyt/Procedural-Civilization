@@ -4,11 +4,30 @@ import Structures.SimulationOptions;
 
 import java.util.Random;
 
+/**
+ * Perlin noise generator
+ */
 class Perlin {
+    /**
+     * Noise scale
+     */
     double scale_base;
+
+    /**
+     * Noise map size
+     */
     int size;
+
+    /**
+     * Number of noise octaves
+     */
     int octaves;
 
+    /**
+     * Construct a new perlin noise generator
+     *
+     * @param simulationOptions Simulation options provided by the user
+     */
     public Perlin(SimulationOptions simulationOptions) {
         size = simulationOptions.mapSize;
         scale_base = simulationOptions.noiseScale;
@@ -16,11 +35,22 @@ class Perlin {
         seed = new double[size * size];
     }
 
+    /**
+     * Random number generator object
+     */
     Random rand = new Random();
-    public double average = 0;
 
+    /**
+     * Array of doubles containing random numbers used to generate the noise
+     * map
+     */
     double[] seed;
 
+    /**
+     * Generate a two-dimensional Perlin noise map
+     *
+     * @return Two-dimensional array of doubles in range [0, 1)
+     */
     double[][] generatePerlinNoise2D() {
         double[][] interpolatedNoise = new double[size][size];
         for (int i = 0; i < size * size; i++) {
@@ -79,18 +109,6 @@ class Perlin {
                                 (maxValue - minValue));
             }
         }
-
-        double avgTemp = 0;
-
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                avgTemp += interpolatedNoise[i][j];
-            }
-        }
-
-        average = avgTemp / (size * size);
-
-        // System.out.println(average);
 
         return interpolatedNoise;
     }

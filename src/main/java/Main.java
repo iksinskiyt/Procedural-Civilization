@@ -7,11 +7,31 @@ import javax.swing.Timer;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+/**
+ * Main class
+ */
 public class Main {
+    /**
+     * GUI object
+     */
     private static GUI gui;
+
+    /**
+     * Map object
+     */
     private static Map map;
+
+    /**
+     * Data collector object
+     */
     private static DataCollector dataCollector;
 
+    /**
+     * Main method. Initializes GUI, map and data collector, gets data from user
+     * and starts the simulation timer.
+     *
+     * @param args Command line arguments (unused)
+     */
     public static void main(String[] args) {
         gui = new GUI();
         SimulationOptions simulationOptions = gui.getOptionsFromUser();
@@ -54,6 +74,10 @@ public class Main {
         simulationTimer.start();
     }
 
+    /**
+     * Close the data output file, destroy the main window and exit the
+     * application
+     */
     public static void exit() {
         try {
             dataCollector.closeOutputFile();

@@ -6,7 +6,16 @@ import Terrain.Map;
 
 import java.awt.*;
 
+/**
+ * Cow creature
+ */
 class Cow extends Creature {
+    /**
+     * Construct a new cow
+     *
+     * @param parentMap A map were the cow lives
+     * @param position  A cow's starting position
+     */
     Cow(Map parentMap, Position position) {
         super(parentMap, position, 50, 0, 2, 6);
         inventory.addItem(Inventory.ItemType.MEAT, 4);
