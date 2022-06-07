@@ -78,7 +78,6 @@ class Buildings.Bakery {
 class GUI.GUI {
 - MainWindow mainWindow
 - boolean exitRequested
-+ <<Create>> GUI()
 + void openMainWindow(Map)
 + void closeMainWindow()
 + SimulationOptions getOptionsFromUser()
@@ -151,14 +150,12 @@ class Terrain.Perlin {
 ~ int size
 ~ int octaves
 ~ Random rand
-+ double average
 ~ double[] seed
 + <<Create>> Perlin(SimulationOptions)
 ~ double[][] generatePerlinNoise2D()
 }
 class Structures.HeightMap {
 + double[][] height
-+ <<Create>> HeightMap()
 }
 class GUI.MainWindow {
 - List<Creature> creatures
@@ -168,9 +165,9 @@ class GUI.MainWindow {
 }
 class GUI.MainWindow.MapPanel {
 - void drawCreatureIcon(Graphics,Position,Color)
-- void drawHumanIcon(Graphics,int,int,Color,Human)
-- void drawVillageIcon(Graphics,int,int,Color)
-- void drawStatIcon(Graphics,int,int,Human)
+- void drawHumanIcon(Graphics,Position,Color,Human)
+- void drawVillageIcon(Graphics,Position,Color)
+- void drawStatIcon(Graphics,Position,Human)
 + void paint(Graphics)
 }
 class Simulation.Inventory {
@@ -207,15 +204,13 @@ class Creatures.Human {
 - int hasSword
 - int armorBonus
 - int swordBonus
-- Random random
 - int eatingCounter
 - int tempEatingCounter
 - int foodRegenAmount
 + int maxHealth
 + int maxArmor
 + int maxSword
-~ <<Create>> Human(Village,Position)
-+ {static} Human createNew(Village,Position)
++ <<Create>> Human(Village,Position)
 - void tryEquipArmor()
 + void tryEquipSword()
 + int getTeamID()
@@ -338,6 +333,7 @@ Simulation.Village *-- Simulation.Inventory
 Simulation.Village *-- Structures.Position
 
 Creatures.Creature *-- Simulation.Inventory
+Creatures.Creature *-- Structures.Position
 
 Simulation.DataCollector o-- Terrain.Map
 @enduml
