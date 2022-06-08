@@ -1,0 +1,213 @@
+@startuml
+class Structures.SimulationOptions {
++ 800 mapSize
++ 4 nTeams
++ 8 teamPopulation
++ 10 nCows
++ 5 nHamsters
++ 32 simulationSpeed
++ 1.0 noiseScale
++ 10 noiseOctaves
+}
+class Creatures.Hamster {
+}
+abstract class Creatures.Creature {
+# {1,MEAT:1} inventory
+# {x: 216, y:618} position
+# 100 health
+# 10 attackStrength
+# 10 speed
+# {villages: 4, heightMap, creatures: 14, simulationComplete = false, simulationOptions, random, tickCounter = 1394} parentMap
+# {211139675051861,0.0,false} random
+}
+enum Creatures.CreatureType {
++  COW
++  HAMSTER
+}
+class Terrain.Map {
+- {v0,v1,v2,v3} villages
+- {0.1,0,5,0.12...} heightMap
+- {0,1,...,10} creatures
+- false simulationComplete
+- options1 simulationOptions
+- {211139675051861,0.0,false} random
+- 123 tickCounter
+}
+class Creatures.Cow {
+}
+class Buildings.Bakery {
+- {static} 5 meatCost
+- {static} 10 breadCost
+- {static} 15 bakeryCounter
+- 15 tempBakeryCounter
+}
+class GUI.GUI {
+- window1 mainWindow
+- 0 exitRequested
+}
+class GUI.GUI.MessageDialog {
+}
+class GUI.GUI.YesNoDialog {
+~ boolean yes
+}
+class GUI.GUI.YesNoDialog.YesNoPanel {
+}
+class GUI.GUI.UserInputDialog {
+- field1 tfMapSize
+- field2 tfNoiseScale
+- field3 tfNoiseOctaves
+- field4 tfNTeams
+- field5 tfTeamPopulation
+- field6 tfNCows
+- field7 tfNHamsters
+- field8 tfSimulationSpeed
+}
+class Simulation.Village {
+- {human0,human1,human2,human3,human4} villagers
+- 3 deadVillagers
+- {house0,forge0} buildings
+- inventoryV inventory
+- {210,506} position
+- 3 teamID
+- {0:7} killCounts
+- map1 parentMap
+- 150 houseKillCounter
+- 150 tempHouseKillCounter
+- 12 houseSize
+- 50 forgeCapacity
+- 25 bakeryCapacity
+- 0 armorCounter
+- 0 swordCounter
+}
+class Terrain.Perlin {
+~ 1.0 scale_base
+~ 800 size
+~ 10 octaves
+~ {218118633559969,0.0,false} rand
+~ {0.35465,0.65465132,...} seed
+}
+class Structures.HeightMap {
++ {0.6543541231,0.12313213,...} height
+}
+class GUI.MainWindow {
+- {0:cow1,1:cow2,...} creatures
+- {0:v1,1:v2,...} villages
+- map1 mapImage
+}
+class GUI.MainWindow.MapPanel {
+}
+class Simulation.Inventory {
+- 16 maxCapacity
+- {STONE:0,WOOD:0,WHEAT:1,LEATHER:2,MEAT:0} items
+}
+enum Simulation.ItemType {
++  STONE
++  WOOD
++  WHEAT
++  LEATHER
++  MEAT
++  FOOD
++  ARMOR
++  SWORD
+}
+class Creatures.Human {
+- 0 onExpedition
+- v1 parentVillage
+- 10 positionTriesLeft
+- 0 randomTicksLeft
+- {static} 100 humanBasicHealth
+- 0 hasArmor
+- 0 hasSword
+- 20 armorBonus
+- 5 swordBonus
+- 3 eatingCounter
+- 1 tempEatingCounter
+- 10 foodRegenAmount
++ 100 maxHealth
++ 8 maxArmor
++ 8 maxSword
+}
+class Buildings.House {
+- 420 sexCounter
+- 420 tempSexCounter
+}
+abstract class Buildings.Building {
+- {static} {BAKERY:STONE:20} materialCosts
+- {static} {v1:BAKERY:1} buildingsCreatedFor
+# v1 parentVillage
+}
+enum Buildings.BuildingType {
++  BAKERY
++  FORGE
++  HOUSE
+}
+class Structures.Position {
++ 125 x
++ 645 y
+}
+class Main {
+- {static} {mainWin0, 0} gui
+- {static} map0 map
+- {static} {map0, file} dataCollector
+}
+class Simulation.DataCollector {
+- map0 map
+- "output.csv" outfile
+}
+class Terrain.BiomeConverter {
+}
+enum Terrain.Biome {
++  OCEAN
++  PLAINS
++  MOUNTAINS
+}
+class Buildings.Forge {
+- {static} 5 armorCost
+- {static} 2 swordCost
+- {static} 15 forgeCounter
+- 15 tempForgeCounter
+}
+
+
+Creatures.Creature <|-- Creatures.Hamster
+Creatures.Creature <|-- Creatures.Cow
+Buildings.Building <|-- Buildings.Bakery
+GUI.GUI +.. GUI.GUI.MessageDialog
+GUI.JDialog <|-- GUI.GUI.MessageDialog
+GUI.GUI +.. GUI.GUI.YesNoDialog
+GUI.JDialog <|-- GUI.GUI.YesNoDialog
+GUI.GUI.YesNoDialog +.. GUI.GUI.YesNoDialog.YesNoPanel
+GUI.JPanel <|-- GUI.GUI.YesNoDialog.YesNoPanel
+GUI.GUI +.. GUI.GUI.UserInputDialog
+GUI.JDialog <|-- GUI.GUI.UserInputDialog
+GUI.JFrame <|-- GUI.MainWindow
+GUI.MainWindow +.. GUI.MainWindow.MapPanel
+GUI.JPanel <|-- GUI.MainWindow.MapPanel
+Creatures.Creature <|-- Creatures.Human
+Buildings.Building <|-- Buildings.House
+Buildings.Building <|-- Buildings.Forge
+
+Main *-- GUI.GUI
+Main *-- Terrain.Map
+Main *-- Simulation.DataCollector
+
+GUI.GUI *-- GUI.MainWindow
+GUI.MainWindow o-- Creatures.Creature
+GUI.MainWindow o-- Simulation.Village
+
+Terrain.Map *-- Simulation.Village
+Terrain.Map *-- Structures.HeightMap
+Terrain.Map *-- Creatures.Creature
+Terrain.Map *-- Structures.SimulationOptions
+Terrain.Map <-- Terrain.Perlin
+
+Simulation.Village *-- Creatures.Human
+Simulation.Village *-- Buildings.Building
+Simulation.Village *-- Simulation.Inventory
+Simulation.Village *-- Structures.Position
+
+Creatures.Creature *-- Simulation.Inventory
+Creatures.Creature *-- Structures.Position
+
+Simulation.DataCollector o-- Terrain.Map
+@enduml
