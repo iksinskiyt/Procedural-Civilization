@@ -1,0 +1,219 @@
+@startuml
+"Main thread" as Main -> GUI: GUI()
+GUI --> Main: gui : GUI
+Main -> GUI: gui.getOptionsFromUser()
+note over GUI
+    Display the input dialog and get simulation
+    options from the user. If something goes wrong,
+    display an error message dialog and try again.
+    If the user closes the input dialog, exit the program.
+end note
+GUI --> Main: simulationOptions : SimulationOptions
+Main -> Map: Map(simulationOptions)
+Map -> Perlin : Perlin(simulationOptions)
+Perlin --> Map : perlin : Perlin
+Map -> HeightMap: HeightMap()
+HeightMap --> Map: heightMap : HeightMap
+Map -> Perlin : perlin.generatePerlinNoise2D()
+Perlin --> Map: heightMap.height : double[][]
+
+' Create villages
+loop for i from 0 to simulationOptions.nTeams-1
+    note over Map
+        Generate a `newVillagePosition`
+        in plains biome for a village
+    end note
+    Map -> Village: Village(newVillagePosition, i, this)
+    note over Village
+        Create a new village with a single house
+    end note
+    Village --> Map: village : Village
+    note over Map
+        Add `village` to the `villages` list
+    end note
+    ' Create humans
+    loop for i from 0 to simulationOptions.teamPopulation-1
+        Map -> Village : village.addVillager()
+        Village -> Human : Human(this, position)
+        Human --> Village : human : Human
+        note over Village
+            Add `human` to the `villagers` list
+        end note
+    end
+end
+
+loop for i from 0 to simulationOptions.nCows-1
+    Map -> Creature : createNew(Creature.CreatureType.COW, this)
+    note over Creature
+        Generate a `newCreaturePosition`
+        in plains biome for a cow
+    end note
+    Creature -> Cow : Cow(parentMap, newCreaturePosition)
+    note over Cow
+        Call base class constructor
+    end note
+    Cow --> Creature : cow : Cow
+    Creature --> Map : cow : Creature
+    note over Map
+        Add `cow` to the `creatures` list
+    end note
+end
+
+loop for i from 0 to simulationOptions.nHamsters-1
+    Map -> Creature : createNew(Creature.CreatureType.HAMSTER, this)
+    note over Creature
+        Generate a `newCreaturePosition`
+        in plains or mountains biome for a hamster
+    end note
+    Creature -> Hamster : Hamster(parentMap, newCreaturePosition)
+    note over Hamster
+        Call base class constructor
+    end note
+    Hamster --> Creature : hamster : Hamster
+    Creature --> Map : hamster : Creature
+    note over Map
+        Add `hamster` to the `creatures` list
+    end note
+end
+
+Map --> Main: map : Map
+Main -> GUI: gui.openMainWindow(map)
+note over GUI
+    Create and show the simulation main window
+end note
+
+group try/catch
+    Main -> DataCollector: DataCollector(map)
+    note over DataCollector
+        Open the data output file
+    end note
+    DataCollector --> Main: dataCollector : DataCollector
+    Main -> DataCollector: dataCollector.printHeaderLine()
+    note over DataCollector
+        Print a line containing column headers to the data output file
+    end note
+    note over Main
+        If any exception is caught,
+        display a fatal error dialog and exit
+    end note
+end group
+
+note over Main
+    Create a periodic timer `simulationTimer`
+    with period `simulationOptions.simulationSpeed`.
+    The new timer has access to all Main class
+    fields and methods.
+end note
+
+Main -> "Simulation timer thread" as STT ** : simulationTimer.start()
+Main -> Main !! : Main thread terminates
+
+loop
+    group try/catch
+        STT -> DataCollector : dataCollector.collectData()
+        note over DataCollector
+            Collect data from map
+            and write it to the output file
+        end note
+        note over STT
+            If any exception is caught,
+            display a fatal error dialog and exit
+        end note
+    end group
+    opt map.isSimulationComplete()
+        note over STT
+            Use the GUI to display the simulation
+            complete message and exit
+        end note
+    end
+    opt gui.getExitRequested()
+        note over STT
+            Exit the program
+        end note
+    end
+    STT -> Map: map.simulationTick()
+    note over Map
+        Increment `tickCounter`
+    end note
+    loop for each village in villages
+        Map -> Village: village.getTeamID()
+        Village --> Map: teamID : int
+    end
+    note over Map
+        If all returned team IDs are the same,
+        set `isSimulationComplete` to true and return
+    end note
+    loop for each creature in creatures
+        Map -> Creature: creature.move()
+        note over Creature
+            Make a random move
+        end note
+    end
+    loop for each village in villages
+        Map -> Village: village.simulationTick()
+        opt villagers is empty
+            note over Village
+                Set `teamID` to ID of the team
+                with the greatest kill count
+            end note
+        end
+        loop for each human in villagers
+            opt human.isAlive()
+                Village -> Human: human.move()
+                note over Human
+                    Look for the nearest creature within attack
+                    distance. If there is any, attack it and return.
+                end note
+                alt onExpedition
+                    note over Human
+                        Look for the nearest creature within vision distance.
+                        If there is any, make a move towards it. Otherwise,
+                        make a random move.
+                    end note
+                else
+                    alt Human is close to the parent village
+                        note over Human
+                            Store all inventory in the parent village and try
+                            to equip armor and sword (if not already equipped).
+                            Try to eat food. Then, go to expedition (set `onExpedition` to true)
+                        end note
+                    else
+                        note over Human
+                            Make a move towards the parent village
+                        end note
+                    end
+                    note over Human
+                        return
+                    end note
+                end
+
+                alt inventory.isFull()
+                    note over Human
+                        Abort expedition (set `onExpedition` to false)
+                    end note
+                else
+                    note over Human
+                        Try to collect resources from the map and add them to own inventory
+                    end note
+                end
+            end
+        end
+        loop for each building in buildings
+            Village -> Building: simulationTick()
+            note over Building
+                Perform an action specific to the given building type
+            end note
+        end
+        note over Village
+            Check the village population and if necessary, create more buildings.
+            If there is a house needed and it cannot be built, kill one villager.
+        end note
+    end
+    STT -> GUI: gui.showSimulation()
+    note over GUI
+        Repaint the main window - draw the terrain
+        image and all creature icons
+    end note
+end
+
+@enduml

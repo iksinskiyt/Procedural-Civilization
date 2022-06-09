@@ -10,15 +10,37 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Collect simulation data and save it to a CSV-formatted file
+ */
 public class DataCollector {
+    /**
+     * Map to collect data from
+     */
     private final Map map;
+
+    /**
+     * File to output data to
+     */
     private final FileOutputStream outfile;
 
+    /**
+     * Construct a new data collector
+     *
+     * @param map A map to collect data from
+     * @throws FileNotFoundException When the output file's parent directory
+     *                               does not exist
+     */
     public DataCollector(Map map) throws FileNotFoundException {
         this.map = map;
         outfile = new FileOutputStream("output.csv");
     }
 
+    /**
+     * Output a header line
+     *
+     * @throws IOException When the data cannot be written
+     */
     public void printHeaderLine() throws IOException {
         String headerLine = "";
         headerLine += "tick,";
@@ -28,6 +50,12 @@ public class DataCollector {
         outfile.write(headerLine.getBytes(StandardCharsets.UTF_8));
     }
 
+    /**
+     * Collect data from the map and output it as a single line to the output
+     * file
+     *
+     * @throws IOException When the data cannot be written
+     */
     public void collectData() throws IOException {
         String dataLine = "";
         dataLine += map.getTickCounter() + ",";
@@ -48,6 +76,11 @@ public class DataCollector {
         outfile.write(dataLine.getBytes(StandardCharsets.UTF_8));
     }
 
+    /**
+     * Close the output file
+     *
+     * @throws IOException When the output file cannot be closed
+     */
     public void closeOutputFile() throws IOException {
         outfile.close();
     }

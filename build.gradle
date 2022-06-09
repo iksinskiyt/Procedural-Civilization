@@ -25,3 +25,8 @@ java {
 test {
     useJUnitPlatform()
 }
+
+javadoc {
+    destinationDir = file('doc/javadoc')
+    options.setMemberLevel(JavadocMemberLevel.PRIVATE)
+}

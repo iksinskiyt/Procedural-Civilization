@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="3407px" preserveAspectRatio="none" style="width:2146px;height:3407px;background:#FFFFFF;" version="1.1" viewBox="0 0 2146 3407" width="2146px" zoomAndPan="magnify"><defs/><g><rect height="349.5938" style="stroke:#000000;stroke-width:1.5;fill:none;" width="744.5" x="373" y="454.2891"/><rect height="139.6641" style="stroke:#000000;stroke-width:1.5;fill:none;" width="634.5" x="473" y="657.2188"/><rect height="254.1953" style="stroke:#000000;stroke-width:1.5;fill:none;" width="1150" x="377" y="817.8828"/><rect height="254.1953" style="stroke:#000000;stroke-width:1.5;fill:none;" width="1234" x="363" y="1086.0781"/><rect height="225.0625" style="stroke:#000000;stroke-width:1.5;fill:none;" width="1768" x="43" y="1447.6719"/><rect height="1504.0391" style="stroke:#000000;stroke-width:1.5;fill:none;" width="1849" x="291" y="1850.6953"/><rect height="146.7969" style="stroke:#000000;stroke-width:1.5;fill:none;" width="448" x="1479" y="1874.8281"/><rect height="67.3984" style="stroke:#000000;stroke-width:1.5;fill:none;" width="285" x="1649" y="2035.625"/><rect height="52.2656" style="stroke:#000000;stroke-width:1.5;fill:none;" width="242" x="1717" y="2117.0234"/><rect height="75.3984" style="stroke:#000000;stroke-width:1.5;fill:none;" width="468" x="473" y="2247.5547"/><rect height="81.3984" style="stroke:#000000;stroke-width:1.5;fill:none;" width="764" x="473" y="2387.2188"/><rect height="785.7188" style="stroke:#000000;stroke-width:1.5;fill:none;" width="1657" x="473" y="2482.6172"/><rect height="67.3984" style="stroke:#000000;stroke-width:1.5;fill:none;" width="243" x="778" y="2535.8828"/><rect height="498.3906" style="stroke:#000000;stroke-width:1.5;fill:none;" width="535" x="797" y="2617.2813"/><rect height="467.2578" style="stroke:#000000;stroke-width:1.5;fill:none;" width="515" x="807" y="2641.4141"/><rect height="253.3281" style="stroke:#000000;stroke-width:1.5;fill:none;" width="495" x="817" y="2744.9453"/><rect height="119.6641" style="stroke:#000000;stroke-width:1.5;fill:none;" width="475" x="827" y="2836.4766"/><rect height="89.3984" style="stroke:#000000;stroke-width:1.5;fill:none;" width="494" x="817" y="3012.2734"/><rect height="81.3984" style="stroke:#000000;stroke-width:1.5;fill:none;" width="1262" x="858" y="3129.6719"/><line style="stroke:#181818;stroke-width:0.5;fill:none;stroke-dasharray:5.0,5.0;" x1="178" x2="178" y1="36.2969" y2="3371.7344"/><line style="stroke:#181818;stroke-width:0.5;fill:none;stroke-dasharray:5.0,5.0;" x1="453" x2="453" y1="36.2969" y2="3371.7344"/><line style="stroke:#181818;stroke-width:0.5;fill:none;stroke-dasharray:5.0,5.0;" x1="505" x2="505" y1="36.2969" y2="3371.7344"/><line style="stroke:#181818;stroke-width:0.5;fill:none;stroke-dasharray:5.0,5.0;" x1="730" x2="730" y1="36.2969" y2="3371.7344"/><line style="stroke:#181818;stroke-width:0.5;fill:none;stroke-dasharray:5.0,5.0;" x1="812" x2="812" y1="36.2969" y2="3371.7344"/><line style="stroke:#181818;stroke-width:0.5;fill:none;stroke-dasharray:5.0,5.0;" x1="899" x2="899" y1="36.2969" y2="3371.7344"/><line style="stroke:#181818;stroke-width:0.5;fill:none;stroke-dasharray:5.0,5.0;" x1="1064.5" x2="1064.5" y1="36.2969" y2="3371.7344"/><line style="stroke:#181818;stroke-width:0.5;fill:none;stroke-dasharray:5.0,5.0;" x1="1145.5" x2="1145.5" y1="36.2969" y2="3371.7344"/><line style="stroke:#181818;stroke-width:0.5;fill:none;stroke-dasharray:5.0,5.0;" x1="1420" x2="1420" y1="36.2969" y2="3371.7344"/><line style="stroke:#181818;stroke-width:0.5;fill:none;stroke-dasharray:5.0,5.0;" x1="1489" x2="1489" y1="36.2969" y2="3371.7344"/><line style="stroke:#181818;stroke-width:0.5;fill:none;stroke-dasharray:5.0,5.0;" x1="1593" x2="1593" y1="36.2969" y2="3371.7344"/><line style="stroke:#181818;stroke-width:0.5;fill:none;stroke-dasharray:5.0,5.0;" x1="1791.5" x2="1791.5" y1="1790.9141" y2="3371.7344"/><line style="stroke:#181818;stroke-width:0.5;fill:none;stroke-dasharray:5.0,5.0;" x1="1929.5" x2="1929.5" y1="36.2969" y2="3371.7344"/><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="99" x="129" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="85" x="136" y="24.9951">Main thread</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="99" x="129" y="3370.7344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="85" x="136" y="3390.7295">Main thread</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="39" x="434" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="25" x="441" y="24.9951">GUI</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="39" x="434" y="3370.7344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="25" x="441" y="3390.7295">GUI</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="44" x="483" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="30" x="490" y="24.9951">Map</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="44" x="483" y="3370.7344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="30" x="490" y="3390.7295">Map</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="54" x="703" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="40" x="710" y="24.9951">Perlin</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="54" x="703" y="3370.7344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="40" x="710" y="3390.7295">Perlin</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="91" x="767" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="77" x="774" y="24.9951">HeightMap</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="91" x="767" y="3370.7344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="77" x="774" y="3390.7295">HeightMap</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="63" x="868" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="49" x="875" y="24.9951">Village</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="63" x="868" y="3370.7344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="49" x="875" y="3390.7295">Village</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="66" x="1031.5" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="52" x="1038.5" y="24.9951">Human</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="66" x="1031.5" y="3370.7344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="52" x="1038.5" y="3390.7295">Human</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="77" x="1107.5" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="63" x="1114.5" y="24.9951">Creature</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="77" x="1107.5" y="3370.7344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="63" x="1114.5" y="3390.7295">Creature</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="44" x="1398" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="30" x="1405" y="24.9951">Cow</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="44" x="1398" y="3370.7344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="30" x="1405" y="3390.7295">Cow</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="75" x="1452" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="61" x="1459" y="24.9951">Hamster</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="75" x="1452" y="3370.7344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="61" x="1459" y="3390.7295">Hamster</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="112" x="1537" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="98" x="1544" y="24.9951">DataCollector</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="112" x="1537" y="3370.7344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="98" x="1544" y="3390.7295">DataCollector</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="183" x="1700.5" y="3370.7344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="169" x="1707.5" y="3390.7295">Simulation timer thread</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="72" x="1893.5" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="58" x="1900.5" y="24.9951">Building</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="72" x="1893.5" y="3370.7344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="58" x="1900.5" y="3390.7295">Building</text><polygon fill="#181818" points="441.5,63.4297,451.5,67.4297,441.5,71.4297,445.5,67.4297" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="178.5" x2="447.5" y1="67.4297" y2="67.4297"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="34" x="185.5" y="62.3638">GUI()</text><polygon fill="#181818" points="189.5,92.5625,179.5,96.5625,189.5,100.5625,185.5,96.5625" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="183.5" x2="452.5" y1="96.5625" y2="96.5625"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="56" x="195.5" y="91.4966">gui : GUI</text><polygon fill="#181818" points="441.5,121.6953,451.5,125.6953,441.5,129.6953,445.5,125.6953" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="178.5" x2="447.5" y1="125.6953" y2="125.6953"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="168" x="185.5" y="120.6294">gui.getOptionsFromUser()</text><path d="M274,138.6953 L274,208.6953 L633,208.6953 L633,148.6953 L623,138.6953 L274,138.6953 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M623,138.6953 L623,148.6953 L633,148.6953 L623,138.6953 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="281" x="280" y="155.7622">Display the input dialog and get simulation</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="313" x="280" y="170.895">options from the user. If something goes wrong,</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="303" x="280" y="186.0278">display an error message dialog and try again.</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="338" x="280" y="201.1606">If the user closes the input dialog, exit the program.</text><polygon fill="#181818" points="189.5,231.3594,179.5,235.3594,189.5,239.3594,185.5,235.3594" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="183.5" x2="452.5" y1="235.3594" y2="235.3594"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="251" x="195.5" y="230.2935">simulationOptions : SimulationOptions</text><polygon fill="#181818" points="493,260.4922,503,264.4922,493,268.4922,497,264.4922" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="178.5" x2="499" y1="264.4922" y2="264.4922"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="156" x="185.5" y="259.4263">Map(simulationOptions)</text><polygon fill="#181818" points="718,289.625,728,293.625,718,297.625,722,293.625" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="505" x2="724" y1="293.625" y2="293.625"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="166" x="512" y="288.5591">Perlin(simulationOptions)</text><polygon fill="#181818" points="516,318.7578,506,322.7578,516,326.7578,512,322.7578" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="510" x2="729" y1="322.7578" y2="322.7578"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="86" x="522" y="317.6919">perlin : Perlin</text><polygon fill="#181818" points="800.5,347.8906,810.5,351.8906,800.5,355.8906,804.5,351.8906" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="505" x2="806.5" y1="351.8906" y2="351.8906"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="80" x="512" y="346.8247">HeightMap()</text><polygon fill="#181818" points="516,377.0234,506,381.0234,516,385.0234,512,381.0234" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="510" x2="811.5" y1="381.0234" y2="381.0234"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="150" x="522" y="375.9575">heightMap : HeightMap</text><polygon fill="#181818" points="718,406.1563,728,410.1563,718,414.1563,722,410.1563" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="505" x2="724" y1="410.1563" y2="410.1563"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="201" x="512" y="405.0903">perlin.generatePerlinNoise2D()</text><polygon fill="#181818" points="516,435.2891,506,439.2891,516,443.2891,512,439.2891" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="510" x2="729" y1="439.2891" y2="439.2891"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="189" x="522" y="434.2231">heightMap.height : double[][]</text><path d="M373,454.2891 L449,454.2891 L449,461.4219 L439,471.4219 L373,471.4219 L373,454.2891 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="349.5938" style="stroke:#000000;stroke-width:1.5;" width="744.5" x="373" y="454.2891"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="31" x="388" y="467.356">loop</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="282" x="464" y="466.4995">[for i from 0 to simulationOptions.nTeams-1]</text><path d="M387,476.4219 L387,516.4219 L622,516.4219 L622,486.4219 L612,476.4219 L387,476.4219 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M612,476.4219 L612,486.4219 L622,486.4219 L612,476.4219 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="214" x="393" y="493.4888">Generate a `newVillagePosition`</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="182" x="393" y="508.6216">in plains biome for a village</text><polygon fill="#181818" points="887.5,538.8203,897.5,542.8203,887.5,546.8203,891.5,542.8203" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="505" x2="893.5" y1="542.8203" y2="542.8203"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="223" x="512" y="537.7544">Village(newVillagePosition, i, this)</text><path d="M757,555.8203 L757,580.8203 L1042,580.8203 L1042,565.8203 L1032,555.8203 L757,555.8203 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1032,555.8203 L1032,565.8203 L1042,565.8203 L1032,555.8203 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="264" x="763" y="572.8872">Create a new village with a single house</text><polygon fill="#181818" points="516,603.0859,506,607.0859,516,611.0859,512,607.0859" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="510" x2="898.5" y1="607.0859" y2="607.0859"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="101" x="522" y="602.02">village : Village</text><path d="M383,620.0859 L383,645.0859 L626,645.0859 L626,630.0859 L616,620.0859 L383,620.0859 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M616,620.0859 L616,630.0859 L626,630.0859 L616,620.0859 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="222" x="389" y="637.1528">Add `village` to the `villages` list</text><path d="M473,657.2188 L549,657.2188 L549,664.3516 L539,674.3516 L473,674.3516 L473,657.2188 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="139.6641" style="stroke:#000000;stroke-width:1.5;" width="634.5" x="473" y="657.2188"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="31" x="488" y="670.2856">loop</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="332" x="564" y="669.4292">[for i from 0 to simulationOptions.teamPopulation-1]</text><polygon fill="#181818" points="887.5,691.4844,897.5,695.4844,887.5,699.4844,891.5,695.4844" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="505" x2="893.5" y1="695.4844" y2="695.4844"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="132" x="512" y="690.4185">village.addVillager()</text><polygon fill="#181818" points="1052.5,720.6172,1062.5,724.6172,1052.5,728.6172,1056.5,724.6172" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="899.5" x2="1058.5" y1="724.6172" y2="724.6172"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="141" x="906.5" y="719.5513">Human(this, position)</text><polygon fill="#181818" points="910.5,749.75,900.5,753.75,910.5,757.75,906.5,753.75" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="904.5" x2="1063.5" y1="753.75" y2="753.75"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="104" x="916.5" y="748.6841">human : Human</text><path d="M775,766.75 L775,791.75 L1024,791.75 L1024,776.75 L1014,766.75 L775,766.75 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1014,766.75 L1014,776.75 L1024,776.75 L1014,766.75 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="228" x="781" y="783.8169">Add `human` to the `villagers` list</text><path d="M377,817.8828 L453,817.8828 L453,825.0156 L443,835.0156 L377,835.0156 L377,817.8828 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="254.1953" style="stroke:#000000;stroke-width:1.5;" width="1150" x="377" y="817.8828"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="31" x="392" y="830.9497">loop</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="275" x="468" y="830.0933">[for i from 0 to simulationOptions.nCows-1]</text><polygon fill="#181818" points="1134,852.1484,1144,856.1484,1134,860.1484,1138,856.1484" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="505" x2="1140" y1="856.1484" y2="856.1484"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="296" x="512" y="851.0825">createNew(Creature.CreatureType.COW, this)</text><path d="M1023,869.1484 L1023,909.1484 L1269,909.1484 L1269,879.1484 L1259,869.1484 L1023,869.1484 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1259,869.1484 L1259,879.1484 L1269,879.1484 L1259,869.1484 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="225" x="1029" y="886.2153">Generate a `newCreaturePosition`</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="164" x="1029" y="901.3481">in plains biome for a cow</text><polygon fill="#181818" points="1408,931.5469,1418,935.5469,1408,939.5469,1412,935.5469" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="1146" x2="1414" y1="935.5469" y2="935.5469"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="250" x="1153" y="930.481">Cow(parentMap, newCreaturePosition)</text><path d="M1322,948.5469 L1322,973.5469 L1517,973.5469 L1517,958.5469 L1507,948.5469 L1322,948.5469 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1507,948.5469 L1507,958.5469 L1517,958.5469 L1507,948.5469 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="174" x="1328" y="965.6138">Call base class constructor</text><polygon fill="#181818" points="1157,995.8125,1147,999.8125,1157,1003.8125,1153,999.8125" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="1151" x2="1419" y1="999.8125" y2="999.8125"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="66" x="1163" y="994.7466">cow : Cow</text><polygon fill="#181818" points="516,1024.9453,506,1028.9453,516,1032.9453,512,1028.9453" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="510" x2="1145" y1="1028.9453" y2="1028.9453"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="94" x="522" y="1023.8794">cow : Creature</text><path d="M387,1041.9453 L387,1066.9453 L622,1066.9453 L622,1051.9453 L612,1041.9453 L387,1041.9453 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M612,1041.9453 L612,1051.9453 L622,1051.9453 L612,1041.9453 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="214" x="393" y="1059.0122">Add `cow` to the `creatures` list</text><path d="M363,1086.0781 L439,1086.0781 L439,1093.2109 L429,1103.2109 L363,1103.2109 L363,1086.0781 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="254.1953" style="stroke:#000000;stroke-width:1.5;" width="1234" x="363" y="1086.0781"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="31" x="378" y="1099.145">loop</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="300" x="454" y="1098.2886">[for i from 0 to simulationOptions.nHamsters-1]</text><polygon fill="#181818" points="1134,1120.3438,1144,1124.3438,1134,1128.3438,1138,1124.3438" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="505" x2="1140" y1="1124.3438" y2="1124.3438"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="327" x="512" y="1119.2778">createNew(Creature.CreatureType.HAMSTER, this)</text><path d="M994,1137.3438 L994,1177.3438 L1297,1177.3438 L1297,1147.3438 L1287,1137.3438 L994,1137.3438 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1287,1137.3438 L1287,1147.3438 L1297,1147.3438 L1287,1137.3438 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="225" x="1000" y="1154.4106">Generate a `newCreaturePosition`</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="282" x="1000" y="1169.5435">in plains or mountains biome for a hamster</text><polygon fill="#181818" points="1477.5,1199.7422,1487.5,1203.7422,1477.5,1207.7422,1481.5,1203.7422" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="1146" x2="1483.5" y1="1203.7422" y2="1203.7422"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="278" x="1153" y="1198.6763">Hamster(parentMap, newCreaturePosition)</text><path d="M1392,1216.7422 L1392,1241.7422 L1587,1241.7422 L1587,1226.7422 L1577,1216.7422 L1392,1216.7422 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1577,1216.7422 L1577,1226.7422 L1587,1226.7422 L1577,1216.7422 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="174" x="1398" y="1233.8091">Call base class constructor</text><polygon fill="#181818" points="1157,1264.0078,1147,1268.0078,1157,1272.0078,1153,1268.0078" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="1151" x2="1488.5" y1="1268.0078" y2="1268.0078"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="122" x="1163" y="1262.9419">hamster : Hamster</text><polygon fill="#181818" points="516,1293.1406,506,1297.1406,516,1301.1406,512,1297.1406" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="510" x2="1145" y1="1297.1406" y2="1297.1406"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="122" x="522" y="1292.0747">hamster : Creature</text><path d="M373,1310.1406 L373,1335.1406 L636,1335.1406 L636,1320.1406 L626,1310.1406 L373,1310.1406 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M626,1310.1406 L626,1320.1406 L636,1320.1406 L626,1310.1406 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="242" x="379" y="1327.2075">Add `hamster` to the `creatures` list</text><polygon fill="#181818" points="189.5,1364.4063,179.5,1368.4063,189.5,1372.4063,185.5,1368.4063" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="183.5" x2="504" y1="1368.4063" y2="1368.4063"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="68" x="195.5" y="1363.3403">map : Map</text><polygon fill="#181818" points="441.5,1393.5391,451.5,1397.5391,441.5,1401.5391,445.5,1397.5391" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="178.5" x2="447.5" y1="1397.5391" y2="1397.5391"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="178" x="185.5" y="1392.4731">gui.openMainWindow(map)</text><path d="M294,1410.5391 L294,1435.5391 L613,1435.5391 L613,1420.5391 L603,1410.5391 L294,1410.5391 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M603,1410.5391 L603,1420.5391 L613,1420.5391 L603,1410.5391 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="298" x="300" y="1427.606">Create and show the simulation main window</text><path d="M43,1447.6719 L153,1447.6719 L153,1454.8047 L143,1464.8047 L43,1464.8047 L43,1447.6719 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="225.0625" style="stroke:#000000;stroke-width:1.5;" width="1768" x="43" y="1447.6719"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="65" x="58" y="1460.7388">try/catch</text><polygon fill="#181818" points="1581,1481.9375,1591,1485.9375,1581,1489.9375,1585,1485.9375" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="178.5" x2="1587" y1="1485.9375" y2="1485.9375"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="128" x="185.5" y="1480.8716">DataCollector(map)</text><path d="M1501,1498.9375 L1501,1523.9375 L1685,1523.9375 L1685,1508.9375 L1675,1498.9375 L1501,1498.9375 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1675,1498.9375 L1675,1508.9375 L1685,1508.9375 L1675,1498.9375 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="163" x="1507" y="1516.0044">Open the data output file</text><polygon fill="#181818" points="189.5,1546.2031,179.5,1550.2031,189.5,1554.2031,185.5,1550.2031" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="183.5" x2="1592" y1="1550.2031" y2="1550.2031"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="188" x="195.5" y="1545.1372">dataCollector : DataCollector</text><polygon fill="#181818" points="1581,1575.3359,1591,1579.3359,1581,1583.3359,1585,1579.3359" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="178.5" x2="1587" y1="1579.3359" y2="1579.3359"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="205" x="185.5" y="1574.27">dataCollector.printHeaderLine()</text><path d="M1384,1592.3359 L1384,1617.3359 L1801,1617.3359 L1801,1602.3359 L1791,1592.3359 L1384,1592.3359 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1791,1592.3359 L1791,1602.3359 L1801,1602.3359 L1791,1592.3359 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="396" x="1390" y="1609.4028">Print a line containing column headers to the data output file</text><path d="M53,1627.4688 L53,1667.4688 L303,1667.4688 L303,1637.4688 L293,1627.4688 L53,1627.4688 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M293,1627.4688 L293,1637.4688 L303,1637.4688 L293,1627.4688 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="172" x="59" y="1644.5356">If any exception is caught,</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="229" x="59" y="1659.6685">display a fatal error dialog and exit</text><path d="M5,1684.7344 L5,1754.7344 L353,1754.7344 L353,1694.7344 L343,1684.7344 L5,1684.7344 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M343,1684.7344 L343,1694.7344 L353,1694.7344 L343,1684.7344 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="275" x="11" y="1701.8013">Create a periodic timer `simulationTimer`</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="327" x="11" y="1716.9341">with period `simulationOptions.simulationSpeed`.</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="278" x="11" y="1732.0669">The new timer has access to all Main class</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="129" x="11" y="1747.1997">fields and methods.</text><polygon fill="#181818" points="1688.5,1777.3984,1698.5,1781.3984,1688.5,1785.3984,1692.5,1781.3984" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="178.5" x2="1694.5" y1="1781.3984" y2="1781.3984"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="151" x="185.5" y="1776.3325">simulationTimer.start()</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="183" x="1700.5" y="1760.2656"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="169" x="1707.5" y="1780.2607">Simulation timer thread</text><line style="stroke:#181818;stroke-width:1.0;" x1="178.5" x2="220.5" y1="1822.6953" y2="1822.6953"/><line style="stroke:#181818;stroke-width:1.0;" x1="220.5" x2="220.5" y1="1822.6953" y2="1835.6953"/><line style="stroke:#181818;stroke-width:1.0;" x1="179.5" x2="220.5" y1="1835.6953" y2="1835.6953"/><polygon fill="#181818" points="189.5,1831.6953,179.5,1835.6953,189.5,1839.6953,185.5,1835.6953" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="152" x="185.5" y="1817.6294">Main thread terminates</text><line style="stroke:#A80036;stroke-width:2.0;" x1="169.5" x2="187.5" y1="1826.6953" y2="1844.6953"/><line style="stroke:#A80036;stroke-width:2.0;" x1="169.5" x2="187.5" y1="1844.6953" y2="1826.6953"/><path d="M291,1850.6953 L367,1850.6953 L367,1857.8281 L357,1867.8281 L291,1867.8281 L291,1850.6953 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="1504.0391" style="stroke:#000000;stroke-width:1.5;" width="1849" x="291" y="1850.6953"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="31" x="306" y="1863.7622">loop</text><path d="M1479,1874.8281 L1589,1874.8281 L1589,1881.9609 L1579,1891.9609 L1479,1891.9609 L1479,1874.8281 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="146.7969" style="stroke:#000000;stroke-width:1.5;" width="448" x="1479" y="1874.8281"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="65" x="1494" y="1887.895">try/catch</text><polygon fill="#181818" points="1604,1909.0938,1594,1913.0938,1604,1917.0938,1600,1913.0938" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="1598" x2="1791" y1="1913.0938" y2="1913.0938"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="175" x="1610" y="1908.0278">dataCollector.collectData()</text><path d="M1489,1926.0938 L1489,1966.0938 L1697,1966.0938 L1697,1936.0938 L1687,1926.0938 L1489,1926.0938 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1687,1926.0938 L1687,1936.0938 L1697,1936.0938 L1687,1926.0938 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="146" x="1495" y="1943.1606">Collect data from map</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="187" x="1495" y="1958.2935">and write it to the output file</text><path d="M1667,1976.3594 L1667,2016.3594 L1917,2016.3594 L1917,1986.3594 L1907,1976.3594 L1667,1976.3594 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1907,1976.3594 L1907,1986.3594 L1917,1986.3594 L1907,1976.3594 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="172" x="1673" y="1993.4263">If any exception is caught,</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="229" x="1673" y="2008.5591">display a fatal error dialog and exit</text><path d="M1649,2035.625 L1718,2035.625 L1718,2042.7578 L1708,2052.7578 L1649,2052.7578 L1649,2035.625 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="67.3984" style="stroke:#000000;stroke-width:1.5;" width="285" x="1649" y="2035.625"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="24" x="1664" y="2048.6919">opt</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="186" x="1733" y="2047.8354">[map.isSimulationComplete()]</text><path d="M1659,2057.7578 L1659,2097.7578 L1924,2097.7578 L1924,2067.7578 L1914,2057.7578 L1659,2057.7578 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1914,2057.7578 L1914,2067.7578 L1924,2067.7578 L1914,2057.7578 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="244" x="1665" y="2074.8247">Use the GUI to display the simulation</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="181" x="1665" y="2089.9575">complete message and exit</text><path d="M1717,2117.0234 L1786,2117.0234 L1786,2124.1563 L1776,2134.1563 L1717,2134.1563 L1717,2117.0234 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="52.2656" style="stroke:#000000;stroke-width:1.5;" width="242" x="1717" y="2117.0234"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="24" x="1732" y="2130.0903">opt</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="153" x="1801" y="2129.2339">[gui.getExitRequested()]</text><path d="M1727,2139.1563 L1727,2164.1563 L1857,2164.1563 L1857,2149.1563 L1847,2139.1563 L1727,2139.1563 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1847,2139.1563 L1847,2149.1563 L1857,2149.1563 L1847,2139.1563 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="109" x="1733" y="2156.2231">Exit the program</text><polygon fill="#181818" points="516,2193.4219,506,2197.4219,516,2201.4219,512,2197.4219" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="510" x2="1791" y1="2197.4219" y2="2197.4219"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="139" x="522" y="2192.356">map.simulationTick()</text><path d="M415,2210.4219 L415,2235.4219 L595,2235.4219 L595,2220.4219 L585,2210.4219 L415,2210.4219 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M585,2210.4219 L585,2220.4219 L595,2220.4219 L585,2210.4219 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="159" x="421" y="2227.4888">Increment `tickCounter`</text><path d="M473,2247.5547 L549,2247.5547 L549,2254.6875 L539,2264.6875 L473,2264.6875 L473,2247.5547 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="75.3984" style="stroke:#000000;stroke-width:1.5;" width="468" x="473" y="2247.5547"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="31" x="488" y="2260.6216">loop</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="174" x="564" y="2259.7651">[for each village in villages]</text><polygon fill="#181818" points="887.5,2281.8203,897.5,2285.8203,887.5,2289.8203,891.5,2285.8203" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="505" x2="893.5" y1="2285.8203" y2="2285.8203"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="130" x="512" y="2280.7544">village.getTeamID()</text><polygon fill="#181818" points="516,2310.9531,506,2314.9531,516,2318.9531,512,2314.9531" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="510" x2="898.5" y1="2314.9531" y2="2314.9531"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="77" x="522" y="2309.8872">teamID : int</text><path d="M344,2334.9531 L344,2374.9531 L665,2374.9531 L665,2344.9531 L655,2334.9531 L344,2334.9531 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M655,2334.9531 L655,2344.9531 L665,2344.9531 L655,2334.9531 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="245" x="350" y="2352.02">If all returned team IDs are the same,</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="300" x="350" y="2367.1528">set `isSimulationComplete` to true and return</text><path d="M473,2387.2188 L549,2387.2188 L549,2394.3516 L539,2404.3516 L473,2404.3516 L473,2387.2188 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="81.3984" style="stroke:#000000;stroke-width:1.5;" width="764" x="473" y="2387.2188"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="31" x="488" y="2400.2856">loop</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="194" x="564" y="2399.4292">[for each creature in creatures]</text><polygon fill="#181818" points="1134,2421.4844,1144,2425.4844,1134,2429.4844,1138,2425.4844" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="505" x2="1140" y1="2425.4844" y2="2425.4844"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="105" x="512" y="2420.4185">creature.move()</text><path d="M1064,2438.4844 L1064,2463.4844 L1227,2463.4844 L1227,2448.4844 L1217,2438.4844 L1064,2438.4844 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1217,2438.4844 L1217,2448.4844 L1227,2448.4844 L1217,2438.4844 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="142" x="1070" y="2455.5513">Make a random move</text><path d="M473,2482.6172 L549,2482.6172 L549,2489.75 L539,2499.75 L473,2499.75 L473,2482.6172 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="785.7188" style="stroke:#000000;stroke-width:1.5;" width="1657" x="473" y="2482.6172"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="31" x="488" y="2495.6841">loop</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="174" x="564" y="2494.8276">[for each village in villages]</text><polygon fill="#181818" points="887.5,2516.8828,897.5,2520.8828,887.5,2524.8828,891.5,2520.8828" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="505" x2="893.5" y1="2520.8828" y2="2520.8828"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="154" x="512" y="2515.8169">village.simulationTick()</text><path d="M778,2535.8828 L847,2535.8828 L847,2543.0156 L837,2553.0156 L778,2553.0156 L778,2535.8828 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="67.3984" style="stroke:#000000;stroke-width:1.5;" width="243" x="778" y="2535.8828"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="24" x="793" y="2548.9497">opt</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="120" x="862" y="2548.0933">[villagers is empty]</text><path d="M788,2558.0156 L788,2598.0156 L1011,2598.0156 L1011,2568.0156 L1001,2558.0156 L788,2558.0156 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1001,2558.0156 L1001,2568.0156 L1011,2568.0156 L1001,2558.0156 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="202" x="794" y="2575.0825">Set `teamID` to ID of the team</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="175" x="794" y="2590.2153">with the greatest kill count</text><path d="M797,2617.2813 L873,2617.2813 L873,2624.4141 L863,2634.4141 L797,2634.4141 L797,2617.2813 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="498.3906" style="stroke:#000000;stroke-width:1.5;" width="535" x="797" y="2617.2813"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="31" x="812" y="2630.3481">loop</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="180" x="888" y="2629.4917">[for each human in villagers]</text><path d="M807,2641.4141 L876,2641.4141 L876,2648.5469 L866,2658.5469 L807,2658.5469 L807,2641.4141 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="467.2578" style="stroke:#000000;stroke-width:1.5;" width="515" x="807" y="2641.4141"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="24" x="822" y="2654.481">opt</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="108" x="891" y="2653.6245">[human.isAlive()]</text><polygon fill="#181818" points="1052.5,2675.6797,1062.5,2679.6797,1052.5,2683.6797,1056.5,2679.6797" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="899.5" x2="1058.5" y1="2679.6797" y2="2679.6797"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="96" x="906.5" y="2674.6138">human.move()</text><path d="M909,2692.6797 L909,2732.6797 L1220,2732.6797 L1220,2702.6797 L1210,2692.6797 L909,2692.6797 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1210,2692.6797 L1210,2702.6797 L1220,2702.6797 L1210,2692.6797 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="278" x="915" y="2709.7466">Look for the nearest creature within attack</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="290" x="915" y="2724.8794">distance. If there is any, attack it and return.</text><path d="M817,2744.9453 L881,2744.9453 L881,2752.0781 L871,2762.0781 L817,2762.0781 L817,2744.9453 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="253.3281" style="stroke:#000000;stroke-width:1.5;" width="495" x="817" y="2744.9453"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="19" x="832" y="2758.0122">alt</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="93" x="896" y="2757.1558">[onExpedition]</text><path d="M884,2767.0781 L884,2822.0781 L1244,2822.0781 L1244,2777.0781 L1234,2767.0781 L884,2767.0781 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1234,2767.0781 L1234,2777.0781 L1244,2777.0781 L1234,2767.0781 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="339" x="890" y="2784.145">Look for the nearest creature within vision distance.</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="335" x="890" y="2799.2778">If there is any, make a move towards it. Otherwise,</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="148" x="890" y="2814.4106">make a random move.</text><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="817" x2="1312" y1="2828.4766" y2="2828.4766"/><path d="M827,2836.4766 L891,2836.4766 L891,2843.6094 L881,2853.6094 L827,2853.6094 L827,2836.4766 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="119.6641" style="stroke:#000000;stroke-width:1.5;" width="475" x="827" y="2836.4766"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="19" x="842" y="2849.5435">alt</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="235" x="906" y="2848.687">[Human is close to the parent village]</text><path d="M837,2858.6094 L837,2913.6094 L1292,2913.6094 L1292,2868.6094 L1282,2858.6094 L837,2858.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1282,2858.6094 L1282,2868.6094 L1292,2868.6094 L1282,2858.6094 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="305" x="843" y="2875.6763">Store all inventory in the parent village and try</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="336" x="843" y="2890.8091">to equip armor and sword (if not already equipped).</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="434" x="843" y="2905.9419">Try to eat food. Then, go to expedition (set `onExpedition` to true)</text><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="827" x2="1302" y1="2920.0078" y2="2920.0078"/><path d="M922,2926.0078 L922,2951.0078 L1206,2951.0078 L1206,2936.0078 L1196,2926.0078 L922,2926.0078 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1196,2926.0078 L1196,2936.0078 L1206,2936.0078 L1196,2926.0078 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="263" x="928" y="2943.0747">Make a move towards the parent village</text><path d="M1034,2968.1406 L1034,2993.1406 L1094,2993.1406 L1094,2978.1406 L1084,2968.1406 L1034,2968.1406 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1084,2968.1406 L1084,2978.1406 L1094,2978.1406 L1084,2968.1406 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="39" x="1040" y="2985.2075">return</text><path d="M817,3012.2734 L881,3012.2734 L881,3019.4063 L871,3029.4063 L817,3029.4063 L817,3012.2734 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="89.3984" style="stroke:#000000;stroke-width:1.5;" width="494" x="817" y="3012.2734"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="19" x="832" y="3025.3403">alt</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="118" x="896" y="3024.4839">[inventory.isFull()]</text><path d="M905,3034.4063 L905,3059.4063 L1224,3059.4063 L1224,3044.4063 L1214,3034.4063 L905,3034.4063 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1214,3034.4063 L1214,3044.4063 L1224,3044.4063 L1214,3034.4063 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="298" x="911" y="3051.4731">Abort expedition (set `onExpedition` to false)</text><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="817" x2="1311" y1="3065.5391" y2="3065.5391"/><path d="M827,3071.5391 L827,3096.5391 L1301,3096.5391 L1301,3081.5391 L1291,3071.5391 L827,3071.5391 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1291,3071.5391 L1291,3081.5391 L1301,3081.5391 L1291,3071.5391 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="453" x="833" y="3088.606">Try to collect resources from the map and add them to own inventory</text><path d="M858,3129.6719 L934,3129.6719 L934,3136.8047 L924,3146.8047 L858,3146.8047 L858,3129.6719 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="81.3984" style="stroke:#000000;stroke-width:1.5;" width="1262" x="858" y="3129.6719"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="31" x="873" y="3142.7388">loop</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="196" x="949" y="3141.8823">[for each building in buildings]</text><polygon fill="#181818" points="1917.5,3163.9375,1927.5,3167.9375,1917.5,3171.9375,1921.5,3167.9375" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="899.5" x2="1923.5" y1="3167.9375" y2="3167.9375"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="106" x="906.5" y="3162.8716">simulationTick()</text><path d="M1748,3180.9375 L1748,3205.9375 L2110,3205.9375 L2110,3190.9375 L2100,3180.9375 L1748,3180.9375 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M2100,3180.9375 L2100,3190.9375 L2110,3190.9375 L2100,3180.9375 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="341" x="1754" y="3198.0044">Perform an action specific to the given building type</text><path d="M663,3223.0703 L663,3263.0703 L1135,3263.0703 L1135,3233.0703 L1125,3223.0703 L663,3223.0703 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1125,3223.0703 L1125,3233.0703 L1135,3233.0703 L1125,3223.0703 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="451" x="669" y="3240.1372">Check the village population and if necessary, create more buildings.</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="424" x="669" y="3255.27">If there is a house needed and it cannot be built, kill one villager.</text><polygon fill="#181818" points="464.5,3292.4688,454.5,3296.4688,464.5,3300.4688,460.5,3296.4688" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="458.5" x2="1791" y1="3296.4688" y2="3296.4688"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="138" x="470.5" y="3291.4028">gui.showSimulation()</text><path d="M301,3309.4688 L301,3349.4688 L605,3349.4688 L605,3319.4688 L595,3309.4688 L301,3309.4688 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M595,3309.4688 L595,3319.4688 L605,3319.4688 L595,3309.4688 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="283" x="307" y="3326.5356">Repaint the main window - draw the terrain</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="185" x="307" y="3341.6685">image and all creature icons</text><!--MD5=[7e9216b382d2f000b365d778f01dc247]
+@startuml
+"Main thread" as Main -> GUI: GUI()
+GUI - -> Main: gui : GUI
+Main -> GUI: gui.getOptionsFromUser()
+note over GUI
+    Display the input dialog and get simulation
+    options from the user. If something goes wrong,
+    display an error message dialog and try again.
+    If the user closes the input dialog, exit the program.
+end note
+GUI - -> Main: simulationOptions : SimulationOptions
+Main -> Map: Map(simulationOptions)
+Map -> Perlin : Perlin(simulationOptions)
+Perlin - -> Map : perlin : Perlin
+Map -> HeightMap: HeightMap()
+HeightMap - -> Map: heightMap : HeightMap
+Map -> Perlin : perlin.generatePerlinNoise2D()
+Perlin - -> Map: heightMap.height : double[][]
+
+' Create villages
+loop for i from 0 to simulationOptions.nTeams-1
+    note over Map
+        Generate a `newVillagePosition`
+        in plains biome for a village
+    end note
+    Map -> Village: Village(newVillagePosition, i, this)
+    note over Village
+        Create a new village with a single house
+    end note
+    Village - -> Map: village : Village
+    note over Map
+        Add `village` to the `villages` list
+    end note
+    ' Create humans
+    loop for i from 0 to simulationOptions.teamPopulation-1
+        Map -> Village : village.addVillager()
+        Village -> Human : Human(this, position)
+        Human - -> Village : human : Human
+        note over Village
+            Add `human` to the `villagers` list
+        end note
+    end
+end
+
+loop for i from 0 to simulationOptions.nCows-1
+    Map -> Creature : createNew(Creature.CreatureType.COW, this)
+    note over Creature
+        Generate a `newCreaturePosition`
+        in plains biome for a cow
+    end note
+    Creature -> Cow : Cow(parentMap, newCreaturePosition)
+    note over Cow
+        Call base class constructor
+    end note
+    Cow - -> Creature : cow : Cow
+    Creature - -> Map : cow : Creature
+    note over Map
+        Add `cow` to the `creatures` list
+    end note
+end
+
+loop for i from 0 to simulationOptions.nHamsters-1
+    Map -> Creature : createNew(Creature.CreatureType.HAMSTER, this)
+    note over Creature
+        Generate a `newCreaturePosition`
+        in plains or mountains biome for a hamster
+    end note
+    Creature -> Hamster : Hamster(parentMap, newCreaturePosition)
+    note over Hamster
+        Call base class constructor
+    end note
+    Hamster - -> Creature : hamster : Hamster
+    Creature - -> Map : hamster : Creature
+    note over Map
+        Add `hamster` to the `creatures` list
+    end note
+end
+
+Map - -> Main: map : Map
+Main -> GUI: gui.openMainWindow(map)
+note over GUI
+    Create and show the simulation main window
+end note
+
+group try/catch
+    Main -> DataCollector: DataCollector(map)
+    note over DataCollector
+        Open the data output file
+    end note
+    DataCollector - -> Main: dataCollector : DataCollector
+    Main -> DataCollector: dataCollector.printHeaderLine()
+    note over DataCollector
+        Print a line containing column headers to the data output file
+    end note
+    note over Main
+        If any exception is caught,
+        display a fatal error dialog and exit
+    end note
+end group
+
+note over Main
+    Create a periodic timer `simulationTimer`
+    with period `simulationOptions.simulationSpeed`.
+    The new timer has access to all Main class
+    fields and methods.
+end note
+
+Main -> "Simulation timer thread" as STT ** : simulationTimer.start()
+Main -> Main !! : Main thread terminates
+
+loop
+    group try/catch
+        STT -> DataCollector : dataCollector.collectData()
+        note over DataCollector
+            Collect data from map
+            and write it to the output file
+        end note
+        note over STT
+            If any exception is caught,
+            display a fatal error dialog and exit
+        end note
+    end group
+    opt map.isSimulationComplete()
+        note over STT
+            Use the GUI to display the simulation
+            complete message and exit
+        end note
+    end
+    opt gui.getExitRequested()
+        note over STT
+            Exit the program
+        end note
+    end
+    STT -> Map: map.simulationTick()
+    note over Map
+        Increment `tickCounter`
+    end note
+    loop for each village in villages
+        Map -> Village: village.getTeamID()
+        Village - -> Map: teamID : int
+    end
+    note over Map
+        If all returned team IDs are the same,
+        set `isSimulationComplete` to true and return
+    end note
+    loop for each creature in creatures
+        Map -> Creature: creature.move()
+        note over Creature
+            Make a random move
+        end note
+    end
+    loop for each village in villages
+        Map -> Village: village.simulationTick()
+        opt villagers is empty
+            note over Village
+                Set `teamID` to ID of the team
+                with the greatest kill count
+            end note
+        end
+        loop for each human in villagers
+            opt human.isAlive()
+                Village -> Human: human.move()
+                note over Human
+                    Look for the nearest creature within attack
+                    distance. If there is any, attack it and return.
+                end note
+                alt onExpedition
+                    note over Human
+                        Look for the nearest creature within vision distance.
+                        If there is any, make a move towards it. Otherwise,
+                        make a random move.
+                    end note
+                else
+                    alt Human is close to the parent village
+                        note over Human
+                            Store all inventory in the parent village and try
+                            to equip armor and sword (if not already equipped).
+                            Try to eat food. Then, go to expedition (set `onExpedition` to true)
+                        end note
+                    else
+                        note over Human
+                            Make a move towards the parent village
+                        end note
+                    end
+                    note over Human
+                        return
+                    end note
+                end
+
+                alt inventory.isFull()
+                    note over Human
+                        Abort expedition (set `onExpedition` to false)
+                    end note
+                else
+                    note over Human
+                        Try to collect resources from the map and add them to own inventory
+                    end note
+                end
+            end
+        end
+        loop for each building in buildings
+            Village -> Building: simulationTick()
+            note over Building
+                Perform an action specific to the given building type
+            end note
+        end
+        note over Village
+            Check the village population and if necessary, create more buildings.
+            If there is a house needed and it cannot be built, kill one villager.
+        end note
+    end
+    STT -> GUI: gui.showSimulation()
+    note over GUI
+        Repaint the main window - draw the terrain
+        image and all creature icons
+    end note
+end
+
+@enduml
+
+@startuml
+"Main thread" as Main -> GUI: GUI()
+GUI - -> Main: gui : GUI
+Main -> GUI: gui.getOptionsFromUser()
+note over GUI
+    Display the input dialog and get simulation
+    options from the user. If something goes wrong,
+    display an error message dialog and try again.
+    If the user closes the input dialog, exit the program.
+end note
+GUI - -> Main: simulationOptions : SimulationOptions
+Main -> Map: Map(simulationOptions)
+Map -> Perlin : Perlin(simulationOptions)
+Perlin - -> Map : perlin : Perlin
+Map -> HeightMap: HeightMap()
+HeightMap - -> Map: heightMap : HeightMap
+Map -> Perlin : perlin.generatePerlinNoise2D()
+Perlin - -> Map: heightMap.height : double[][]
+
+loop for i from 0 to simulationOptions.nTeams-1
+    note over Map
+        Generate a `newVillagePosition`
+        in plains biome for a village
+    end note
+    Map -> Village: Village(newVillagePosition, i, this)
+    note over Village
+        Create a new village with a single house
+    end note
+    Village - -> Map: village : Village
+    note over Map
+        Add `village` to the `villages` list
+    end note
+    loop for i from 0 to simulationOptions.teamPopulation-1
+        Map -> Village : village.addVillager()
+        Village -> Human : Human(this, position)
+        Human - -> Village : human : Human
+        note over Village
+            Add `human` to the `villagers` list
+        end note
+    end
+end
+
+loop for i from 0 to simulationOptions.nCows-1
+    Map -> Creature : createNew(Creature.CreatureType.COW, this)
+    note over Creature
+        Generate a `newCreaturePosition`
+        in plains biome for a cow
+    end note
+    Creature -> Cow : Cow(parentMap, newCreaturePosition)
+    note over Cow
+        Call base class constructor
+    end note
+    Cow - -> Creature : cow : Cow
+    Creature - -> Map : cow : Creature
+    note over Map
+        Add `cow` to the `creatures` list
+    end note
+end
+
+loop for i from 0 to simulationOptions.nHamsters-1
+    Map -> Creature : createNew(Creature.CreatureType.HAMSTER, this)
+    note over Creature
+        Generate a `newCreaturePosition`
+        in plains or mountains biome for a hamster
+    end note
+    Creature -> Hamster : Hamster(parentMap, newCreaturePosition)
+    note over Hamster
+        Call base class constructor
+    end note
+    Hamster - -> Creature : hamster : Hamster
+    Creature - -> Map : hamster : Creature
+    note over Map
+        Add `hamster` to the `creatures` list
+    end note
+end
+
+Map - -> Main: map : Map
+Main -> GUI: gui.openMainWindow(map)
+note over GUI
+    Create and show the simulation main window
+end note
+
+group try/catch
+    Main -> DataCollector: DataCollector(map)
+    note over DataCollector
+        Open the data output file
+    end note
+    DataCollector - -> Main: dataCollector : DataCollector
+    Main -> DataCollector: dataCollector.printHeaderLine()
+    note over DataCollector
+        Print a line containing column headers to the data output file
+    end note
+    note over Main
+        If any exception is caught,
+        display a fatal error dialog and exit
+    end note
+end group
+
+note over Main
+    Create a periodic timer `simulationTimer`
+    with period `simulationOptions.simulationSpeed`.
+    The new timer has access to all Main class
+    fields and methods.
+end note
+
+Main -> "Simulation timer thread" as STT ** : simulationTimer.start()
+Main -> Main !! : Main thread terminates
+
+loop
+    group try/catch
+        STT -> DataCollector : dataCollector.collectData()
+        note over DataCollector
+            Collect data from map
+            and write it to the output file
+        end note
+        note over STT
+            If any exception is caught,
+            display a fatal error dialog and exit
+        end note
+    end group
+    opt map.isSimulationComplete()
+        note over STT
+            Use the GUI to display the simulation
+            complete message and exit
+        end note
+    end
+    opt gui.getExitRequested()
+        note over STT
+            Exit the program
+        end note
+    end
+    STT -> Map: map.simulationTick()
+    note over Map
+        Increment `tickCounter`
+    end note
+    loop for each village in villages
+        Map -> Village: village.getTeamID()
+        Village - -> Map: teamID : int
+    end
+    note over Map
+        If all returned team IDs are the same,
+        set `isSimulationComplete` to true and return
+    end note
+    loop for each creature in creatures
+        Map -> Creature: creature.move()
+        note over Creature
+            Make a random move
+        end note
+    end
+    loop for each village in villages
+        Map -> Village: village.simulationTick()
+        opt villagers is empty
+            note over Village
+                Set `teamID` to ID of the team
+                with the greatest kill count
+            end note
+        end
+        loop for each human in villagers
+            opt human.isAlive()
+                Village -> Human: human.move()
+                note over Human
+                    Look for the nearest creature within attack
+                    distance. If there is any, attack it and return.
+                end note
+                alt onExpedition
+                    note over Human
+                        Look for the nearest creature within vision distance.
+                        If there is any, make a move towards it. Otherwise,
+                        make a random move.
+                    end note
+                else
+                    alt Human is close to the parent village
+                        note over Human
+                            Store all inventory in the parent village and try
+                            to equip armor and sword (if not already equipped).
+                            Try to eat food. Then, go to expedition (set `onExpedition` to true)
+                        end note
+                    else
+                        note over Human
+                            Make a move towards the parent village
+                        end note
+                    end
+                    note over Human
+                        return
+                    end note
+                end
+
+                alt inventory.isFull()
+                    note over Human
+                        Abort expedition (set `onExpedition` to false)
+                    end note
+                else
+                    note over Human
+                        Try to collect resources from the map and add them to own inventory
+                    end note
+                end
+            end
+        end
+        loop for each building in buildings
+            Village -> Building: simulationTick()
+            note over Building
+                Perform an action specific to the given building type
+            end note
+        end
+        note over Village
+            Check the village population and if necessary, create more buildings.
+            If there is a house needed and it cannot be built, kill one villager.
+        end note
+    end
+    STT -> GUI: gui.showSimulation()
+    note over GUI
+        Repaint the main window - draw the terrain
+        image and all creature icons
+    end note
+end
+
+@enduml
+
+PlantUML version 1.2022.5(Sat Apr 30 12:55:52 CEST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: pl
+Country: PL
+--></g></svg>

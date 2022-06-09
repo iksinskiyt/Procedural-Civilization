@@ -16,12 +16,36 @@ import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 import java.util.List;
 
+/**
+ * Main window used to display the world and creatures
+ */
 class MainWindow extends JFrame {
+    /**
+     * List of creatures
+     */
     private final List<Creature> creatures;
+
+    /**
+     * List of villages
+     */
     private final List<Village> villages;
+
+    /**
+     * Image containing biome and height-colored terrain map
+     */
     private final BufferedImage mapImage;
 
+    /**
+     * Panel where the world is supposed to be displayed
+     */
     public class MapPanel extends JPanel {
+        /**
+         * Draw a circular icon representing a non-human creature
+         *
+         * @param g        Graphics object to draw on
+         * @param position Creature position
+         * @param color    Icon color
+         */
         private void drawCreatureIcon(Graphics g, Position position,
                                       Color color) {
             g.setColor(color);
@@ -30,25 +54,52 @@ class MainWindow extends JFrame {
             g.drawOval(position.x - 3, position.y - 3, 7, 7);
         }
 
-        private void drawHumanIcon(Graphics g, int x, int y, Color color,
+        /**
+         * Draw a square icon representing a human creature
+         *
+         * @param g        Graphics object to draw on
+         * @param position Human position
+         * @param color    Icon color
+         * @param human    Human do draw icon for
+         */
+        private void drawHumanIcon(Graphics g, Position position, Color color,
                                    Human human) {
             g.setColor(color);
-            g.fillRect(x - 3, y - 3, 7, 7);
+            g.fillRect(position.x - 3, position.y - 3, 7, 7);
             g.setColor(Color.BLACK);
-            g.drawRect(x - 3, y - 3, 7, 7);
-            drawStatIcon(g, x, y, human);
+            g.drawRect(position.x - 3, position.y - 3, 7, 7);
+            drawStatIcon(g, position, human);
         }
 
-        private void drawVillageIcon(Graphics g, int x, int y, Color color) {
+        /**
+         * Draw a large square icon representing a village
+         *
+         * @param g        Graphics object to draw on
+         * @param position Village position
+         * @param color    Icon color
+         */
+        private void drawVillageIcon(Graphics g, Position position,
+                                     Color color) {
             g.setColor(color);
-            g.fillPolygon(new int[]{x, x + 8, x, x - 8},
-                    new int[]{y + 8, y, y - 8, y}, 4);
+            g.fillPolygon(new int[]{position.x, position.x + 8, position.x,
+                            position.x - 8},
+                    new int[]{position.y + 8, position.y, position.y - 8,
+                            position.y}, 4);
             g.setColor(Color.BLACK);
-            g.drawPolygon(new int[]{x, x + 8, x, x - 8},
-                    new int[]{y + 8, y, y - 8, y}, 4);
+            g.drawPolygon(new int[]{position.x, position.x + 8, position.x,
+                            position.x - 8},
+                    new int[]{position.y + 8, position.y, position.y - 8,
+                            position.y}, 4);
         }
 
-        private void drawStatIcon(Graphics g, int x, int y, Human human) {
+        /**
+         * Draw a statistics icon for a given human
+         *
+         * @param g        Graphics object to draw on
+         * @param position Human position
+         * @param human    Human object
+         */
+        private void drawStatIcon(Graphics g, Position position, Human human) {
             int pixelHealthWidth;
             int pixelArmorWidth;
             int pixelSwordWidth;
@@ -67,16 +118,16 @@ class MainWindow extends JFrame {
                     (int) Math.ceil((double) sword * 5 / (double) maxSword);
 
             g.setColor(new Color(237, 31, 36));
-            g.fillRect(x - 2, y - 2, 6, 3);
+            g.fillRect(position.x - 2, position.y - 2, 6, 3);
 
             g.setColor(new Color(65, 182, 73));
-            g.drawRect(x - 2, y - 2, pixelHealthWidth, 0);
+            g.drawRect(position.x - 2, position.y - 2, pixelHealthWidth, 0);
 
             g.setColor(new Color(137, 137, 137));
-            g.drawRect(x - 2, y - 1, pixelArmorWidth, 0);
+            g.drawRect(position.x - 2, position.y - 1, pixelArmorWidth, 0);
 
             g.setColor(new Color(249, 155, 77));
-            g.drawRect(x - 2, y, pixelSwordWidth, 0);
+            g.drawRect(position.x - 2, position.y, pixelSwordWidth, 0);
         }
 
         @Override
@@ -88,18 +139,22 @@ class MainWindow extends JFrame {
             }
             for (Village village : villages) {
                 Position villagePosition = village.getPosition();
-                drawVillageIcon(g, villagePosition.x, villagePosition.y,
-                        village.getTeamColor());
+                drawVillageIcon(g, villagePosition, village.getTeamColor());
                 for (Human human : village.getVillagers()) {
                     Position position = human.getPosition();
-                    drawHumanIcon(g, position.x, position.y,
-                            village.getTeamColor(), human);
+                    drawHumanIcon(g, position, village.getTeamColor(), human);
                 }
             }
             Toolkit.getDefaultToolkit().sync();
         }
     }
 
+    /**
+     * Construct a new main window
+     *
+     * @param map Map to render the map image from
+     * @param gui GUI object to use
+     */
     public MainWindow(Map map, GUI gui) {
         // Get all necessary references
         HeightMap heightMap = map.getHeightMap();
